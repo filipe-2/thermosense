@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, ImageBackground } from 'react-native';
+import { styles } from './styles/home';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ImageBackground style={styles.wrapper} source={require('./assets/bg.jpg')}>
+      <View style={styles.temperatureWrapper}>
+        <Text style={styles.text}>TEMPERATURE</Text>
+        <Text style={[styles.text, styles.temperatureText]}>-15°C</Text>
+      </View>
+
+      <View style={styles.temperatureWrapper}>
+        <Text style={styles.text}>HUMIDITY</Text>
+        <Text style={[styles.text, styles.temperatureText]}>69%</Text>
+      </View>
+    </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
