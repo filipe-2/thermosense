@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "thermosense",
+    "name": "ThermoSense",
     "slug": "thermosense",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.carlos_filipe_0.thermosense"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7cca5f65-4f84-4108-a9b6-b09255bfd5a3"
+      }
     }
   }
 }
