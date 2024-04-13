@@ -1,7 +1,10 @@
 import { Text, View, ImageBackground } from 'react-native';
-import { styles } from '../styles/home';
 import { useEffect, useState } from 'react';
 import { db, ref, onValue } from '../firebase';
+
+// Styles
+import { globalStyles } from '../styles/global';
+import { homeStyles } from '../styles/home';
 
 export default function Home() {
     const [temperature, setTemperature] = useState(0);
@@ -17,15 +20,15 @@ export default function Home() {
     }, [db]);
 
     return (
-        <ImageBackground style={styles.wrapper} source={require('../assets/bg.jpg')}>
-            <View style={styles.temperatureWrapper}>
-                <Text style={styles.text}>TEMPERATURE</Text>
-                <Text style={[styles.text, styles.temperatureText]}>{temperature}°C</Text>
+        <ImageBackground style={[globalStyles.wrapper, homeStyles.wrapper]} source={require('../assets/bg.jpg')}>
+            <View style={homeStyles.temperatureWrapper}>
+                <Text style={globalStyles.text}>TEMPERATURE</Text>
+                <Text style={[globalStyles.text, homeStyles.temperatureText]}>{temperature}°C</Text>
             </View>
 
-            <View style={styles.temperatureWrapper}>
-                <Text style={styles.text}>HUMIDITY</Text>
-                <Text style={[styles.text, styles.temperatureText]}>{humidity}%</Text>
+            <View style={homeStyles.temperatureWrapper}>
+                <Text style={globalStyles.text}>HUMIDITY</Text>
+                <Text style={[globalStyles.text, homeStyles.temperatureText]}>{humidity}%</Text>
             </View>
         </ImageBackground>
     );
