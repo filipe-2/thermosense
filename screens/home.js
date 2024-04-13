@@ -22,12 +22,12 @@ export default function Home() {
     return (
         <ImageBackground style={[globalStyles.wrapper, homeStyles.wrapper]} source={require('../assets/bg.jpg')}>
             <View style={homeStyles.temperatureWrapper}>
-                <Text style={globalStyles.text}>TEMPERATURE</Text>
+                <Text style={globalStyles.text}>TEMPERATURA</Text>
                 <Text style={[globalStyles.text, homeStyles.temperatureText]}>{temperature}°C</Text>
             </View>
 
             <View style={homeStyles.temperatureWrapper}>
-                <Text style={globalStyles.text}>HUMIDITY</Text>
+                <Text style={globalStyles.text}>HUMIDADE</Text>
                 <Text style={[globalStyles.text, homeStyles.temperatureText]}>{humidity}%</Text>
             </View>
         </ImageBackground>

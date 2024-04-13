@@ -1,7 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from '@expo/vector-icons';
+
+// Components
 import Home from "../screens/Home";
 import Settings from "../screens/Settings";
+import Control from "../screens/Control";
 
 // Bottom tab navigator
 const Tab = createBottomTabNavigator();
@@ -13,6 +16,8 @@ const navigatorOptions = {
         backgroundColor: 'black',
         height: 75,
         paddingBottom: 15,
+        borderTopWidth: 1,
+        borderTopColor: 'hsl(200, 100%, 49%)',
     }
 };
 
@@ -33,6 +38,19 @@ export default function TabRoutes() {
                 }}
             />
             <Tab.Screen
+                name="Controls"
+                component={Control}
+                options={{
+                    tabBarIcon: ({ color, size }) =>
+                        <Feather
+                            name="radio"
+                            color={'hsl(200, 100%, 49%)'}
+                            size={size}
+                        />,
+                    tabBarLabel: 'Controle',
+                }}
+            />
+            <Tab.Screen
                 name="Settings"
                 component={Settings}
                 options={{
@@ -42,7 +60,7 @@ export default function TabRoutes() {
                             color={'hsl(200, 100%, 49%)'}
                             size={size}
                         />,
-                    tabBarLabel: 'Config',
+                    tabBarLabel: 'Ajustes',
                 }}
             />
         </Tab.Navigator>
