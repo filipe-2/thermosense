@@ -1,6 +1,6 @@
 import { Text, View, ImageBackground } from 'react-native';
 import { useEffect, useState } from 'react';
-import { db, ref, onValue } from '../firebase';
+import { db, ref, onValue } from '../firebaseDB';
 
 // Styles
 import { globalStyles } from '../styles/global';
