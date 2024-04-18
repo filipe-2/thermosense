@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const settingsStyles = StyleSheet.create({
+export const settings = StyleSheet.create({
     button: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -8,7 +8,11 @@ export const settingsStyles = StyleSheet.create({
         textAlign: 'left',
         padding: 15,
         borderBottomWidth: 1,
-        borderBottomColor: 'hsl(0, 0%, 10%)'
+        borderBottomColor: 'hsl(0, 0%, 20%)'
+    },
+
+    lastButton: {
+        borderBottomWidth: 0,
     },
 
     buttonTextWrapper: {
@@ -18,7 +22,6 @@ export const settingsStyles = StyleSheet.create({
     buttonTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: 'hsl(200, 100%, 49%)',
     },
 
     buttonDescription: {

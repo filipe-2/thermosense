@@ -1,14 +1,10 @@
 import { StyleSheet } from "react-native";
+import { themes } from "./themes";
 
-export const globalStyles = StyleSheet.create({
+export const boilerplate = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'hsl(0, 0%, 0%)',
-    },
-
-    text: {
-        color: 'hsl(360, 100%, 100%)',
     },
 });

@@ -1,0 +1,39 @@
+import { StyleSheet } from "react-native";
+import { colors } from "./global/themes";
+
+export const utils = {
+    labelTextSize: 25,
+}
+
+export const home = StyleSheet.create({
+    labelsWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 25,
+        padding: 25,
+        backgroundColor: colors.clr_4,
+        borderRadius: 20,
+        width: '75%',
+        maxWidth: 500,
+    },
+
+    labelWrapper: {
+        gap: 10,
+    },
+
+    labelInfoWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 10,
+    },
+
+    labelTitle: {
+        fontWeight: 'bold',
+    },
+
+    labelText: {
+        fontSize: utils.labelTextSize,
+    },
+});
