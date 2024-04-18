@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "./global/customStyles";
 
 export const settings = StyleSheet.create({
     button: {
@@ -8,7 +9,7 @@ export const settings = StyleSheet.create({
         textAlign: 'left',
         padding: 15,
         borderBottomWidth: 1,
-        borderBottomColor: 'hsl(0, 0%, 20%)'
+        borderBottomColor: colors.clr_5,
     },
 
     lastButton: {
@@ -25,6 +26,6 @@ export const settings = StyleSheet.create({
     },
 
     buttonDescription: {
-        color: 'hsl(0, 0%, 80%)'
+        color: colors.clr_6,
     }
 });

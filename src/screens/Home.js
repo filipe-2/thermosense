@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { db, ref, onValue } from '../services/firebaseDB';
 
 // Styles
-import { colors, darkStyles, lightStyles } from '../styles/global/themes';
+import { colors, darkStyles, lightStyles } from '../styles/global/customStyles';
 import { boilerplate } from '../styles/global/boilerplate';
 import { home, utils } from '../styles/home';
 

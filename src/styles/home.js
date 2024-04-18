@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "./global/themes";
+import { colors } from "./global/customStyles";
 
 export const utils = {
     labelTextSize: 25,

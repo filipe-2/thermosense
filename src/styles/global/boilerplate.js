@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { themes } from "./themes";
+import { themes } from "./customStyles";
 
 export const boilerplate = StyleSheet.create({
     wrapper: {

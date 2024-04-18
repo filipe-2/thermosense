@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 // Styles
 import { boilerplate } from '../styles/global/boilerplate';
 import { settings } from '../styles/settings';
-import { colors, darkStyles, lightStyles } from '../styles/global/themes';
+import { colors, darkStyles, lightStyles } from '../styles/global/customStyles';
 
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';

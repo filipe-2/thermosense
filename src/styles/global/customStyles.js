@@ -6,6 +6,8 @@ export const colors = {
     clr_2: 'hsl(0, 0%, 100%)',
     clr_3: 'hsl(0, 0%, 10%)',
     clr_4: 'hsla(0, 0%, 0%, 0.7)',
+    clr_5: 'hsl(0, 0%, 20%)',
+    clr_6: 'hsl(0, 0%, 80%)',
 }
 
 // Dark theme
