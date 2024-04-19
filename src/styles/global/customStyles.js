@@ -29,5 +29,7 @@ export const lightStyles = StyleSheet.create({
         secondary: { color: colors.clr_3, },
     },
 
-    backgroundColor: colors.clr_2,
+    background: {
+        backgroundColor: colors.clr_2,
+    },
 });
