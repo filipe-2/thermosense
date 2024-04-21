@@ -15,8 +15,8 @@ export default function Home() {
     const theme = isDarkMode ? darkStyles : lightStyles;
 
     // States
-    const [temperature, setTemperature] = useState('');
-    const [humidity, setHumidity] = useState('');
+    const [temperature, setTemperature] = useState('...');
+    const [humidity, setHumidity] = useState('...');
 
     useEffect(() => {
         const data = ref(db);

@@ -8,13 +8,15 @@ export const colors = {
     clr_4: 'hsla(0, 0%, 0%, 0.7)',
     clr_5: 'hsl(0, 0%, 20%)',
     clr_6: 'hsl(0, 0%, 80%)',
-}
+    clr_7: 'hsl(0, 0%, 0%)',
+};
 
 // Dark theme
 export const darkStyles = StyleSheet.create({
     text: {
         primary: { color: colors.clr_1, },
         secondary: { color: colors.clr_2, },
+        tertiary: { color: colors.clr_7 },
     },
 
     background: {

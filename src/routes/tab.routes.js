@@ -1,12 +1,20 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Feather } from '@expo/vector-icons';
 
-// Components
+// Routes
+import SettingsStackRoutes from './settingsStack.routes';
+
+// Screens
 import Home from "../screens/Home";
-import Settings from "../screens/Settings";
 import Control from "../screens/Control";
 
-// Bottom tab navigator
+// Styles
+import { colors } from '../styles/global/customStyles';
+
+// Icons
+import { Feather } from '@expo/vector-icons';
+
+
+// Create bottom tab navigator
 const Tab = createBottomTabNavigator();
 
 // Screen navigator options
@@ -17,52 +25,55 @@ const navigatorOptions = {
         height: 75,
         paddingBottom: 15,
         borderTopWidth: 1,
-        borderTopColor: 'hsl(200, 100%, 49%)',
-    }
+        borderTopColor: colors.clr_1,
+    },
+    tabBarActiveTintColor: colors.clr_1,
+    tabBarInactiveTintColor: colors.clr_6,
 };
+
 
 export default function TabRoutes() {
     return (
         <Tab.Navigator screenOptions={navigatorOptions}>
             <Tab.Screen
-                name="Home"
+                name='Home'
                 component={Home}
                 options={{
-                    tabBarIcon: ({ color, size }) =>
+                    tabBarIcon: ({ size }) =>
                         <Feather
-                            name="home"
-                            color={'hsl(200, 100%, 49%)'}
+                            name='home'
+                            color={colors.clr_1}
                             size={size}
                         />,
                     tabBarLabel: 'Início',
                 }}
             />
             <Tab.Screen
-                name="Controls"
+                name='Controls'
                 component={Control}
                 options={{
-                    tabBarIcon: ({ color, size }) =>
+                    tabBarIcon: ({ size }) =>
                         <Feather
-                            name="radio"
-                            color={'hsl(200, 100%, 49%)'}
+                            name='radio'
+                            color={colors.clr_1}
                             size={size}
                         />,
                     tabBarLabel: 'Controle',
                 }}
             />
             <Tab.Screen
-                name="Settings"
-                component={Settings}
+                name='Settings'
+                component={SettingsStackRoutes}
                 options={{
-                    tabBarIcon: ({ color, size }) =>
+                    tabBarIcon: ({ size }) =>
                         <Feather
-                            name="settings"
-                            color={'hsl(200, 100%, 49%)'}
+                            name='settings'
+                            color={colors.clr_1}
                             size={size}
                         />,
                     tabBarLabel: 'Ajustes',
                 }}
             />
         </Tab.Navigator>
-    )
+    );
 }

@@ -13,5 +13,5 @@ export default function Control() {
         <View style={[theme.background, boilerplate.wrapper]}>
             <Text style={theme.text.secondary}>Tela de Controle</Text>
         </View>
-    )
+    );
 }
