@@ -7,6 +7,7 @@ import Appearance from '../screens/settings_screens/Appearance';
 import Notifications from '../screens/settings_screens/Notifications';
 import Help from '../screens/settings_screens/Help';
 import About from '../screens/settings_screens/About';
+import { View } from 'react-native';
 
 
 // Create drawer navigator
@@ -15,6 +16,9 @@ const SettingsStack = createStackNavigator();
 // Screen navigator options
 const navigatorOptions = {
     headerShown: false,
+    gestureEnabled: true,
+    cardOverlayEnabled: true,
+    presentation: 'transparentModal',
 };
 
 
