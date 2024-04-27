@@ -3,20 +3,22 @@
     <h1 align="center" color="">ThermoSense</h1>
 </p>
 
-**Developers**: [Carlos Filipe](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara, Dário
+**Desenvolvedores**: [Carlos Filipe](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara, Dário
 
-Welcome! This is the repository for the ThermoSense project, here you will find all the code and assets used in our project, as well as the APK builds of our app for you to test on Android, the builds are available within the [releases](https://github.com/filipe-2/thermosense/releases/) page.
+Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará todo o código e recursos usados no nosso projeto, como também os *builds* APK do nosso app para você testar no seu dispositivo Android, os arquivos APK estão disponíveis dentro da página de [releases](https://github.com/filipe-2/thermosense/releases/).
 
 ## Preview
 
 ![Preview](./assets/preview.png)
 
-## Description
+## Descrição
 
-Softwares used:
+Hardwares usados: módulo WiFi ESP32, Protoboard, sensor DHT11, emissor infravermelho TSAL6200
+
+Softwares usados: JavaScript, React Native, Expo, Firebase, Git e Arduino IDE
 
 <img src="https://skillicons.dev/icons?i=js,react,firebase,git,arduino&theme=dark" />
 
-## How to access?
+## Como acessar?
 
-Go to the [releases](https://github.com/filipe-2/thermosense/releases/) page and download the APK from the latest release on your Android device.
+Vá para a página de [releases](https://github.com/filipe-2/thermosense/releases/) e baixe o APK da última *release* no seu dispositivo Android.

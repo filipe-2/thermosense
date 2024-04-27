@@ -1,8 +1,14 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+// Components
+import customDrawerContent from '../components/CustomDrawerContent';
+
 // Routes
-import TabRoutes from './tab.routes';
 import SettingsStackRoutes from './settingsStack.routes';
+
+// Screens
+import Home from '../screens/Home';
+import Control from '../screens/Control';
 
 // Styles
 import { colors } from '../styles/global/customStyles';
@@ -18,6 +24,7 @@ const Drawer = createDrawerNavigator();
 // Screen navigator options
 const navigatorOptions = {
     title: '',
+    headerTitleAlign: 'center',
     headerTintColor: colors.clr_1,
     drawerStyle: {
         backgroundColor: colors.clr_4,
@@ -25,6 +32,7 @@ const navigatorOptions = {
         maxWidth: 400,
         blurRadius: 5,
     },
+    drawerLabelStyle: { marginLeft: -15 },
     drawerPosition: 'right',
     drawerActiveTintColor: colors.clr_1,
     drawerInactiveTintColor: colors.clr_6,
@@ -35,13 +43,21 @@ const navigatorOptions = {
     },
 };
 
-
 export default function DrawerRoutes() {
     return (
-        <Drawer.Navigator screenOptions={navigatorOptions}>
+        <Drawer.Navigator
+            contentOptions={{
+                labelStyle: {
+                    fontFamily: 'SomeFont',
+                    color: 'white',
+                },
+            }}
+            screenOptions={navigatorOptions}
+            drawerContent={customDrawerContent}
+        >
             <Drawer.Screen
                 name='Feed'
-                component={TabRoutes}
+                component={Home}
                 options={{
                     drawerIcon: ({ size }) =>
                         <Feather
@@ -49,7 +65,38 @@ export default function DrawerRoutes() {
                             color={colors.clr_1}
                             size={size}
                         />,
-                    drawerLabel: 'Menu inicial',
+                    drawerLabel: 'Início',
+                    headerTitle: 'Início',
+                }}
+            />
+
+            <Drawer.Screen
+                name='Perfil'
+                component={Home}
+                options={{
+                    drawerIcon: ({ size }) =>
+                        <Feather
+                            name='user'
+                            color={colors.clr_1}
+                            size={size}
+                        />,
+                    drawerLabel: 'Perfil',
+                    headerTitle: 'Perfil',
+                }}
+            />
+
+            <Drawer.Screen
+                name='Controle'
+                component={Control}
+                options={{
+                    drawerIcon: ({ size }) =>
+                        <Feather
+                            name='settings'
+                            color={colors.clr_1}
+                            size={size}
+                        />,
+                    drawerLabel: 'Controle',
+                    headerTitle: 'Controle',
                 }}
             />
 
@@ -64,6 +111,7 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Configurações',
+                    headerTitle: 'Configurações',
                 }}
             />
         </Drawer.Navigator>

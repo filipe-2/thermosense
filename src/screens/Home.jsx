@@ -1,5 +1,6 @@
 import { Text, View, ImageBackground } from 'react-native';
 import { useEffect, useState } from 'react';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { db, ref, onValue } from '../services/firebaseDB';
 
 // Styles
@@ -26,6 +27,9 @@ export default function Home() {
             setHumidity(snapshot.val().humidity);
         });
     }, [db]);
+
+    const navigation = useNavigation();
+    const onToggle = () => navigation.dispatch(DrawerActions.openDrawer());
 
     return (
         <ImageBackground style={[boilerplate.wrapper, home.wrapper]} source={require('../../assets/bg.jpg')}>
