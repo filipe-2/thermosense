@@ -9,6 +9,7 @@ import SettingsStackRoutes from './settingsStack.routes';
 // Screens
 import Home from '../screens/Home';
 import Control from '../screens/Control';
+import Profile from '../screens/Profile';
 
 // Styles
 import { colors } from '../styles/global/customStyles';
@@ -72,7 +73,7 @@ export default function DrawerRoutes() {
 
             <Drawer.Screen
                 name='Perfil'
-                component={Home}
+                component={Profile}
                 options={{
                     drawerIcon: ({ size }) =>
                         <Feather
@@ -91,7 +92,7 @@ export default function DrawerRoutes() {
                 options={{
                     drawerIcon: ({ size }) =>
                         <Feather
-                            name='settings'
+                            name='activity'
                             color={colors.clr_1}
                             size={size}
                         />,
