@@ -9,7 +9,9 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 
 ## Preview
 
-![Preview](./assets/preview.png)
+<div align="center">
+    <img src="./assets/preview.jpg" alt="preview" width="250"/>
+</div>
 
 ## Descrição
 
