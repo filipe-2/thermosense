@@ -15,9 +15,11 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 
 ## Descrição
 
-Hardwares usados: módulo WiFi ESP32, Protoboard, sensor DHT11, emissor infravermelho TSAL6200
+Hardwares usados: módulo WiFi ESP32, Protoboard, sensor DHT11 e emissor infravermelho TSAL6200.
 
-Softwares usados: JavaScript, React Native, Expo, Firebase, Git e Arduino IDE
+Softwares usados: JavaScript, React Native, Expo, Firebase, Git e Arduino IDE.
+
+<br>
 
 <img src="https://skillicons.dev/icons?i=js,react,firebase,git,arduino&theme=dark" />
 
