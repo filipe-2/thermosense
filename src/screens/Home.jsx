@@ -1,7 +1,7 @@
 import { Text, View, ImageBackground } from 'react-native';
 import { useEffect, useState } from 'react';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
-import { db, ref, onValue } from '../services/firebaseDB';
+import { db, ref, onValue } from '../services/firebase';
 
 // Styles
 import { colors, darkStyles, lightStyles } from '../styles/global/customStyles';

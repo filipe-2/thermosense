@@ -7,8 +7,6 @@ import Appearance from '../screens/settings-screens/Appearance';
 import Notifications from '../screens/settings-screens/Notifications';
 import Help from '../screens/settings-screens/Help';
 import About from '../screens/settings-screens/About';
-import { View } from 'react-native';
-
 
 // Create drawer navigator
 const SettingsStack = createStackNavigator();
@@ -20,7 +18,6 @@ const navigatorOptions = {
     cardOverlayEnabled: true,
     presentation: 'transparentModal',
 };
-
 
 export default function SettingsStackRoutes() {
     return (
@@ -59,4 +56,4 @@ export default function SettingsStackRoutes() {
             />
         </SettingsStack.Navigator>
     );
-};
+}

@@ -1,5 +1,6 @@
 import { View, Text, Image } from 'react-native';
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
+import { auth } from '../services/firebase';
 
 // Icons
 import { Feather } from '@expo/vector-icons';
@@ -27,7 +28,7 @@ export default function customDrawerContent(props) {
                     labelStyle={drawer.logout}
                     label='Sair'
                     icon={({ size }) => <Feather name='log-out' color={colors.clr_1} size={size} />}
-                    onPress={() => console.log('User logged out')}
+                    onPress={() => auth.signOut()}
                 />
             </DrawerContentScrollView>
 

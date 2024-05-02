@@ -5,6 +5,7 @@ import customDrawerContent from '../components/CustomDrawerContent';
 
 // Routes
 import SettingsStackRoutes from './settingsStack.routes';
+import AuthStackRoutes from './authStack.routes';
 
 // Screens
 import Home from '../screens/Home';
