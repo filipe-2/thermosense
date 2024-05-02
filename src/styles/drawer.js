@@ -31,7 +31,7 @@ export const drawer = StyleSheet.create({
     },
 
     footer: {
-        color: colors.clr_6,
+        color: colors.clr_1,
         margin: 25,
     },
 });

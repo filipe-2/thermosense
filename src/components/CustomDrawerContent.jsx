@@ -33,7 +33,7 @@ export default function customDrawerContent(props) {
             </DrawerContentScrollView>
 
             <View>
-                <Text style={drawer.footer}>v2.0.0-alpha</Text>
+                <Text style={drawer.footer}>v2.2.0-alpha</Text>
             </View>
         </View>
     );

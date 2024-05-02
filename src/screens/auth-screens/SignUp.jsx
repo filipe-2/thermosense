@@ -107,7 +107,7 @@ export default function SignUp(props) {
     return (
         <ImageBackground
             source={require('../../../assets/auth-bg.jpg')}
-            style={[theme.background, boilerplate.wrapper, { paddingBottom: 100 }]}
+            style={[theme.background, boilerplate.wrapper]}
         >
             <Image style={{ width: 200, height: 200, marginBottom: 15 }} source={require('../../../assets/logo.png')} />
             <Text style={{ color: colors.clr_2, fontWeight: 'bold', fontSize: 28, marginBottom: 15 }}>Criação de conta</Text>
@@ -141,7 +141,7 @@ export default function SignUp(props) {
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
                 value={password}
-                placeholder='Crie uma senha'
+                placeholder='Senha (6 ou mais dígitos)'
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setPassword(text)}

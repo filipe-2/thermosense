@@ -28,9 +28,6 @@ export default function Home() {
         });
     }, [db]);
 
-    const navigation = useNavigation();
-    const onToggle = () => navigation.dispatch(DrawerActions.openDrawer());
-
     return (
         <ImageBackground style={[boilerplate.wrapper, home.wrapper]} source={require('../../assets/bg.jpg')}>
             <View style={home.labelsWrapper}>
@@ -50,6 +47,8 @@ export default function Home() {
                     </View>
                 </View>
             </View>
+
+            
         </ImageBackground>
     );
 }

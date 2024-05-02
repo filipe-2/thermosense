@@ -87,7 +87,7 @@ export default function SignIn(props) {
     return (
         <ImageBackground
             source={require('../../../assets/auth-bg.jpg')}
-            style={[theme.background, boilerplate.wrapper, { paddingBottom: 100 }]}
+            style={[theme.background, boilerplate.wrapper]}
         >
             <Image style={{ width: 200, height: 200, marginBottom: 15 }} source={require('../../../assets/logo.png')} />
             <Text style={{ color: colors.clr_2, fontWeight: 'bold', fontSize: 28, marginBottom: 15 }}>Login</Text>
@@ -161,21 +161,6 @@ export default function SignIn(props) {
                 onPress={signIn}
             >
                 {loading ? <ActivityIndicator color={colors.clr_2} /> : <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Entrar</Text>}
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: colors.clr_3,
-                    borderRadius: 20,
-                    width: '75%',
-                    padding: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
-            >
-                <Text style={{ fontSize: 15, fontWeight: 'bold', color: colors.clr_1 }}>Modo anônimo</Text>
             </TouchableOpacity>
 
             <View style={{ flexDirection: 'row' }}>
