@@ -6,13 +6,8 @@
 #define FIREBASE_HOST "https://thermo--sense-d05e4-default-rtdb.firebaseio.com/"
 #define FIREBASE_AUTH "AIzaSyD7xCZzwKbC1bMrJthpTeoOOkObwoJXG8A"
 
-FirebaseData fbdo;
-
-FirebaseAuth auth;
-FarabaseConfig config;
-
-#define WIFI_SSID "TROIA 2.4"
-#define WIFI_PASSWORD "PXJLE75578"
+#define WIFI_SSID ""
+#define WIFI_PASSWORD ""
 #define DHTPIN 35
 #define DHTTYPE DHT11
 
@@ -24,7 +19,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
 
-   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Conectando com WiFI.");
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -33,24 +28,9 @@ void setup() {
   }
   Serial.println("\nConectado ao WiFi.");
 
-  config.api_key = FIREBASE_AUTH;
-  config.database_url = FIREBASE_HOST;
-
-  if (Firebase.signUp(&config, &auth, "", "")) {
-    Serial.println("ok");
-    signupOK = true;
-  } else {
-    Serial.printf("%s\n", config.signer.signupError.message.c_str());
-  }
-
-  config.token_status_callback = tokenStatusCallback;
-
-  Firebase.begin(&config, &auth);
-  Firebase.reconnectWiFi(true);
-
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
 
-  if (!dht.begin(0x76)) {
+  if (!dht.begin()) {
     Serial.println("sensor nao encontrado");
     while(1);
   }
@@ -73,7 +53,6 @@ void loop() {
   Serial.print("Humidity: ");
   Serial.print(humidity);
   Serial.println(" %");
-
 
   if (Firebase.ready()) {
     Firebase.setFloat(firebaseData, "/temperature", temperature);
