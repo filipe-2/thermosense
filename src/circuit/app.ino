@@ -1,39 +1,39 @@
-#include <WiFi.h>
-#include <FirebaseESPClient.h>
-#include <Adafruit_Sensor.h>
 #include <DHT.h>
+#include <WiFi.h>
+/* #include <FirebaseESP32.h> */
+#include <Adafruit_Sensor.h>
 
-#define FIREBASE_HOST ""
-#define FIREBASE_AUTH ""
+/* #define FIREBASE_HOST "https://thermo--sense-d05e4-default-rtdb.firebaseio.com/"
+#define FIREBASE_AUTH "AIzaSyD7xCZzwKbC1bMrJthpTeoOOkObwoJXG8A" */
 
-#define WIFI_SSID ""
-#define WIFI_PASSWORD ""
-#define DHTPIN 35
+#define WIFI_SSID "Elisa"
+#define WIFI_PASSWORD "elisa123"
+
+#define DHTPIN 23
 #define DHTTYPE DHT11
 
 DHT dht(DHTPIN, DHTTYPE);
-WiFiClient wifiClient;
-FirebaseData firebaseData;
+/* WiFiClient wifiClient;
+FirebaseData firebaseData; */
 
 void setup() {
   // put your setup code here, to run once:
+  dht.begin();
+  delay(2000);
+
   Serial.begin(115200);
 
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-  Serial.print("Conectando com WiFI.");
+  /* WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("Conectando com WiFI."); */
 
-  while (WiFi.status() != WL_CONNECTED) {
+  /* while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(500);
-  }
-  Serial.println("\nConectado ao WiFi.");
+  } */
 
-  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  /* Serial.println("\nConectado ao WiFi."); */
 
-  if (!dht.begin()) {
-    Serial.println("sensor nao encontrado");
-    while(1);
-  }
+  /* Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH); */
 }
 
 void loop() {
@@ -54,12 +54,12 @@ void loop() {
   Serial.print(humidity);
   Serial.println(" %");
 
-  if (Firebase.ready()) {
+  /* if (Firebase.ready()) {
     Firebase.setFloat(firebaseData, "/temperature", temperature);
     Firebase.setFloat(firebaseData, "/humidity", humidity);
   } else {
     Serial.println("FIrebase não está pronto.");
-  }
+  } */
 
   delay(5000);
 }
