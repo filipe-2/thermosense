@@ -22,12 +22,14 @@ Welcome! This is the repository for the ThermoSense project, here you will find 
 
 ## Description
 
-Hardwares used: [ESP32 WiFi module](https://www.espressif.com/en/products/socs/esp32), [Breadboard](https://en.m.wikipedia.org/wiki/Breadboard), [DHT11 sensor](https://components101.com/sensors/dht11-temperature-sensor), and [TSAL6200 IR Emitter](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
+Hardwares used: [ESP32 WiFi module](https://www.espressif.com/en/products/socs/esp32), [DHT11 sensor](https://components101.com/sensors/dht11-temperature-sensor), [Breadboard](https://en.m.wikipedia.org/wiki/Breadboard), and [TSAL6200 IR Emitter](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
+
+<img src="./assets/components-preview.png" width="100%">
 
 Softwares used: JavaScript, Firebase, Git, Arduino IDE, React Native, and Expo.
 
 <img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
 
-## How to access?
+## How to access the app?
 
 Go to the [releases](https://github.com/filipe-2/thermosense/releases/) page and download the APK from the latest release on your Android device.
