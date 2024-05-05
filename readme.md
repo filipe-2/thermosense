@@ -3,6 +3,10 @@
     <h1 align="center" color="">ThermoSense</h1>
 </p>
 
+<div align="center">
+    <a href="https://github.com/filipe-2/thermosense/blob/main/README-EN.md"><img src="https://img.shields.io/badge/Read_in-English-blue"/></a>
+</div>
+
 **Desenvolvedores**: [Filipe Ramos](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara Bastos, Dário
 
 Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará todo o código e recursos usados no nosso projeto, como também os *builds* APK do nosso app para utilizar no seu dispositivo Android, os arquivos APK estão disponíveis dentro da página de [releases](https://github.com/filipe-2/thermosense/releases/).
