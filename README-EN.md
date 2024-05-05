@@ -28,6 +28,8 @@ Hardwares used: [ESP32 WiFi module](https://www.espressif.com/en/products/socs/e
 
 Softwares used: JavaScript, Firebase, Git, Arduino IDE, React Native, and Expo.
 
+<br>
+
 <img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
 
 ## How to access the app?
