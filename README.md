@@ -22,7 +22,7 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 
 ## Descrição
 
-Hardwares usados: [módulo WiFi ESP32](https://www.espressif.com/en/products/socs/esp32), [Protoboard](https://en.m.wikipedia.org/wiki/Breadboard), [sensor DHT11](https://components101.com/sensors/dht11-temperature-sensor) e [emissor infravermelho TSAL6200](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
+Hardwares usados: [módulo WiFi ESP32](https://www.espressif.com/en/products/socs/esp32), [sensor DHT11](https://components101.com/sensors/dht11-temperature-sensor), [Protoboard](https://en.m.wikipedia.org/wiki/Breadboard) e [emissor infravermelho TSAL6200](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
 
 <img src="./assets/components-preview.png" width="100%">
 
