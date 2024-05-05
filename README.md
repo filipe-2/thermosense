@@ -5,6 +5,7 @@
 
 <div align="center">
     <a href="https://github.com/filipe-2/thermosense/blob/main/README-EN.md"><img src="https://img.shields.io/badge/Read_in-English-blue"/></a>
+    <img src="https://img.shields.io/badge/Versão-2.2.0–alpha-blue"/>
 </div>
 
 <br>
