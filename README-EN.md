@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./assets/adaptive-icon.png" height="128">
+    <img src="./assets/logo.png" height="128">
     <h1 align="center" color="">ThermoSense</h1>
 </p>
 
