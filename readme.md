@@ -3,9 +3,15 @@
     <h1 align="center" color="">ThermoSense</h1>
 </p>
 
-**Desenvolvedores**: [Carlos Filipe](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara, Dário
+<div align="center">
+    <a href="https://github.com/filipe-2/thermosense/blob/main/README-EN.md"><img src="https://img.shields.io/badge/Read_in-English-blue"/></a>
+</div>
 
-Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará todo o código e recursos usados no nosso projeto, como também os *builds* APK do nosso app para você testar no seu dispositivo Android, os arquivos APK estão disponíveis dentro da página de [releases](https://github.com/filipe-2/thermosense/releases/).
+<br>
+
+**Desenvolvedores**: [Filipe Ramos](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara Bastos, Dário
+
+Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará todo o código e recursos usados no nosso projeto, como também os *builds* APK do nosso app para utilizar no seu dispositivo Android. Os arquivos APK estão disponíveis dentro da página de [releases](https://github.com/filipe-2/thermosense/releases/).
 
 ## Preview
 
@@ -15,13 +21,13 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 
 ## Descrição
 
-Hardwares usados: módulo WiFi ESP32, Protoboard, sensor DHT11 e emissor infravermelho TSAL6200.
+Hardwares usados: [módulo WiFi ESP32](https://www.espressif.com/en/products/socs/esp32), [Protoboard](https://en.m.wikipedia.org/wiki/Breadboard), [sensor DHT11](https://components101.com/sensors/dht11-temperature-sensor) e [emissor infravermelho TSAL6200](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
 
-Softwares usados: JavaScript, React Native, Expo, Firebase, Git e Arduino IDE.
+Softwares usados: JavaScript, Firebase, Git, Arduino IDE, React Native e Expo.
 
 <br>
 
-<img src="https://skillicons.dev/icons?i=js,react,firebase,git,arduino&theme=dark" />
+<img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
 
 ## Como acessar?
 
