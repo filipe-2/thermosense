@@ -30,6 +30,6 @@ Softwares used: JavaScript, Firebase, Git, Arduino IDE, React Native, and Expo.
 
 <img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
 
-## How to access?
+## How to access the app?
 
 Go to the [releases](https://github.com/filipe-2/thermosense/releases/) page and download the APK from the latest release on your Android device.
