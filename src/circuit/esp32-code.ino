@@ -3,8 +3,8 @@
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
 
-#define FIREBASE_HOST "https://thermo--sense-d05e4-default-rtdb.firebaseio.com/"
-#define FIREBASE_AUTH "AIzaSyD7xCZzwKbC1bMrJthpTeoOOkObwoJXG8A"
+#define FIREBASE_HOST ""
+#define FIREBASE_AUTH ""
 
 #define WIFI_SSID ""
 #define WIFI_PASSWORD ""
