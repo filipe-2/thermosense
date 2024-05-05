@@ -4,7 +4,7 @@
 </p>
 
 <div align="center">
-    <a href="https://github.com/filipe-2/thermosense/blob/main/readme.md"><img src="https://img.shields.io/badge/Ler_em-portugu%C3%AAs-blue"/></a>
+    <a href="https://github.com/filipe-2/thermosense/blob/main/README.md"><img src="https://img.shields.io/badge/Ler_em-portugu%C3%AAs-blue"/></a>
     <img src="https://img.shields.io/badge/Version-2.2.0–alpha-blue"/>
 </div>
 
