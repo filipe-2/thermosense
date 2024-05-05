@@ -3,21 +3,29 @@
     <h1 align="center" color="">ThermoSense</h1>
 </p>
 
-**Developers**: [Carlos Filipe](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara, Dário
+<div align="center">
+    <a href="https://github.com/filipe-2/thermosense/blob/main/readme.md"><img src="https://img.shields.io/badge/Ler_em-portugu%C3%AAs-blue"/></a>
+</div>
 
-Welcome! This is the repository for the ThermoSense project, here you will find all the code and assets used in our project, as well as the APK builds of our app for you to test on Android, the APK files are available within the [releases](https://github.com/filipe-2/thermosense/releases/) page.
+<br>
+
+**Developers**: [Filipe Ramos](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara Bastos, Dário
+
+Welcome! This is the repository for the ThermoSense project, here you will find all the code and assets used in our project, as well as the APK builds of our app to use on your Android. The APK files are available within the [releases](https://github.com/filipe-2/thermosense/releases/) page.
 
 ## Preview
 
-![Preview](./assets/preview.png)
+<div align="center">
+    <img src="./assets/preview.jpg" alt="preview" width="250"/>
+</div>
 
 ## Description
 
-Hardwares used: ESP32 WiFi module, Breadboard, DHT11 sensor, TSAL6200 IR emitter
+Hardwares used: [ESP32 WiFi module](https://www.espressif.com/en/products/socs/esp32), [Breadboard](https://en.m.wikipedia.org/wiki/Breadboard), [DHT11 sensor](https://components101.com/sensors/dht11-temperature-sensor), and [TSAL6200 IR Emitter](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
 
-Softwares used:
+Softwares used: JavaScript, Firebase, Git, Arduino IDE, React Native, and Expo.
 
-<img src="https://skillicons.dev/icons?i=js,react,firebase,git,arduino&theme=dark" />
+<img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
 
 ## How to access?
 
