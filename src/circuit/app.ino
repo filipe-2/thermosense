@@ -24,6 +24,8 @@ int ldrData = 0;
 float voltage = 0.0;
 
 DHT dht(DHTPIN, DHTTYPE); // Instancia do DHT11
+/* WiFiClient wifiClient;
+FirebaseData firebaseData; */ 
 
 void setup() {
   Serial.begin(115200);
@@ -66,25 +68,35 @@ void loop() {
   if (Firebase.ready() && signupOK && (millis() - sendDataPrevMillis > 5000 || sendDataPrevMillis == 0)) {
     sendDataPrevMillis = millis();
 
-    // Verificar se houve leitura
+    // Verificar se houve leitura de dados
     if (isnan(temperature) || isnan(humidity)) {
       Serial.println("Falha ao ler dados do DHT11");
       delay(2000);
       return;
     }
 
-    // Armazenar dados do DHT11 no banco de dados em tempo real do Firebase
+    // Armazenar umidade do DHT11 no banco de dados em tempo real do Firebase
     if (Firebase.RTDB.setInt(&fbdo, "humidity", humidity)) {
       Serial.println();
       Serial.print("Humididade: ");
       Serial.print(humidity);
-      Serial.println("Dados salvos com sucesso em: " + fbdo.dataPath());
+      Serial.println();
+      Serial.println("Umidade salva com sucesso em: " + fbdo.dataPath());
+    }
+
+    // Armazenar temperatura do DHT11 no banco de dados em tempo real do Firebase
+    if (Firebase.RTDB.setInt(&fbdo, "temperature", temperature)) {
+      Serial.println();
+      Serial.print("Temperatura: ");
+      Serial.print(temperature);
+      Serial.println();
+      Serial.println("Temperatura salva com sucesso em: " + fbdo.dataPath());
     }
 
     /* Firebase.setFloat(firebaseData, "/temperature", temperature);
     Firebase.setFloat(firebaseData, "/humidity", humidity); */
   } else {
-    Serial.println("Firebase não está pronto.");
+    Serial.println("Firebase não está pronto");
   }
 
   delay(5000);
