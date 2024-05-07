@@ -14,6 +14,7 @@
 #define DHTPIN 23 // Usamos o pino 23 para conectar o sensor
 #define DHTTYPE DHT11 // Tipo do sensor é DHT11
 
+// Configuração Firebase
 FirebaseData fbdo;
 FirebaseAuth auth;
 FirebaseConfig config;
@@ -21,13 +22,14 @@ FirebaseConfig config;
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
 
-DHT dht(DHTPIN, DHTTYPE); // Instancia do DHT11
+DHT dht(DHTPIN, DHTTYPE); // instância do DHT11
 
 void setup() {
   Serial.begin(115200);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Conectando ao WiFi");
 
+  // Mostra vários pontos enquanto o ESP32 se conecta ao WiFi
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(300);
@@ -37,10 +39,12 @@ void setup() {
   Serial.print("Conectado ao WiFi");
   Serial.println(WiFi.localIP());
   Serial.println();
-
+  
+  // Configuração Firebase
   config.api_key = API_KEY;
   config.database_url = DATABASE_URL;
-
+  
+  // Verifica se a autenticação com Firebase ocorreu com sucesso
   if (Firebase.signUp(&config, &auth, "", "")) {
     Serial.println("Logado com sucesso");
     signupOK = true;
