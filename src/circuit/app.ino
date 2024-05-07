@@ -24,8 +24,6 @@ int ldrData = 0;
 float voltage = 0.0;
 
 DHT dht(DHTPIN, DHTTYPE); // Instancia do DHT11
-/* WiFiClient wifiClient;
-FirebaseData firebaseData; */ 
 
 void setup() {
   Serial.begin(115200);
