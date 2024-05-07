@@ -20,8 +20,6 @@ FirebaseConfig config;
 
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
-int ldrData = 0;
-float voltage = 0.0;
 
 DHT dht(DHTPIN, DHTTYPE); // Instancia do DHT11
 
@@ -90,9 +88,6 @@ void loop() {
       Serial.println();
       Serial.println("Temperatura salva com sucesso em: " + fbdo.dataPath());
     }
-
-    /* Firebase.setFloat(firebaseData, "/temperature", temperature);
-    Firebase.setFloat(firebaseData, "/humidity", humidity); */
   } else {
     Serial.println("Firebase não está pronto");
   }
