@@ -10,7 +10,7 @@
 
 <br>
 
-**Desenvolvedores**: [Filipe Ramos](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara Bastos, Dário
+**Desenvolvedores**: [Filipe Ramos](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara Bastos, [José Dário](https://github.com/DarioZn)
 
 Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará todo o código e recursos usados no nosso projeto, como também os *builds* APK do nosso app para utilizar no seu dispositivo Android. Os arquivos APK estão disponíveis dentro da página de [releases](https://github.com/filipe-2/thermosense/releases/).
 
@@ -27,8 +27,6 @@ Hardwares usados: [Módulo WiFi ESP32](https://www.espressif.com/en/products/soc
 <img src="./assets/components-preview.png" width="100%">
 
 Softwares usados: JavaScript, Firebase, Git, Arduino IDE, React Native e Expo.
-
-<br>
 
 <img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
 
