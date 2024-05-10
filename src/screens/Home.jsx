@@ -40,15 +40,13 @@ export default function Home() {
                 </View>
 
                 <View style={home.labelWrapper}>
-                    <Text style={theme.text.secondary}>HUMIDIDADE</Text>
+                    <Text style={theme.text.secondary}>UMIDADE</Text>
                     <View style={home.labelInfoWrapper}>
                         <Icon style={home.labelIcon} name='tint' size={utils.labelTextSize} color={colors.clr_1} />
                         <Text style={[theme.text.secondary, home.labelText]}>{humidity}%</Text>
                     </View>
                 </View>
             </View>
-
-            
         </ImageBackground>
     );
 }

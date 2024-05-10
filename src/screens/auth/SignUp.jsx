@@ -9,11 +9,12 @@ import {
 } from 'react-native';
 import { TextInput, Dialog, Paragraph } from 'react-native-paper';
 import { auth } from '../../services/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 // Styles
 import { boilerplate } from '../../styles/global/boilerplate';
 import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
+import { update } from 'firebase/database';
 
 export default function SignUp(props) {
     const isDarkMode = true; // Change based on user's configurations
@@ -22,6 +23,7 @@ export default function SignUp(props) {
     const [isPasswordSecure, setIsPasswordSecure] = useState(true);
     const [isPasswordConfirmationSecure, setIsPasswordConfirmationSecure] = useState(true);
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [dialogTitle, setDialogTitle] = useState('');
@@ -76,7 +78,7 @@ export default function SignUp(props) {
     async function signUp() {
         setLoading(true);
 
-        if (!email && !password && !passwordConfirmation) {
+        if (!email && !username && !password && !passwordConfirmation) {
             setDialogTitle('Campos vazios');
             setDialogMessage('Por favor preencha todos os campos.');
             setShowPermissionDialog(true);
@@ -84,7 +86,7 @@ export default function SignUp(props) {
             return;
         }
         if (password !== passwordConfirmation) {
-            setDialogTitle('Senhas não combinam');
+            setDialogTitle('Senhas não correspondem');
             setDialogMessage('Senha e confirmação diferentes, tente novamente.');
             setShowPermissionDialog(true);
             return;
@@ -92,6 +94,11 @@ export default function SignUp(props) {
 
         try {
             const response = await createUserWithEmailAndPassword(auth, email, password);
+
+            updateProfile(auth.currentUser, { displayName: username })
+                .then(() => console.log(auth.currentUser.displayName))
+                .catch(error => console.log('An error occurred:', error));
+
             setDialogTitle('Conta criada com sucesso!');
             setDialogMessage('Clique em OK para prosseguir.');
             setShowPermissionDialog(true);
@@ -121,6 +128,30 @@ export default function SignUp(props) {
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setEmail(text)}
+                style={{
+                    backgroundColor: colors.clr_4,
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                    borderWidth: 2,
+                    borderColor: colors.clr_1,
+                    width: '75%',
+                    paddingHorizontal: 10,
+                    margin: 10,
+                    maxWidth: 500,
+                }}
+            />
+
+            <TextInput
+                textColor={colors.clr_2}
+                cursorColor={colors.clr_1}
+                activeUnderlineColor='transparent'
+                value={username}
+                placeholder='Crie um nome de usuário'
+                placeholderTextColor={colors.clr_6}
+                autoCapitalize='none'
+                onChangeText={text => setUsername(text)}
                 style={{
                     backgroundColor: colors.clr_4,
                     borderTopLeftRadius: 20,

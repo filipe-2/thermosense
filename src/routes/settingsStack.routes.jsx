@@ -1,12 +1,12 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Screens
-import Settings from '../screens/settings-screens/Settings';
-import General from '../screens/settings-screens/General';
-import Appearance from '../screens/settings-screens/Appearance';
-import Notifications from '../screens/settings-screens/Notifications';
-import Help from '../screens/settings-screens/Help';
-import About from '../screens/settings-screens/About';
+import Settings from '../screens/settings/Settings';
+import General from '../screens/settings/General';
+import Appearance from '../screens/settings/Appearance';
+import Notifications from '../screens/settings/Notifications';
+import Help from '../screens/settings/Help';
+import About from '../screens/settings/About';
 
 // Create drawer navigator
 const SettingsStack = createStackNavigator();

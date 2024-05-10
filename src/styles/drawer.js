@@ -26,7 +26,7 @@ export const drawer = StyleSheet.create({
     },
 
     logout: {
-        color: colors.clr_2,
+        color: colors.clr_9,
         marginLeft: -15,
     },
 

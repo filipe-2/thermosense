@@ -5,7 +5,6 @@ import customDrawerContent from '../components/CustomDrawerContent';
 
 // Routes
 import SettingsStackRoutes from './settingsStack.routes';
-import AuthStackRoutes from './authStack.routes';
 
 // Screens
 import Home from '../screens/Home';
@@ -45,12 +44,12 @@ const navigatorOptions = {
     },
 };
 
+
 export default function DrawerRoutes() {
     return (
         <Drawer.Navigator
             contentOptions={{
                 labelStyle: {
-                    fontFamily: 'SomeFont',
                     color: 'white',
                 },
             }}
@@ -103,7 +102,7 @@ export default function DrawerRoutes() {
             />
 
             <Drawer.Screen
-                name='Settings'
+                name='Config'
                 component={SettingsStackRoutes}
                 options={{
                     drawerIcon: ({ size }) =>

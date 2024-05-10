@@ -10,6 +10,7 @@ export const colors = {
     clr_6: 'hsl(0, 0%, 80%)',
     clr_7: 'hsl(0, 0%, 0%)',
     clr_8: 'hsla(200, 100%, 49%, 0.5)',
+    clr_9: 'hsl(360, 100%, 59%)',
 };
 
 // Dark theme

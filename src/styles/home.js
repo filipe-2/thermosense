@@ -3,7 +3,7 @@ import { colors } from "./global/customStyles";
 
 export const utils = {
     labelTextSize: 25,
-}
+};
 
 export const home = StyleSheet.create({
     labelsWrapper: {
@@ -20,6 +20,8 @@ export const home = StyleSheet.create({
 
     labelWrapper: {
         gap: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     labelInfoWrapper: {

@@ -1,8 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Screens
-import SignIn from '../screens/auth-screens/SignIn';
-import SignUp from '../screens/auth-screens/SignUp';
+import SignIn from '../screens/auth/SignIn';
+import SignUp from '../screens/auth/SignUp';
 
 // Create drawer navigator
 const AuthStack = createStackNavigator();

@@ -22,7 +22,7 @@ FirebaseConfig config;
 unsigned long sendDataPrevMillis = 0;
 bool signupOK = false;
 
-DHT dht(DHTPIN, DHTTYPE); // instância do DHT11
+DHT dht(DHTPIN, DHTTYPE); // Instância do DHT11
 
 void setup() {
   Serial.begin(115200);
