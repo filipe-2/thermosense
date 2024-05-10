@@ -30,7 +30,7 @@ Softwares usados: JavaScript, C++, Firebase, Git, Arduino IDE, React Native e Ex
 
 <br>
 
-<img src="https://skillicons.dev/icons?i=js,c++,firebase,git,arduino,react&theme=dark" />
+<img src="https://skillicons.dev/icons?i=js,cpp,firebase,git,arduino,react&theme=dark" />
 
 ## Como acessar o app?
 
