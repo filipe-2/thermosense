@@ -1,7 +1,7 @@
-<p align="center">
+<div align="center">
     <img src="./assets/banner.png" width="100%">
-    <h1 align="center" color="">ThermoSense</h1>
-</p>
+    <h1 align="center">ThermoSense</h1>
+</div>
 
 <div align="center">
     <a href="https://github.com/filipe-2/thermosense/blob/main/README-EN.md"><img src="https://img.shields.io/badge/Read_in-English-blue"/></a>
@@ -27,6 +27,8 @@ Hardwares usados: [Módulo WiFi ESP32](https://www.espressif.com/en/products/soc
 <img src="./assets/components-preview.png" width="100%">
 
 Softwares usados: JavaScript, Firebase, Git, Arduino IDE, React Native e Expo.
+
+<br>
 
 <img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
 
