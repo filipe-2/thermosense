@@ -34,4 +34,4 @@ Welcome! This is the repository for the ThermoSense project, here you will find 
 
 ## How to access the app?
 
-Go to the [releases](https://github.com/filipe-2/thermosense/releases/) page and download the APK from the latest release on your Android device.
+Go to the [releases](https://github.com/filipe-2/thermosense/releases/) page and download the APK from the latest release on your Android device. The app is not available for iOS at the moment.
