@@ -35,8 +35,8 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 **Softwares utilizados:**
 
 - **JavaScript**: linguagem de programação de alto nível, utilizada para criar o aplicativo ThermoSense 
-- **C**: linguagem de programação baixo nível, utilizada para criar o código do circuito
-- **C++**: linguagem de programação de baixo nível, utilizada para criar o código do circuito
+- **C**: linguagem de programação de baixo nível, utilizada para criar o código do circuito
+- **C++**: linguagem de programação de alto nível, utilizada para criar o código do circuito
 - **Firebase**: serviços de backend em nuvem da Google, inclui banco de dados em tempo real, autenticação e armazenamento online
 - **Git**: software de controle e versionamento de código
 - **Arduino IDE**: IDE voltado para o código do circuito, utilizamos para programar o módulo ESP32
