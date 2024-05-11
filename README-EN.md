@@ -10,7 +10,7 @@
 
 <br>
 
-**Developers**: [Filipe Ramos](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara Bastos, Dário
+**Developers**: [Filipe Ramos](https://github.com/filipe-2), [Yara França](https://github.com/Yarafranca), Lorenzzo, Lara Bastos, José Dário
 
 Welcome! This is the repository for the ThermoSense project, here you will find all the code and assets used in our project, as well as the APK builds of our app to use on your Android. The APK files are available within the [releases](https://github.com/filipe-2/thermosense/releases/) page.
 
@@ -26,7 +26,7 @@ Welcome! This is the repository for the ThermoSense project, here you will find 
 
 <img src="./assets/components-preview.png" width="100%">
 
-**Softwares used**: JavaScript, Firebase, Git, Arduino IDE, React Native, and Expo.
+**Softwares used**: JavaScript, c, cpp, Firebase, Git, Arduino IDE, React Native, and Expo.
 
 <img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
 
