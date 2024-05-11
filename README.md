@@ -22,11 +22,26 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 
 ## Descrição
 
-Hardwares usados: [Módulo WiFi ESP32](https://www.espressif.com/en/products/socs/esp32), [Sensor DHT11](https://components101.com/sensors/dht11-temperature-sensor), [Protoboard](https://en.m.wikipedia.org/wiki/Breadboard) e [Emissor Infravermelho TSAL6200](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
+**Hardwares utilizados:**
+- [Módulo WiFi ESP32](https://www.espressif.com/en/products/socs/esp32)
+- [Sensor DHT11](https://components101.com/sensors/dht11-temperature-sensor)
+- [Protoboard](https://en.m.wikipedia.org/wiki/Breadboard)
+- Receptor infravermelho VS1838B
+- [Emissor Infravermelho TSAL6200](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
+- Transistor NPN 2N2222
 
 <img src="./assets/components-preview.png" width="100%">
 
-Softwares usados: JavaScript, C, C++, Firebase, Git, Arduino IDE, React Native e Expo.
+**Softwares utilizados:**
+
+- **JavaScript**: linguagem de programação de alto nível, utilizada para criar o aplicativo ThermoSense 
+- **C**: linguagem de programação baixo nível, utilizada para criar o código do circuito
+- **C++**: linguagem de programação de baixo nível, utilizada para criar o código do circuito
+- **Firebase**: serviços de backend em nuvem da Google, inclui banco de dados em tempo real, autenticação e armazenamento online
+- **Git**: software de controle e versionamento de código
+- **Arduino IDE**: IDE voltado para o código do circuito, utilizamos para programar o módulo ESP32
+- **React Native**: framework baseado no React que permite programar aplicativos utilizando a linguagem JavaScript
+- **Expo**: conjunto de serviços, ferramentas e bibliotecas que facilitam a codificação e criação de apps em React Native
 
 <br>
 
