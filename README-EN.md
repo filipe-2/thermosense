@@ -28,6 +28,8 @@ Welcome! This is the repository for the ThermoSense project, here you will find 
 
 **Softwares used**: JavaScript, C, C++, Firebase, Git, Arduino IDE, React Native, and Expo.
 
+<br>
+
 <img src="https://skillicons.dev/icons?i=js,c,cpp,firebase,git,arduino,react&theme=dark" />
 
 ## How to access the app?
