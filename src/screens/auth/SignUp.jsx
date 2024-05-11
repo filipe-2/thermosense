@@ -14,7 +14,6 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 // Styles
 import { boilerplate } from '../../styles/global/boilerplate';
 import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
-import { update } from 'firebase/database';
 
 export default function SignUp(props) {
     const isDarkMode = true; // Change based on user's configurations
