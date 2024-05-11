@@ -34,4 +34,4 @@ Softwares usados: JavaScript, C, C++, Firebase, Git, Arduino IDE, React Native e
 
 ## Como acessar o app?
 
-Vá para a página de [releases](https://github.com/filipe-2/thermosense/releases/) e baixe o APK da última *release* no seu dispositivo Android.
+Vá para a página de [releases](https://github.com/filipe-2/thermosense/releases/) e baixe o APK da última *release* no seu dispositivo Android. O app não está disponível para iOS no momento.
