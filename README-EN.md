@@ -26,9 +26,9 @@ Welcome! This is the repository for the ThermoSense project, here you will find 
 
 <img src="./assets/components-preview.png" width="100%">
 
-**Softwares used**: JavaScript, c, cpp, Firebase, Git, Arduino IDE, React Native, and Expo.
+**Softwares used**: JavaScript, C, C++, Firebase, Git, Arduino IDE, React Native, and Expo.
 
-<img src="https://skillicons.dev/icons?i=js,firebase,git,arduino,react&theme=dark" />
+<img src="https://skillicons.dev/icons?i=js,c,cpp,firebase,git,arduino,react&theme=dark" />
 
 ## How to access the app?
 
