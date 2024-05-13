@@ -10,7 +10,7 @@ export default function LoadingScreen() {
 
     return (
         <ImageBackground
-            source={require('../../../assets/auth-bg.jpg')}
+            source={require('../../../../assets/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
             <ActivityIndicator color={colors.clr_1} size={50} />

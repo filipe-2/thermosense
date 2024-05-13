@@ -112,7 +112,7 @@ export default function SignUp(props) {
 
     return (
         <ImageBackground
-            source={require('../../../assets/auth-bg.jpg')}
+            source={require('../../../../assets/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
             <Image style={{ width: 200, height: 200, marginBottom: 15 }} source={require('../../../assets/logo.png')} />

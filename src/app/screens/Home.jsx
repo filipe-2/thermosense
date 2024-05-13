@@ -29,7 +29,7 @@ export default function Home() {
     }, [db]);
 
     return (
-        <ImageBackground style={[boilerplate.wrapper, home.wrapper]} source={require('../../assets/bg.jpg')}>
+        <ImageBackground style={[boilerplate.wrapper, home.wrapper]} source={require('../../../assets/bg.jpg')}>
             <View style={home.labelsWrapper}>
                 <View style={home.labelWrapper}>
                     <Text style={theme.text.secondary}>TEMPERATURA</Text>
