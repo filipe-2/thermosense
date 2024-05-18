@@ -21,7 +21,6 @@ import { Feather } from '@expo/vector-icons';
 // Create drawer navigator
 const Drawer = createDrawerNavigator();
 
-
 // Screen navigator options
 const navigatorOptions = {
     title: '',
@@ -67,7 +66,6 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Início',
-                    headerTitle: 'Início',
                 }}
             />
 
@@ -82,7 +80,6 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Perfil',
-                    headerTitle: 'Perfil',
                 }}
             />
 
@@ -97,7 +94,6 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Controle',
-                    headerTitle: 'Controle',
                 }}
             />
 
@@ -112,7 +108,6 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Configurações',
-                    headerTitle: 'Configurações',
                 }}
             />
         </Drawer.Navigator>

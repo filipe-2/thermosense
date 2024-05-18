@@ -115,7 +115,7 @@ export default function SignUp(props) {
             source={require('../../../../assets/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
-            <Image style={{ width: 200, height: 200, marginBottom: 15 }} source={require('../../../assets/logo.png')} />
+            <Image style={{ width: 200, height: 200, marginBottom: 15 }} source={require('../../../../assets/logo.png')} />
             <Text style={{ color: colors.clr_2, fontWeight: 'bold', fontSize: 28, marginBottom: 15 }}>Criação de conta</Text>
 
             <TextInput
