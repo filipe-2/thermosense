@@ -11,7 +11,7 @@ export default function CustomDrawerHeader() {
         <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', paddingVertical: 15, paddingHorizontal: 20, height: 80, backgroundColor: colors.clr_3, borderBottomWidth: 2, borderColor: colors.clr_1 }}>
             <View style={{ flexDirection: 'row', gap: 15 }}>
                 <TouchableOpacity>
-                    <Icon name='user' color={colors.clr_1} size={25} />
+                    <Image source={require('../../../assets/profile-img.jpg')} style={{ width: 25, height: 25 }} />
                 </TouchableOpacity>
 
                 <TouchableOpacity>
@@ -19,8 +19,11 @@ export default function CustomDrawerHeader() {
                 </TouchableOpacity>
             </View>
 
-            <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, justifyContent: 'center', alignItems: 'center' }}>
-                <Image source={require('../../../assets/logo.png')} style={{ width: 50, height: 50 }} />
+            <View pointerEvents="none" style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, justifyContent: 'center', alignItems: 'center' }}>
+                <Image source={require('../../../assets/logo.png')} style={{
+                    width: 50, height: 50
+
+                }} />
             </View>
 
             <TouchableOpacity>
