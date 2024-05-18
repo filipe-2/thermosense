@@ -8,7 +8,7 @@ import { colors } from '../styles/global/customStyles';
 
 export default function CustomDrawerHeader() {
     return (
-        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', paddingVertical: 15, paddingHorizontal: 20, height: 80, backgroundColor: colors.clr_3, borderBottomWidth: 2, borderColor: colors.clr_1 }}>
+        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 15, paddingHorizontal: 20, height: 80, backgroundColor: colors.clr_3, borderBottomWidth: 2, borderColor: colors.clr_1 }}>
             <View style={{ flexDirection: 'row', gap: 15 }}>
                 <TouchableOpacity>
                     <Icon name='user' color={colors.clr_1} size={25} />
