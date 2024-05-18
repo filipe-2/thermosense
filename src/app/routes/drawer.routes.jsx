@@ -1,7 +1,8 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // Components
-import customDrawerContent from '../components/CustomDrawerContent';
+import CustomDrawerContent from '../components/CustomDrawerContent';
+import CustomDrawerHeader from '../components/CustomDrawerHeader';
 
 // Routes
 import SettingsStackRoutes from './settingsStack.routes';
@@ -23,9 +24,8 @@ const Drawer = createDrawerNavigator();
 
 // Screen navigator options
 const navigatorOptions = {
+    header: () => <CustomDrawerHeader />,
     title: '',
-    headerTitleAlign: 'center',
-    headerTintColor: colors.clr_1,
     drawerStyle: {
         backgroundColor: colors.clr_4,
         width: '75%',
@@ -36,24 +36,20 @@ const navigatorOptions = {
     drawerPosition: 'right',
     drawerActiveTintColor: colors.clr_1,
     drawerInactiveTintColor: colors.clr_6,
-    headerStyle: {
-        backgroundColor: colors.clr_7,
-        borderBottomWidth: 1,
-        borderColor: colors.clr_1,
-    },
 };
 
 
 export default function DrawerRoutes() {
     return (
         <Drawer.Navigator
+
             contentOptions={{
                 labelStyle: {
                     color: 'white',
                 },
             }}
             screenOptions={navigatorOptions}
-            drawerContent={customDrawerContent}
+            drawerContent={CustomDrawerContent}
         >
             <Drawer.Screen
                 name='Feed'
@@ -66,6 +62,7 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Início',
+
                 }}
             />
 

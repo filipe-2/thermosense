@@ -14,7 +14,7 @@ import { Feather } from '@expo/vector-icons';
 import { colors } from '../styles/global/customStyles';
 import { drawer } from '../styles/drawer';
 
-export default function customDrawerContent(props) {
+export default function CustomDrawerContent(props) {
     const [image, setImage] = useState('');
     const [files, setFiles] = useState([]);
 
