@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
+import { Portal, Dialog, Paragraph } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
-import { auth, firestore, storage } from '../services/firebase';
-import { updateProfile } from 'firebase/auth';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { addDoc, collection, onSnapshot } from 'firebase/firestore';
+import { auth } from '../services/firebase';
 import * as ImagePicker from 'expo-image-picker';
 
 // Icons
@@ -16,20 +14,7 @@ import { drawer } from '../styles/drawer';
 
 export default function CustomDrawerContent(props) {
     const [image, setImage] = useState('');
-    const [files, setFiles] = useState([]);
-
-    useEffect(() => {
-        const unsubscribe = onSnapshot(collection(firestore, 'images'), snapshot => {
-            snapshot.docChanges().forEach(change => {
-                if (change.type === 'added') {
-                    console.log('New file: ', change.doc.data());
-                    setFiles(prevFiles => [...prevFiles, change.doc.data()]);
-                }
-            });
-        });
-
-        return () => unsubscribe();
-    }, []);
+    const [dialogVisible, setDialogVisible] = useState(false);
 
     // Function to change the profile photo
     async function pickImage() {
@@ -43,49 +28,6 @@ export default function CustomDrawerContent(props) {
         if (!result.canceled) {
             setImage(result.assets[0].uri);
             console.log(result.assets[0].uri);
-
-            // Upload profile photo
-            await uploadImage(result.assets[0].uri);
-
-            // Update profile image
-            updateProfile(auth.currentUser, { photoURL: result.assets[0].uri })
-                .then(() => console.log(auth.currentUser.photoURL))
-                .catch(error => console.log('An error occurred: ', error));
-        }
-    }
-
-    // Function to upload profile photo to database
-    async function uploadImage(uri) {
-        const response = await fetch(uri);
-        const blob = await response.blob();
-
-        const storageRef = ref(storage, 'images/');
-        const uploadTask = uploadBytesResumable(storageRef, blob);
-
-        // Listen for events
-        uploadTask.on('state_changed', snapshot => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log(`Upload is ${progress}% done.`);
-        }, error => {
-            console.log('An error ocurred: ', error);
-        }, () => {
-            getDownloadURL(uploadTask.snapshot.ref).then(async downloadURL => {
-                console.log('File available at ', downloadURL);
-                setImage(downloadURL);
-
-                // Save record
-                await saveRecord(downloadURL);
-                setImage('');
-            });
-        });
-    }
-
-    async function saveRecord(url) {
-        try {
-            const docRef = await addDoc(collection(firestore, 'images'), { url });
-            console.log('Document saved correctly. ', docRef.id);
-        } catch (error) {
-            console.log(error);
         }
     }
 
@@ -106,12 +48,47 @@ export default function CustomDrawerContent(props) {
                     <Text style={drawer.username}>{auth.currentUser.displayName}</Text>
                 </View>
                 <DrawerItemList {...props} />
-                <DrawerItem
-                    labelStyle={drawer.logout}
-                    label='Sair'
-                    icon={({ size }) => <Feather name='log-out' color={colors.clr_9} size={size} />}
-                    onPress={() => auth.signOut()}
-                />
+                <>
+                    <DrawerItem
+                        labelStyle={drawer.logout}
+                        label='Sair'
+                        icon={({ size }) => <Feather name='log-out' color={colors.clr_9} size={size} />}
+                        onPress={() => setDialogVisible(true)}
+                    />
+                    <Portal>
+                        <Dialog
+                            visible={dialogVisible}
+                            onDismiss={() => setDialogVisible(false)}
+                            style={{ backgroundColor: colors.clr_3, borderWidth: 2, borderColor: colors.clr_1 }}
+                        >
+                            <Dialog.Title style={{ color: colors.clr_1, fontWeight: 'bold' }}>
+                                Deseja mesmo sair?
+                            </Dialog.Title>
+
+                            <Dialog.Content>
+                                <Paragraph style={{ color: colors.clr_2 }}>
+                                    Confirme para sair da conta.
+                                </Paragraph>
+                            </Dialog.Content>
+
+                            <Dialog.Actions>
+                                <TouchableOpacity
+                                    onPress={() => setDialogVisible(false)}
+                                    style={{ backgroundColor: colors.clr_1, paddingVertical: 5, paddingHorizontal: 10, borderRadius: 10 }}
+                                >
+                                    <Text>Não</Text>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity
+                                    onPress={() => auth.signOut()}
+                                    style={{ backgroundColor: colors.clr_9, paddingVertical: 5, paddingHorizontal: 10, borderRadius: 10 }}
+                                >
+                                    <Text>Sim</Text>
+                                </TouchableOpacity>
+                            </Dialog.Actions>
+                        </Dialog>
+                    </Portal>
+                </>
             </DrawerContentScrollView>
 
             <View>

@@ -17,6 +17,7 @@ import { colors } from '../styles/global/customStyles';
 
 // Icons
 import { Feather } from '@expo/vector-icons';
+import Notifications from '../screens/settings/Notifications';
 
 
 // Create drawer navigator
@@ -31,6 +32,10 @@ const navigatorOptions = {
         width: '75%',
         maxWidth: 400,
         blurRadius: 5,
+        borderLeftWidth: 2,
+        borderColor: colors.clr_1,
+        borderTopLeftRadius: 25,
+        borderBottomLeftRadius: 25,
     },
     drawerLabelStyle: { marginLeft: -15 },
     drawerPosition: 'right',
@@ -42,7 +47,6 @@ const navigatorOptions = {
 export default function DrawerRoutes() {
     return (
         <Drawer.Navigator
-
             contentOptions={{
                 labelStyle: {
                     color: 'white',
@@ -105,6 +109,20 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Configurações',
+                }}
+            />
+
+            <Drawer.Screen
+                name='Notificações'
+                component={Notifications}
+                options={{
+                    drawerIcon: ({ size }) =>
+                        <Feather
+                            name='bell'
+                            color={colors.clr_1}
+                            size={size}
+                        />,
+                    drawerLabel: 'Notificações',
                 }}
             />
         </Drawer.Navigator>

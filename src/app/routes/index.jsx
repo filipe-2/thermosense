@@ -9,6 +9,7 @@ import AuthStackRoutes from './authStack.routes';
 
 // Screens
 import LoadingScreen from '../screens/misc/LoadingScreen';
+import { Provider } from 'react-native-paper';
 
 export default function Routes() {
     const [initializing, setInitializing] = useState(true);
@@ -28,8 +29,10 @@ export default function Routes() {
     if (initializing) return <LoadingScreen />;
 
     return (
+
         <NavigationContainer>
-            {user ? (<DrawerRoutes />) : (<AuthStackRoutes />)}
+            <Provider>{user ? (<DrawerRoutes />) : (<AuthStackRoutes />)}</Provider>
         </NavigationContainer>
+
     );
 }
