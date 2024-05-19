@@ -8,7 +8,7 @@ import CustomDrawerHeader from '../components/CustomDrawerHeader';
 import SettingsStackRoutes from './settingsStack.routes';
 
 // Screens
-import Home from '../screens/Home';
+import Home from '../screens/home/Inside';
 import Control from '../screens/Control';
 import Profile from '../screens/Profile';
 
@@ -18,6 +18,7 @@ import { colors } from '../styles/global/customStyles';
 // Icons
 import { Feather } from '@expo/vector-icons';
 import Notifications from '../screens/settings/Notifications';
+import HomeStackRoutes from './homeStack.routes';
 
 
 // Create drawer navigator
@@ -57,7 +58,7 @@ export default function DrawerRoutes() {
         >
             <Drawer.Screen
                 name='Feed'
-                component={Home}
+                component={HomeStackRoutes}
                 options={{
                     drawerIcon: ({ size }) =>
                         <Feather

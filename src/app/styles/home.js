@@ -6,6 +6,10 @@ export const utils = {
 };
 
 export const home = StyleSheet.create({
+    wrapper: {
+        backgroundColor: colors.clr_4,
+    },
+
     labelsWrapper: {
         flexDirection: 'row',
         justifyContent: 'center',

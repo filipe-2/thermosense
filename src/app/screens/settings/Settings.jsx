@@ -8,7 +8,6 @@ import { colors, darkStyles, lightStyles } from '../../styles/global/customStyle
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-
 export default function Settings(props) {
     console.log(props);
 

@@ -8,7 +8,7 @@ import Notifications from '../screens/settings/Notifications';
 import Help from '../screens/settings/Help';
 import About from '../screens/settings/About';
 
-// Create drawer navigator
+// Create stack navigator
 const SettingsStack = createStackNavigator();
 
 // Screen navigator options
