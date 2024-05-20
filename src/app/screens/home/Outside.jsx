@@ -1,4 +1,4 @@
-import { Text, View, ImageBackground, TouchableOpacity } from 'react-native';
+import { Text, View, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import { useEffect, useState } from 'react';
 import { db, ref, onValue } from '../../services/firebase';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -54,7 +54,6 @@ export default function Outside({ navigation }) {
                 }}
             >
                 <View style={{
-                    marginTop: 15,
                     paddingHorizontal: 10,
                     borderBottomWidth: 2,
                     borderColor: colors.clr_1
@@ -63,28 +62,49 @@ export default function Outside({ navigation }) {
                 </View>
 
                 <View style={{
-                    flexDirection: 'row',
                     justifyContent: 'space-evenly',
                     width: '100%',
-                    marginVertical: 30
+                    marginVertical: 30,
+                    gap: 10,
                 }}>
-                    <View>
+                    <View style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-evenly',
+                        alignItems: 'center',
+                    }}>
                         <Text style={{
-                            fontSize: 120,
+                            fontSize: 100,
                             color: colors.clr_2,
                             fontWeight: '100',
                             textAlign: 'center',
                         }}>{isNaN(weatherData?.current.temp_c) ? '...' : Math.round(weatherData?.current.temp_c)}°</Text>
+
+                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <Image
+                                style={{ width: 75, height: 75 }}
+                                source={
+                                    weatherData?.current.condition.text === 'Sunny' ? require('../../../../assets/sunny.png') :
+                                        weatherData?.current.condition.text === 'Partly cloudy' ? require('../../../../assets/partly-cloudy.png') :
+                                            weatherData?.current.condition.text === 'Mist' ? require('../../../../assets/cloudy.png') :
+                                                weatherData?.current.condition.text === 'Clear' ? require('../../../../assets/clear-night.png') :
+                                                    weatherData?.current.condition.text === 'Light rain' ? require('../../../../assets/partly-rainy.png') :
+                                                        null
+                                }
+                            />
+                            <Text style={{ color: colors.clr_2 }}>Parc. Nublado</Text>
+                        </View>
                     </View>
 
                     <View style={{
+                        flexDirection: 'row',
                         justifyContent: 'center',
                         alignItems: 'flex-start',
-                        gap: 20
+                        gap: 20,
+                        marginBottom: 15,
                     }}>
                         <View style={{
                             flexDirection: 'row',
-                            gap: 10,
+                            gap: 5,
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}>
@@ -99,7 +119,7 @@ export default function Outside({ navigation }) {
 
                         <View style={{
                             flexDirection: 'row',
-                            gap: 10,
+                            gap: 5,
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}>
@@ -114,7 +134,7 @@ export default function Outside({ navigation }) {
 
                         <View style={{
                             flexDirection: 'row',
-                            gap: 10,
+                            gap: 5,
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}>
@@ -124,13 +144,17 @@ export default function Outside({ navigation }) {
                                 color: colors.clr_2,
                                 fontWeight: '300',
                                 textAlign: 'center',
-                            }}>{isNaN(weatherData?.current.wind_kph) ? '...' : weatherData?.current.wind_kph} km</Text>
+                            }}>
+                                {isNaN(weatherData?.current.wind_kph) ? '...' : weatherData?.current.wind_kph} km/h
+                            </Text>
                         </View>
                     </View>
                 </View>
 
                 <View style={{ marginBottom: 15, paddingHorizontal: 10, borderTopWidth: 2, borderColor: colors.clr_1 }}>
-                    <Text style={{ fontSize: 18, color: colors.clr_2 }}>Sensação térmica: {weatherData?.current.feelslike_c}°C </Text>
+                    <Text style={{ fontSize: 18, color: colors.clr_2 }}>
+                        Sensação: {Math.round(weatherData?.current.feelslike_c)}°C ({Math.round(weatherData?.current.feelslike_c * 1.8 + 32)}°F)
+                    </Text>
                 </View>
             </LinearGradient>
 

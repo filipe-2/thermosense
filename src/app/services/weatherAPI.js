@@ -1,5 +1,5 @@
 import axios from 'axios';
-const APIKey = 'SET_API_KEY_HERE';
+const APIKey = '';
 
 const weatherDataEndpoint = `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=Fortaleza&aqi=no`;
 
