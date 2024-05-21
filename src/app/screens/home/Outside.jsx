@@ -88,10 +88,19 @@ export default function Outside({ navigation }) {
                                             weatherData?.current.condition.text === 'Mist' ? require('../../../../assets/cloudy.png') :
                                                 weatherData?.current.condition.text === 'Clear' ? require('../../../../assets/clear-night.png') :
                                                     weatherData?.current.condition.text === 'Light rain' ? require('../../../../assets/partly-rainy.png') :
-                                                        null
+                                                        weatherData?.current.condition.text === 'Patchy rain nearby' ? require('../../../../assets/patchy-rain-nearby.png') :
+                                                            null
                                 }
                             />
-                            <Text style={{ color: colors.clr_2 }}>Parc. Nublado</Text>
+                            <Text style={{ color: colors.clr_2 }}>
+                                {weatherData?.current.condition.text === 'Sunny' ? 'Ensolarado' :
+                                    weatherData?.current.condition.text === 'Partly cloudy' ? 'Parc. nublado' :
+                                        weatherData?.current.condition.text === 'Mist' ? 'Nublado' :
+                                            weatherData?.current.condition.text === 'Clear' ? 'Limpo' :
+                                                weatherData?.current.condition.text === 'Light rain' ? 'Chuva leve' :
+                                                    weatherData?.current.condition.text === 'Patchy rain nearby' ? 'Chuva irreg. próx.' :
+                                                        null}
+                            </Text>
                         </View>
                     </View>
 

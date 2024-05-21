@@ -20,6 +20,20 @@ export default function Inside({ navigation }) {
     const [temperature, setTemperature] = useState('...');
     const [humidity, setHumidity] = useState('...');
 
+    function calculateHeatIndex(temperature, humidity) {
+        return (
+            Math.round(-8.78469475556 +
+                (1.61139411 * temperature) +
+                (2.33854883889 * humidity) +
+                (-0.14611605 * temperature * humidity) +
+                (-0.012308094 * (temperature ** 2)) +
+                (-0.0164248277778 * (humidity ** 2)) +
+                (0.002211732 * (temperature ** 2) * humidity) +
+                (0.00072546 * temperature * (humidity ** 2)) +
+                (-0.000003582 * (temperature ** 2) * (humidity ** 2)))
+        );
+    }
+
     useEffect(() => {
         const data = ref(db);
 
@@ -39,9 +53,7 @@ export default function Inside({ navigation }) {
                 end={{ x: 1, y: 0 }}
                 colors={[colors.clr_11, 'transparent']}
                 style={{
-                    flexDirection: 'row',
                     width: '90%',
-                    justifyContent: 'space-evenly',
                     alignItems: 'center',
                     borderRadius: 25,
                     borderLeftWidth: 5,
@@ -49,42 +61,50 @@ export default function Inside({ navigation }) {
                     marginTop: 100,
                 }}
             >
-                <View>
-                    <Text style={{
-                        fontSize: 120,
-                        color: colors.clr_2,
-                        fontWeight: '100',
-                        textAlign: 'center',
-                    }}>
-                        {isNaN(temperature) ? temperature : Math.round(temperature)}°
-                    </Text>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '100%' }}>
+                    <View>
+                        <Text style={{
+                            fontSize: 120,
+                            color: colors.clr_2,
+                            fontWeight: '100',
+                            textAlign: 'center',
+                        }}>
+                            {isNaN(temperature) ? temperature : Math.round(temperature)}°
+                        </Text>
+                    </View>
+
+                    <View style={{ justifyContent: 'center', alignItems: 'flex-start', gap: 20 }}>
+                        <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'center', alignItems: 'center' }}>
+                            <Icon style={home.labelIcon} name='thermometer' size={utils.labelTextSize} color={colors.clr_1} />
+                            <Text style={{
+                                fontSize: 20,
+                                color: colors.clr_2,
+                                fontWeight: '300',
+                                textAlign: 'center',
+                            }}>{isNaN(temperature) ? temperature : Math.round(temperature * 1.8 + 32)}°F</Text>
+                        </View>
+
+                        <View style={{
+                            flexDirection: 'row',
+                            gap: 10,
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+                            <Icon style={home.labelIcon} name='tint' size={utils.labelTextSize} color={colors.clr_1} />
+                            <Text style={{
+                                fontSize: 20,
+                                color: colors.clr_2,
+                                fontWeight: '300',
+                                textAlign: 'center',
+                            }}>{humidity}%</Text>
+                        </View>
+                    </View>
                 </View>
 
-                <View style={{ justifyContent: 'center', alignItems: 'flex-start', gap: 20 }}>
-                    <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'center', alignItems: 'center' }}>
-                        <Icon style={home.labelIcon} name='thermometer' size={utils.labelTextSize} color={colors.clr_1} />
-                        <Text style={{
-                            fontSize: 20,
-                            color: colors.clr_2,
-                            fontWeight: '300',
-                            textAlign: 'center',
-                        }}>{isNaN(temperature) ? temperature : Math.round(temperature * 1.8 + 32)}°F</Text>
-                    </View>
-
-                    <View style={{
-                        flexDirection: 'row',
-                        gap: 10,
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
-                        <Icon style={home.labelIcon} name='tint' size={utils.labelTextSize} color={colors.clr_1} />
-                        <Text style={{
-                            fontSize: 20,
-                            color: colors.clr_2,
-                            fontWeight: '300',
-                            textAlign: 'center',
-                        }}>{humidity}%</Text>
-                    </View>
+                <View style={{ marginBottom: 15, paddingHorizontal: 10, borderTopWidth: 2, borderColor: colors.clr_1 }}>
+                    <Text style={{ fontSize: 18, color: colors.clr_2 }}>
+                        Sensação: {calculateHeatIndex(temperature, humidity)}°C
+                    </Text>
                 </View>
             </LinearGradient>
 
