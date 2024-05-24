@@ -84,17 +84,17 @@ export default function Outside({ navigation }) {
                                 style={{ width: 75, height: 75 }}
                                 source={
                                     weatherData?.current.condition.text === 'Sunny' ? require('../../../../assets/sunny.png') :
-                                        weatherData?.current.condition.text === 'Partly cloudy' ? require('../../../../assets/partly-cloudy.png') :
+                                        weatherData?.current.condition.text === 'Partly Cloudy' ? require('../../../../assets/partly-cloudy.png') :
                                             weatherData?.current.condition.text === 'Mist' ? require('../../../../assets/cloudy.png') :
                                                 weatherData?.current.condition.text === 'Clear' ? require('../../../../assets/clear-night.png') :
-                                                    weatherData?.current.condition.text === 'Light rain' ? require('../../../../assets/partly-rainy.png') :
+                                                    weatherData?.current.condition.text === 'Light Rain' ? require('../../../../assets/partly-rainy.png') :
                                                         weatherData?.current.condition.text === 'Patchy rain nearby' ? require('../../../../assets/patchy-rain-nearby.png') :
                                                             null
                                 }
                             />
                             <Text style={{ color: colors.clr_2 }}>
                                 {weatherData?.current.condition.text === 'Sunny' ? 'Ensolarado' :
-                                    weatherData?.current.condition.text === 'Partly cloudy' ? 'Parc. nublado' :
+                                    weatherData?.current.condition.text === 'Partly Cloudy' ? 'Parc. nublado' :
                                         weatherData?.current.condition.text === 'Mist' ? 'Nublado' :
                                             weatherData?.current.condition.text === 'Clear' ? 'Limpo' :
                                                 weatherData?.current.condition.text === 'Light rain' ? 'Chuva leve' :
