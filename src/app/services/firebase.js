@@ -8,12 +8,12 @@ import 'firebase/database';
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "",
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: "",
+    apiKey: "AIzaSyD7xCZzwKbC1bMrJthpTeoOOkObwoJXG8A",
+    authDomain: "thermo--sense-d05e4.firebaseapp.com",
+    projectId: "thermo--sense-d05e4",
+    storageBucket: "thermo--sense-d05e4.appspot.com",
+    messagingSenderId: "509379196450",
+    appId: "1:509379196450:web:d3bee579be482e178dbc7b",
 };
 
 // Initialize firebase
