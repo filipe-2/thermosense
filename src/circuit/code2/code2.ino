@@ -130,16 +130,10 @@ void loop() {
     }
     Serial.println();
 
-    // Checa os dados dos sinais IR e realiza ações dependendo dos comandos do sinal
-    if (IrReceiver.decodedIRData.command == 0x12040683) {
-        // Desliga/liga o ar (consul)
-        IrSender.sendPulseDistanceWidth(38, 9050, 4550, 600, 1700, 600, 550, 0x12040683, 48, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
-        delay(2000);
-    } else if (IrReceiver.decodedIRData.command == 0x32000683) {
-        // Aumenta o ar (consul)
-        IrSender.sendPulseDistanceWidth(38, 9050, 4550, 600, 1700, 600, 550, 0x32000683, 48, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
-        delay(2000);
-    }
+    // Desliga/liga o ar (consul)
+        
+    IrSender.sendPulseDistanceWidth(38, 9050, 4550, 600, 1700, 600, 550, 0x12040683, 48, PROTOCOL_IS_LSB_FIRST, 50, 3);
+    delay(2000);
   }
 
   delay(2000); // Delay de 2 segundos entre cada sinal recebido
