@@ -1,11 +1,10 @@
-import { Text, View, ImageBackground, TouchableOpacity } from 'react-native';
+import { Text, View, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import { useEffect, useState } from 'react';
 import { db, ref, onValue } from '../../services/firebase';
 import { LinearGradient } from 'expo-linear-gradient';
 
 // Styles
 import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
-import { boilerplate } from '../../styles/global/boilerplate';
 import { home, utils } from '../../styles/home';
 
 // Icons
@@ -61,20 +60,39 @@ export default function Inside({ navigation }) {
                     marginTop: 100,
                 }}
             >
-                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', width: '100%' }}>
-                    <View>
+                <View style={{ justifyContent: 'space-evenly', alignItems: 'center' }}>
+                    <View style={{
+                        paddingHorizontal: 10,
+                        borderBottomWidth: 2,
+                        borderColor: colors.clr_1
+                    }}>
+                        <Text style={{ fontSize: 20, color: colors.clr_2, letterSpacing: 8, marginTop: 10, fontWeight: 'bold' }}>AMBIENTE</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', gap: 35, marginTop: 25 }}>
                         <Text style={{
-                            fontSize: 120,
+                            fontSize: 100,
                             color: colors.clr_2,
                             fontWeight: '100',
                             textAlign: 'center',
                         }}>
                             {isNaN(temperature) ? temperature : Math.round(temperature)}°
                         </Text>
+
+                        <Image
+                            style={{ width: 33.5, height: 85.8333 }}
+                            source={
+                                temperature < 0 ? require('../../../../assets/thermometer-0-less.png') :
+                                    temperature >= 0 && temperature < 20 ? require('../../../../assets/thermometer-0-20.png') :
+                                        temperature >= 20 && temperature < 30 ? require('../../../../assets/thermometer-20-29.png') :
+                                            temperature >= 30 ? require('../../../../assets/thermometer-30-more.png') :
+                                                null
+                            }
+                        />
                     </View>
 
-                    <View style={{ justifyContent: 'center', alignItems: 'flex-start', gap: 20 }}>
-                        <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'center', alignItems: 'center' }}>
+                    <View style={{ justifyContent: 'center', alignItems: 'flex-start', gap: 20, flexDirection: 'row', marginBottom: 35, marginTop: 15 }}>
+                        <View style={{ flexDirection: 'row', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
                             <Icon style={home.labelIcon} name='thermometer' size={utils.labelTextSize} color={colors.clr_1} />
                             <Text style={{
                                 fontSize: 20,
@@ -86,7 +104,7 @@ export default function Inside({ navigation }) {
 
                         <View style={{
                             flexDirection: 'row',
-                            gap: 10,
+                            gap: 8,
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}>
@@ -103,7 +121,7 @@ export default function Inside({ navigation }) {
 
                 <View style={{ marginBottom: 15, paddingHorizontal: 10, borderTopWidth: 2, borderColor: colors.clr_1 }}>
                     <Text style={{ fontSize: 18, color: colors.clr_2 }}>
-                        Sensação: {calculateHeatIndex(temperature, humidity)}°C
+                        Sensação: {calculateHeatIndex(temperature, humidity)}°C ({calculateHeatIndex(temperature, humidity) * 1.8 + 32}°F)
                     </Text>
                 </View>
             </LinearGradient>

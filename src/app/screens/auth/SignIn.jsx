@@ -90,7 +90,7 @@ export default function SignIn(props) {
             style={[theme.background, boilerplate.wrapper]}
         >
             <Image style={{ width: 200, height: 200, marginBottom: 15 }} source={require('../../../../assets/logo.png')} />
-            <Text style={{ color: colors.clr_2, fontWeight: 'bold', fontSize: 28, marginBottom: 15 }}>Login</Text>
+            <Text style={{ color: colors.clr_1, fontWeight: 'bold', fontSize: 28, marginBottom: 15, letterSpacing: 10 }}>LOGIN</Text>
 
             <TextInput
                 textColor={colors.clr_2}

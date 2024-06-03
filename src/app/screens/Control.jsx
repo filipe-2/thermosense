@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, ImageBackground, TouchableOpacity, Text } from "react-native";
 
 // Styles
 import { boilerplate } from "../styles/global/boilerplate";
@@ -12,7 +12,15 @@ export default function Control() {
     const theme = isDarkMode ? darkStyles : lightStyles;
 
     return (
-        <View style={[theme.background, boilerplate.wrapper, { gap: 25 }]}>
+        <ImageBackground
+            source={require('../../../assets/auth-bg.jpg')}
+            style={[theme.background, boilerplate.wrapper, { gap: 25 }]}
+        >
+            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ color: colors.clr_1, fontSize: 22, fontWeight: 'bold', letterSpacing: 5 }}>CONTROLE REMOTO</Text>
+                <Text style={{ color: colors.clr_2, fontSize: 20, fontWeight: 'bold', letterSpacing: 5 }}>AR-CONDICIONADO</Text>
+            </View>
+
             <TouchableOpacity style={{
                 width: 150,
                 height: 150,
@@ -39,19 +47,19 @@ export default function Control() {
                     justifyContent: 'center',
                     alignItems: 'center',
                 }}>
-                    <Feather name='chevron-up' color={colors.clr_2} size={50} />
+                    <Feather name='plus' color={colors.clr_2} size={50} />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{
                     borderRadius: 10,
                     backgroundColor: colors.clr_11,
-                    justifyContent: 'center',
+                    justifyContent: 'space-evenly',
                     alignItems: 'center',
-                    width: 50,
+                    flexDirection: 'row',
                 }}>
-                    <Feather name='chevron-down' color={colors.clr_2} size={50} />
+                    <Feather name='minus' color={colors.clr_2} size={50} />
                 </TouchableOpacity>
             </View>
-        </View>
+        </ImageBackground>
     );
 }

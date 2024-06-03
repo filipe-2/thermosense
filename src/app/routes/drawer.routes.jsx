@@ -100,20 +100,6 @@ export default function DrawerRoutes() {
             />
 
             <Drawer.Screen
-                name='Config'
-                component={SettingsStackRoutes}
-                options={{
-                    drawerIcon: ({ size }) =>
-                        <Feather
-                            name='settings'
-                            color={colors.clr_1}
-                            size={size}
-                        />,
-                    drawerLabel: 'Configurações',
-                }}
-            />
-
-            <Drawer.Screen
                 name='Notificações'
                 component={Notifications}
                 options={{
@@ -124,6 +110,20 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Notificações',
+                }}
+            />
+
+            <Drawer.Screen
+                name='Config'
+                component={SettingsStackRoutes}
+                options={{
+                    drawerIcon: ({ size }) =>
+                        <Feather
+                            name='settings'
+                            color={colors.clr_1}
+                            size={size}
+                        />,
+                    drawerLabel: 'Configurações',
                 }}
             />
         </Drawer.Navigator>

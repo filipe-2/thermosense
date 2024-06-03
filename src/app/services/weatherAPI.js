@@ -18,4 +18,4 @@ const APICall = async endpoint => {
     }
 };
 
-export const fetchWeatherData = (params) => APICall(weatherDataEndpoint);
+export const fetchWeatherData = () => APICall(weatherDataEndpoint);
