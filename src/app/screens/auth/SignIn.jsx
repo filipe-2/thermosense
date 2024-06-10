@@ -1,4 +1,6 @@
+// ------------------ Imports ---------------------
 import { useState } from 'react';
+
 import {
     View,
     Text,
@@ -7,14 +9,32 @@ import {
     Image,
     ActivityIndicator,
 } from "react-native";
-import { TextInput, Dialog, Paragraph } from 'react-native-paper';
-import { auth } from '../../services/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+
+import {
+    TextInput,
+    Dialog,
+    Paragraph,
+} from 'react-native-paper';
 
 // Styles
 import { boilerplate } from "../../styles/global/boilerplate";
-import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
+import {
+    colors,
+    darkStyles,
+    lightStyles,
+} from '../../styles/global/customStyles';
 
+// Utils
+import {
+    // Variables
+
+    // Functions
+    handleSignIn,
+} from './utils.js';
+// ------------------------------------------------
+
+
+// ------------- Sign in component ----------------
 export default function SignIn(props) {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
@@ -27,70 +47,26 @@ export default function SignIn(props) {
     const [showPermissionDialog, setShowPermissionDialog] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    // Function to get error codes
-    const getErrorMessage = errorCode => {
-        switch (errorCode) {
-            case 'auth/invalid-email':
-                setDialogTitle('Email inválido');
-                setDialogMessage('O email digitado é inválido, tente novamente.');
-                break;
-            case 'auth/invalid-credential':
-                setDialogTitle('Senha inválida');
-                setDialogMessage('Verifique sua senha e tente novamente.');
-                break;
-            case 'auth/missing-email':
-                setDialogTitle('Campo de email vazio');
-                setDialogMessage('Por favor digite o email da sua conta para prosseguir.');
-                break;
-            case 'auth/missing-password':
-                setDialogTitle('Campo de senha vazio');
-                setDialogMessage('Por favor digite a senha da sua conta para prosseguir.');
-                break;
-            case 'auth/too-many-requests':
-                setDialogTitle('Tentativas de login excedidas');
-                setDialogMessage('Pela sua segurança, altere sua senha ou tente novamente mais tarde.');
-                break;
-            default:
-                setDialogTitle('Erro');
-                setDialogMessage('Ocorreu um erro inesperado, por favor tente novamente.');
-                break;
-        }
-
-        setShowPermissionDialog(true);
-    };
-
-    // Function to handle sign in
-    async function signIn() {
-        setLoading(true);
-
-        if (!email && !password) {
-            setDialogTitle('Campos vazios');
-            setDialogMessage('Por favor, preencha todos os campos.');
-            setShowPermissionDialog(true);
-            setLoading(false);
-            return;
-        }
-
-        try {
-            const response = await signInWithEmailAndPassword(auth, email, password);
-            console.log(response.user);
-            console.log('Usuário logado');
-        } catch (error) {
-            getErrorMessage(error.code);
-            console.log(error.code);
-            setLoading(false);
-        } finally {
-            setLoading(false);
-        }
-    }
-
     return (
         <ImageBackground
             source={require('../../../../assets/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
-            <Image style={{ width: 200, height: 200, marginBottom: 15 }} source={require('../../../../assets/logo.png')} />
-            <Text style={{ color: colors.clr_1, fontWeight: 'bold', fontSize: 28, marginBottom: 15, letterSpacing: 10 }}>LOGIN</Text>
+            <Image
+                style={{
+                    width: 200,
+                    height: 200,
+                    marginBottom: 15
+                }}
+                source={require('../../../../assets/logo.png')}
+            />
+            <Text style={{
+                color: colors.clr_1,
+                fontWeight: 'bold',
+                fontSize: 28,
+                marginBottom: 15,
+                letterSpacing: 10,
+            }}>LOGIN</Text>
 
             <TextInput
                 textColor={colors.clr_2}
@@ -142,7 +118,9 @@ export default function SignIn(props) {
                 right={
                     <TextInput.Icon
                         icon={isPasswordSecure ? 'eye-off' : 'eye'} color={colors.clr_1}
-                        onPress={() => isPasswordSecure ? setIsPasswordSecure(false) : setIsPasswordSecure(true)}
+                        onPress={() => isPasswordSecure ?
+                            setIsPasswordSecure(false) :
+                            setIsPasswordSecure(true)}
                     />
                 }
             />
@@ -158,7 +136,14 @@ export default function SignIn(props) {
                     margin: 10,
                     maxWidth: 500,
                 }}
-                onPress={signIn}
+                onPress={() => handleSignIn(
+                    email,
+                    password,
+                    setDialogTitle,
+                    setDialogMessage,
+                    setShowPermissionDialog,
+                    setLoading
+                )}
             >
                 {loading ? <ActivityIndicator color={colors.clr_2} /> : <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Entrar</Text>}
             </TouchableOpacity>
@@ -197,3 +182,4 @@ export default function SignIn(props) {
         </ImageBackground >
     );
 };
+// ------------------------------------------------

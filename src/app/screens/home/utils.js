@@ -1,0 +1,113 @@
+// ----------- Calculates heat index --------------
+function calculateHeatIndex(temperature, humidity) {
+    // Constants for the formula
+    const c1 = -8.78469475556;
+    const c2 = 1.61139411;
+    const c3 = 2.33854883889;
+    const c4 = -0.14611605;
+    const c5 = -0.012308094;
+    const c6 = -0.0164248277778;
+    const c7 = 0.002211732;
+    const c8 = 0.00072546;
+    const c9 = -0.000003582;
+
+    // Calculates each term separately
+    const term1 = c1;
+    const term2 = c2 * temperature;
+    const term3 = c3 * humidity;
+    const term4 = c4 * temperature * humidity;
+    const term5 = c5 * (temperature ** 2);
+    const term6 = c6 * (humidity ** 2);
+    const term7 = c7 * (temperature ** 2) * humidity;
+    const term8 = c8 * temperature * (humidity ** 2);
+    const term9 = c9 * (temperature ** 2) * (humidity ** 2);
+
+    // Sums all the terms to get the heat index
+    const heatIndex = term1 + term2 + term3 + term4 + term5 + term6 + term7 + term8 + term9;
+
+    // Rounds the result to the nearest integer
+    return Math.round(heatIndex);
+}
+// ------------------------------------------------
+
+
+// --------- Renders temperature icon -------------
+function handleTempConditionIcon(temperature) {
+    if (temperature < 0) {
+        return require('../../../../assets/thermometer-0-less.png');
+    } else if (temperature >= 0 && temperature < 20) {
+        return require('../../../../assets/thermometer-0-20.png');
+    } else if (temperature >= 20 && temperature < 30) {
+        return require('../../../../assets/thermometer-20-29.png');
+    } else {
+        return require('../../../../assets/thermometer-30-more.png');
+    }
+}
+// ------------------------------------------------
+
+
+// ------------ Render weather icon ---------------
+function handleWeatherConditionIcon(isDay, condition) {
+    if (isDay) {
+        if (condition === 'Sunny') {
+            return require('../../../../assets/sunny.png');
+        } else if (condition === 'Partly cloudy' || condition === 'Partly Cloudy') {
+            return require('../../../../assets/partly-cloudy.png');
+        } else if (condition === 'Mist') {
+            return require('../../../../assets/cloudy.png');
+        } else if (condition === 'Cloudy') {
+            return require('../../../../assets/cloudy.png');
+        } else if (condition === 'Light rain' || condition === 'Light Rain') {
+            return require('../../../../assets/partly-rainy.png');
+        } else if (condition === 'Patchy rain nearby') {
+            return require('../../../../assets/patchy-rain-nearby.png');
+        } else {
+            return null;
+        }
+    } else {
+        if (condition === 'Partly cloudy' || condition === 'Partly Cloudy') {
+            return require('../../../../assets/partly-cloudy-night.png');
+        } else if (condition === 'Light rain' || condition === 'Light Rain') {
+            return require('../../../../assets/light-rain-night.png');
+        } else if (condition === 'Clear') {
+            return require('../../../../assets/clear-night.png');
+        }
+    }
+}
+// ------------------------------------------------
+
+
+// ---------- Render weather message --------------
+function handleWeatherConditionMessage(condition) {
+    if (condition === 'Sunny') {
+        return 'Ensolarado';
+    } else if (condition === 'Partly cloudy' || condition === 'Partly Cloudy') {
+        return 'Parc. nublado';
+    } else if (condition === 'Mist') {
+        return 'Nublado';
+    } else if (condition === 'Cloudy') {
+        return 'Nublado';
+    } else if (condition === 'Clear') {
+        return 'Limpo';
+    } else if (condition === 'Light rain') {
+        return 'Chuva leve';
+    } else if (condition === 'Patchy rain nearby') {
+        return 'Chuva irreg. próx.';
+    } else {
+        return null;
+    }
+}
+// ------------------------------------------------
+
+
+// ------------------- Export ---------------------
+export {
+    // Variables
+
+    // Functions
+    calculateHeatIndex,
+    handleTempConditionIcon,
+    handleWeatherConditionIcon,
+    handleWeatherConditionMessage,
+};
+// ------------------------------------------------

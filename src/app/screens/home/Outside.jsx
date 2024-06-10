@@ -1,7 +1,26 @@
-import { Text, View, ImageBackground, TouchableOpacity, Image } from 'react-native';
-import { useEffect, useState } from 'react';
-import { db, ref, onValue } from '../../services/firebase';
+// ------------------- Imports --------------------
+import {
+    Text,
+    View,
+    ImageBackground,
+    TouchableOpacity,
+    Image,
+} from 'react-native';
+
+import {
+    useEffect,
+    useState,
+} from 'react';
+
+import {
+    db,
+    ref,
+    onValue,
+} from '../../services/firebase';
+
 import { LinearGradient } from 'expo-linear-gradient';
+
+import { fetchWeatherData } from '../../services/weatherAPI';
 
 // Styles
 import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
@@ -13,8 +32,18 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
-import { fetchWeatherData } from '../../services/weatherAPI';
+// Utils
+import {
+    // Variables
 
+    // Functions
+    handleWeatherConditionIcon,
+    handleWeatherConditionMessage,
+} from './utils';
+// ------------------------------------------------
+
+
+// -------------- Outside component ---------------
 export default function Outside({ navigation }) {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
@@ -58,7 +87,13 @@ export default function Outside({ navigation }) {
                     borderBottomWidth: 2,
                     borderColor: colors.clr_1
                 }}>
-                    <Text style={{ fontSize: 20, color: colors.clr_2, letterSpacing: 8, marginTop: 10, fontWeight: 'bold' }}>{weatherData?.location.name.toUpperCase()}</Text>
+                    <Text style={{
+                        fontSize: 20,
+                        color: colors.clr_2,
+                        letterSpacing: 8,
+                        marginTop: 10,
+                        fontWeight: 'bold',
+                    }}>{weatherData?.location.name.toUpperCase()}</Text>
                 </View>
 
                 <View style={{
@@ -77,29 +112,25 @@ export default function Outside({ navigation }) {
                             color: colors.clr_2,
                             fontWeight: '100',
                             textAlign: 'center',
-                        }}>{isNaN(weatherData?.current.temp_c) ? '...' : Math.round(weatherData?.current.temp_c)}°</Text>
+                        }}>
+                            {isNaN(weatherData?.current.temp_c) ?
+                                '...' :
+                                Math.round(weatherData?.current.temp_c)}°
+                        </Text>
 
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={{
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>
                             <Image
-                                style={{ width: 75, height: 75 }}
-                                source={
-                                    weatherData?.current.condition.text === 'Sunny' ? require('../../../../assets/sunny.png') :
-                                        weatherData?.current.condition.text === 'Partly cloudy' || weatherData?.current.condition.text === 'Partly Cloudy' ? require('../../../../assets/partly-cloudy.png') :
-                                            weatherData?.current.condition.text === 'Mist' ? require('../../../../assets/cloudy.png') :
-                                                weatherData?.current.condition.text === 'Clear' ? require('../../../../assets/clear-night.png') :
-                                                    weatherData?.current.condition.text === 'Light Rain' ? require('../../../../assets/partly-rainy.png') :
-                                                        weatherData?.current.condition.text === 'Patchy rain nearby' ? require('../../../../assets/patchy-rain-nearby.png') :
-                                                            null
-                                }
+                                style={{
+                                    width: 75,
+                                    height: 75,
+                                }}
+                                source={handleWeatherConditionIcon(weatherData?.current.is_day, weatherData?.current.condition.text)}
                             />
                             <Text style={{ color: colors.clr_2 }}>
-                                {weatherData?.current.condition.text === 'Sunny' ? 'Ensolarado' :
-                                    weatherData?.current.condition.text === 'Partly cloudy' || weatherData?.current.condition.text === 'Partly Cloudy' ? 'Parc. nublado' :
-                                        weatherData?.current.condition.text === 'Mist' ? 'Nublado' :
-                                            weatherData?.current.condition.text === 'Clear' ? 'Limpo' :
-                                                weatherData?.current.condition.text === 'Light rain' ? 'Chuva leve' :
-                                                    weatherData?.current.condition.text === 'Patchy rain nearby' ? 'Chuva irreg. próx.' :
-                                                        null}
+                                {handleWeatherConditionMessage(weatherData?.current.condition.text)}
                             </Text>
                         </View>
                     </View>
@@ -115,24 +146,38 @@ export default function Outside({ navigation }) {
                             flexDirection: 'row',
                             gap: 5,
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
                         }}>
-                            <Icon style={home.labelIcon} name='thermometer' size={utils.labelTextSize} color={colors.clr_1} />
+                            <Icon
+                                style={home.labelIcon}
+                                name='thermometer'
+                                size={utils.labelTextSize}
+                                color={colors.clr_1}
+                            />
                             <Text style={{
                                 fontSize: 20,
                                 color: colors.clr_2,
                                 fontWeight: '300',
                                 textAlign: 'center',
-                            }}>{isNaN(weatherData?.current.temp_c) ? '...' : Math.round(weatherData?.current.temp_c * 1.8 + 32)}°F</Text>
+                            }}>
+                                {isNaN(weatherData?.current.temp_c) ?
+                                    '...' :
+                                    Math.round(weatherData?.current.temp_c * 1.8 + 32)}°F
+                            </Text>
                         </View>
 
                         <View style={{
                             flexDirection: 'row',
                             gap: 5,
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
                         }}>
-                            <FontAwesome5 style={home.labelIcon} name='tint' size={utils.labelTextSize} color={colors.clr_1} />
+                            <FontAwesome5
+                                style={home.labelIcon}
+                                name='tint'
+                                size={utils.labelTextSize}
+                                color={colors.clr_1}
+                            />
                             <Text style={{
                                 fontSize: 20,
                                 color: colors.clr_2,
@@ -145,24 +190,40 @@ export default function Outside({ navigation }) {
                             flexDirection: 'row',
                             gap: 5,
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
                         }}>
-                            <Feather style={home.labelIcon} name='wind' size={utils.labelTextSize} color={colors.clr_1} />
+                            <Feather
+                                style={home.labelIcon}
+                                name='wind'
+                                size={utils.labelTextSize}
+                                color={colors.clr_1}
+                            />
                             <Text style={{
                                 fontSize: 20,
                                 color: colors.clr_2,
                                 fontWeight: '300',
                                 textAlign: 'center',
                             }}>
-                                {isNaN(weatherData?.current.wind_kph) ? '...' : weatherData?.current.wind_kph} km/h
+                                {isNaN(weatherData?.current.wind_kph) ?
+                                    '...' :
+                                    weatherData?.current.wind_kph} km/h
                             </Text>
                         </View>
                     </View>
                 </View>
 
-                <View style={{ marginBottom: 15, paddingHorizontal: 10, borderTopWidth: 2, borderColor: colors.clr_1 }}>
-                    <Text style={{ fontSize: 18, color: colors.clr_2 }}>
-                        Sensação: {Math.round(weatherData?.current.feelslike_c)}°C ({Math.round(weatherData?.current.feelslike_c * 1.8 + 32)}°F)
+                <View style={{
+                    marginBottom: 15,
+                    paddingHorizontal: 10,
+                    borderTopWidth: 2,
+                    borderColor: colors.clr_1,
+                }}>
+                    <Text style={{
+                        fontSize: 18,
+                        color: colors.clr_2,
+                    }}>
+                        Sensação: {Math.round(weatherData?.current.feelslike_c)}°C
+                        ({Math.round(weatherData?.current.feelslike_c * 1.8 + 32)}°F)
                     </Text>
                 </View>
             </LinearGradient>
@@ -187,11 +248,15 @@ export default function Outside({ navigation }) {
                         gap: 5,
                     }}
                 >
-                    <FontAwesome5 name='home' size={25} color={colors.clr_1} />
+                    <FontAwesome5
+                        name='home'
+                        size={25}
+                        color={colors.clr_1}
+                    />
                     <Text style={{
                         fontSize: 15,
                         textAlign: 'center',
-                        color: colors.clr_2
+                        color: colors.clr_2,
                     }}>Casa</Text>
                 </TouchableOpacity>
 
@@ -203,7 +268,11 @@ export default function Outside({ navigation }) {
                         justifyContent: 'center',
                         gap: 5,
                     }}>
-                    <FontAwesome5 name='city' size={25} color={colors.clr_1} />
+                    <FontAwesome5
+                        name='city'
+                        size={25}
+                        color={colors.clr_1}
+                    />
                     <Text style={{
                         fontSize: 15,
                         textAlign: 'center',
@@ -214,3 +283,4 @@ export default function Outside({ navigation }) {
         </ImageBackground >
     );
 }
+// ------------------------------------------------

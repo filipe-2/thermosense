@@ -1,4 +1,6 @@
+// ------------------ Imports ---------------------
 import { useState } from 'react';
+
 import {
     View,
     Text,
@@ -7,14 +9,33 @@ import {
     Image,
     ActivityIndicator,
 } from 'react-native';
-import { TextInput, Dialog, Paragraph } from 'react-native-paper';
-import { auth } from '../../services/firebase';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+
+import {
+    TextInput,
+    Dialog,
+    Paragraph,
+} from 'react-native-paper';
 
 // Styles
 import { boilerplate } from '../../styles/global/boilerplate';
-import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
+import {
+    colors,
+    darkStyles,
+    lightStyles,
+} from '../../styles/global/customStyles';
 
+// Utils
+import {
+    // Variables
+
+    // Functions
+    handleSignUp,
+    dismissDialog,
+} from './utils.js';
+// ------------------------------------------------
+
+
+// ------------- Sign up component ----------------
 export default function SignUp(props) {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
@@ -30,93 +51,26 @@ export default function SignUp(props) {
     const [showPermissionDialog, setShowPermissionDialog] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    // Function to dismiss the dialog
-    function dismissDialog() {
-        if (dialogTitle === 'Account Created Successfully!') {
-            setShowPermissionDialog(false);
-            navigation.navigate('mainTab');
-            console.log('User logged in.');
-            return;
-        }
-
-        setShowPermissionDialog(false);
-    };
-
-    // Function to get error codes
-    const getErrorMessage = errorCode => {
-        switch (errorCode) {
-            case 'auth/email-already-in-use':
-                setDialogTitle('Email em uso');
-                setDialogMessage('O email digitado já está em uso, tente novamente.');
-                break;
-            case 'auth/invalid-email':
-                setDialogTitle('Email inválido');
-                setDialogMessage('O email digitado é inválido, tente novamente.');
-                break;
-            case 'auth/weak-password':
-                setDialogTitle('Senha fraca');
-                setDialogMessage('A senha é muito fraca. Crie uma senha com pelo menos 6 dígitos.');
-                break;
-            case 'auth/missing-email':
-                setDialogTitle('Campo de email vazio');
-                setDialogMessage('Por favor digite o email para vincular à sua conta.');
-                break;
-            case 'auth/missing-password':
-                setDialogTitle('Campo de senha vazio');
-                setDialogMessage('Por favor crie uma senha com pelo menos 6 dígitos.');
-                break;
-            default:
-                setDialogTitle('Erro');
-                setDialogMessage('Ocorreu um erro inesperado, por favor tente novamente.');
-                break;
-        }
-        setShowPermissionDialog(true);
-    };
-
-    // Function to handle sign up
-    async function signUp() {
-        setLoading(true);
-
-        if (!email && !username && !password && !passwordConfirmation) {
-            setDialogTitle('Campos vazios');
-            setDialogMessage('Por favor preencha todos os campos.');
-            setShowPermissionDialog(true);
-            setLoading(false);
-            return;
-        }
-        if (password !== passwordConfirmation) {
-            setDialogTitle('Senhas não correspondem');
-            setDialogMessage('Senha e confirmação diferentes, tente novamente.');
-            setShowPermissionDialog(true);
-            return;
-        }
-
-        try {
-            const response = await createUserWithEmailAndPassword(auth, email, password);
-
-            updateProfile(auth.currentUser, { displayName: username })
-                .then(() => console.log(auth.currentUser.displayName))
-                .catch(error => console.log('An error occurred:', error));
-
-            setDialogTitle('Conta criada com sucesso!');
-            setDialogMessage('Clique em OK para prosseguir.');
-            setShowPermissionDialog(true);
-            console.log('Usuário criado.');
-        } catch (error) {
-            getErrorMessage(error.code);
-            console.log(error.code);
-        } finally {
-            setLoading(false);
-        }
-    }
-
     return (
         <ImageBackground
             source={require('../../../../assets/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
-            <Image style={{ width: 200, height: 200, marginBottom: 15 }} source={require('../../../../assets/logo.png')} />
-            <Text style={{ color: colors.clr_1, fontWeight: 'bold', fontSize: 28, marginBottom: 15, letterSpacing: 5 }}>CADASTRO</Text>
+            <Image
+                style={{
+                    width: 200,
+                    height: 200,
+                    marginBottom: 15,
+                }}
+                source={require('../../../../assets/logo.png')}
+            />
+            <Text style={{
+                color: colors.clr_1,
+                fontWeight: 'bold',
+                fontSize: 28,
+                marginBottom: 15,
+                letterSpacing: 5,
+            }}>CADASTRO</Text>
 
             <TextInput
                 textColor={colors.clr_2}
@@ -191,8 +145,11 @@ export default function SignUp(props) {
                 }}
                 right={
                     <TextInput.Icon
-                        icon={isPasswordSecure ? 'eye-off' : 'eye'} color={colors.clr_1}
-                        onPress={() => isPasswordSecure ? setIsPasswordSecure(false) : setIsPasswordSecure(true)}
+                        icon={isPasswordSecure ? 'eye-off' : 'eye'}
+                        color={colors.clr_1}
+                        onPress={() => isPasswordSecure ?
+                            setIsPasswordSecure(false) :
+                            setIsPasswordSecure(true)}
                     />
                 }
             />
@@ -222,8 +179,11 @@ export default function SignUp(props) {
                 }}
                 right={
                     <TextInput.Icon
-                        icon={isPasswordConfirmationSecure ? 'eye-off' : 'eye'} color={colors.clr_1}
-                        onPress={() => isPasswordConfirmationSecure ? setIsPasswordConfirmationSecure(false) : setIsPasswordConfirmationSecure(true)}
+                        icon={isPasswordConfirmationSecure ? 'eye-off' : 'eye'}
+                        color={colors.clr_1}
+                        onPress={() => isPasswordConfirmationSecure ?
+                            setIsPasswordConfirmationSecure(false) :
+                            setIsPasswordConfirmationSecure(true)}
                     />
                 }
             />
@@ -239,24 +199,52 @@ export default function SignUp(props) {
                     margin: 10,
                     maxWidth: 500,
                 }}
-                onPress={signUp}
+                onPress={() => handleSignUp(
+                    email,
+                    username,
+                    password,
+                    passwordConfirmation,
+                    setDialogTitle,
+                    setDialogMessage,
+                    setShowPermissionDialog,
+                    setLoading
+                )}
             >
-                {loading ? <ActivityIndicator color={colors.clr_2} /> : <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Criar conta</Text>}
+                {loading ?
+                    (<ActivityIndicator color={colors.clr_2} />) :
+                    (<Text style={{
+                        fontSize: 15,
+                        fontWeight: 'bold',
+                    }}>Criar conta</Text>)
+                }
             </TouchableOpacity>
 
             <View style={{ flexDirection: 'row' }}>
                 <Text style={{ color: 'white' }}>Já possui conta?</Text>
                 <TouchableOpacity onPress={() => props.navigation.navigate('SignIn')}>
-                    <Text style={{ color: colors.clr_1, fontWeight: 'bold', borderBottomWidth: 1, borderBottomColor: colors.clr_1, marginLeft: 5 }}>Entrar</Text>
+                    <Text style={{
+                        color: colors.clr_1,
+                        fontWeight: 'bold',
+                        borderBottomWidth: 1,
+                        borderBottomColor: colors.clr_1,
+                        marginLeft: 5,
+                    }}>Entrar</Text>
                 </TouchableOpacity>
             </View>
 
             <Dialog
                 visible={showPermissionDialog}
-                onDismiss={dismissDialog}
-                style={{ backgroundColor: colors.clr_3, borderWidth: 2, borderColor: colors.clr_1 }}
+                onDismiss={() => dismissDialog(dialogTitle, setShowPermissionDialog)}
+                style={{
+                    backgroundColor: colors.clr_3,
+                    borderWidth: 2,
+                    borderColor: colors.clr_1,
+                }}
             >
-                <Dialog.Title style={{ color: colors.clr_1, fontWeight: 'bold' }}>
+                <Dialog.Title style={{
+                    color: colors.clr_1,
+                    fontWeight: 'bold',
+                }}>
                     {dialogTitle}
                 </Dialog.Title>
 
@@ -268,13 +256,22 @@ export default function SignUp(props) {
 
                 <Dialog.Actions>
                     <TouchableOpacity
-                        onPress={dismissDialog}
-                        style={{ backgroundColor: colors.clr_1, paddingVertical: 5, paddingHorizontal: 10, borderRadius: 10 }}
+                        onPress={() => dismissDialog(dialogTitle, setShowPermissionDialog)}
+                        style={{
+                            backgroundColor: colors.clr_1,
+                            paddingVertical: 5,
+                            paddingHorizontal: 10,
+                            borderRadius: 10,
+                        }}
                     >
-                        <Text style={{ color: colors.clr_3, fontWeight: 'bold' }}>OK</Text>
+                        <Text style={{
+                            color: colors.clr_3,
+                            fontWeight: 'bold',
+                        }}>OK</Text>
                     </TouchableOpacity>
                 </Dialog.Actions>
             </Dialog>
         </ImageBackground>
     );
 }
+// ------------------------------------------------

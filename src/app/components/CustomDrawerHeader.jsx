@@ -1,5 +1,15 @@
-import { View, TouchableOpacity, Image } from 'react-native';
-import { useNavigation, DrawerActions } from '@react-navigation/native';
+import {
+    View,
+    TouchableOpacity,
+    Image,
+} from 'react-native';
+
+import {
+    useNavigation,
+    DrawerActions,
+} from '@react-navigation/native';
+
+import { auth } from '../services/firebase';
 
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -26,7 +36,7 @@ export default function CustomDrawerHeader() {
                 backgroundColor: colors.clr_4,
                 borderWidth: 2,
                 borderColor: colors.clr_1,
-                borderRadius: 25
+                borderRadius: 25,
             }}>
             <View style={{
                 flexDirection: 'row',
@@ -43,14 +53,18 @@ export default function CustomDrawerHeader() {
                         height: 35,
                         borderRadius: 18.25,
                         borderWidth: 1,
-                        borderColor: colors.clr_1
+                        borderColor: colors.clr_1,
                     }}>
                     <Image
-                        source={require('../../../assets/profile-img.jpg')}
+                        source={
+                            auth.currentUser.photURL ?
+                                { uri: auth.currentUser.photoURL } :
+                                require('../../../assets/user.png')
+                        }
                         style={{
                             width: 25,
                             height: 25,
-                            borderRadius: 12.25
+                            borderRadius: 12.25,
                         }}
                     />
                 </TouchableOpacity>
@@ -74,7 +88,7 @@ export default function CustomDrawerHeader() {
                     source={require('../../../assets/logo.png')}
                     style={{
                         width: 50,
-                        height: 50
+                        height: 50,
                     }}
                 />
             </View>
