@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "./global/customStyles";
+import { colors } from "../global/customStyles";
 
 export const settings = StyleSheet.create({
     button: {

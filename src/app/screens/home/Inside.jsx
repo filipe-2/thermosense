@@ -30,7 +30,7 @@ import {
 import {
     home,
     utils,
-} from '../../styles/home';
+} from '../../styles/home/home';
 
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';

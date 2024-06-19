@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
 import { Portal, Dialog, Paragraph } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
-import { auth } from '../services/firebase';
+import { auth, storage } from '../services/firebase';
 import * as ImagePicker from 'expo-image-picker';
+import * as FileSystem from 'expo-file-system';
 
 // Icons
 import { Feather } from '@expo/vector-icons';
@@ -13,7 +14,8 @@ import { colors } from '../styles/global/customStyles';
 import { drawer } from '../styles/drawer';
 
 export default function CustomDrawerContent(props) {
-    const [image, setImage] = useState(auth.currentUser.photURL);
+    const [image, setImage] = useState(auth.currentUser.photoURL);
+    const [uploading, setUploading] = useState(false);
     const [dialogVisible, setDialogVisible] = useState(false);
 
     // Function to change the profile photo
@@ -27,7 +29,40 @@ export default function CustomDrawerContent(props) {
 
         if (!result.canceled) {
             setImage(result.assets[0].uri);
-            console.log(result.assets[0].uri);
+            console.log(image);
+
+            uploadMedia();
+        }
+    }
+
+    // Uploads media files
+    async function uploadMedia() {
+        setUploading(true);
+
+        try {
+            const { uri } = await FileSystem.getInfoAsync(image);
+            const blob = await new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.onload = () => resolve(xhr.response);
+                xhr.onerror = (error) => reject(new TypeError('Network request failed'));
+                xhr.responseType = 'blob';
+                xhr.open('GET', uri, true);
+                xhr.send(null);
+            });
+
+            const fileName = image.substring(image.lastIndexOf('/') + 1);
+            const ref = storage.ref().child(fileName);
+
+            await ref.put(blob);
+            setUploading(false);
+
+            Alert.alert('Photo Uploaded');
+
+
+            auth.currentUser.photoURL = uri;
+        } catch (error) {
+            console.error(error);
+            setUploading(false);
         }
     }
 

@@ -25,7 +25,7 @@ import { fetchWeatherData } from '../../services/weatherAPI';
 // Styles
 import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
 import { boilerplate } from '../../styles/global/boilerplate';
-import { home, utils } from '../../styles/home';
+import { home, utils } from '../../styles/home/home';
 
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';

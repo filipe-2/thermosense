@@ -2,7 +2,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 
 // Styles
 import { boilerplate } from '../../styles/global/boilerplate';
-import { settings } from '../../styles/settings';
+import { settings } from '../../styles/settings/settings';
 import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
 
 // Icons
