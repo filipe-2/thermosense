@@ -12,18 +12,20 @@ function calculateHeatIndex(temperature, humidity) {
     const c9 = -0.000003582;
 
     // Calculates each term separately
-    const term1 = c1;
-    const term2 = c2 * temperature;
-    const term3 = c3 * humidity;
-    const term4 = c4 * temperature * humidity;
-    const term5 = c5 * (temperature ** 2);
-    const term6 = c6 * (humidity ** 2);
-    const term7 = c7 * (temperature ** 2) * humidity;
-    const term8 = c8 * temperature * (humidity ** 2);
-    const term9 = c9 * (temperature ** 2) * (humidity ** 2);
+    const terms = [
+        c1,
+        c2 * temperature,
+        c3 * humidity,
+        c4 * temperature * humidity,
+        c5 * (temperature ** 2),
+        c6 * (humidity ** 2),
+        c7 * (temperature ** 2) * humidity,
+        c8 * temperature * (humidity ** 2),
+        c9 * (temperature ** 2) * (humidity ** 2),
+    ];
 
     // Sums all the terms to get the heat index
-    const heatIndex = term1 + term2 + term3 + term4 + term5 + term6 + term7 + term8 + term9;
+    const heatIndex = terms.reduce((acc, term) => acc + term, 0);
 
     // Rounds the result to the nearest integer
     return Math.round(heatIndex);
@@ -39,8 +41,10 @@ function handleTempConditionIcon(temperature) {
         return require('../../../../assets/thermometer-0-20.png');
     } else if (temperature >= 20 && temperature < 30) {
         return require('../../../../assets/thermometer-20-29.png');
-    } else {
+    } else if (temperature >= 30) {
         return require('../../../../assets/thermometer-30-more.png');
+    } else {
+        return null;
     }
 }
 // ------------------------------------------------
@@ -71,6 +75,8 @@ function handleWeatherConditionIcon(isDay, condition) {
             return require('../../../../assets/light-rain-night.png');
         } else if (condition === 'Clear') {
             return require('../../../../assets/clear-night.png');
+        } else {
+            return null;
         }
     }
 }

@@ -1,9 +1,17 @@
+// ------------------ Imports ---------------------
 import { Text, ActivityIndicator, ImageBackground } from 'react-native';
 
 // Styles
 import { boilerplate } from '../../styles/global/boilerplate';
-import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
+import {
+    colors,
+    darkStyles,
+    lightStyles,
+} from '../../styles/global/customStyles';
+// ------------------------------------------------
 
+
+// ------------- Loading component ----------------
 export default function LoadingScreen() {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
@@ -18,3 +26,4 @@ export default function LoadingScreen() {
         </ImageBackground>
     );
 }
+// ------------------------------------------------

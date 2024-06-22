@@ -1,4 +1,6 @@
 // ------------------ Imports ---------------------
+import { useState } from 'react';
+
 import {
     View,
     ImageBackground,
@@ -28,35 +30,13 @@ export default function Control() {
     const theme = isDarkMode ? darkStyles : lightStyles;
 
     // States
-    const [enable, setEnable] = useState("Marcas");
+    const [selectedBrand, setSelectedBrand] = useState("Meu ar-condicionado");
 
     return (
         <ImageBackground
             source={require('../../../assets/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper, { gap: 25 }]}
         >
-            <Picker
-                selectedValue={enable}
-                style={{
-                    height: 50,
-                    width: 250,
-                }}
-                mode={"dialog"}
-                onValueChange={(itemValue) => setEnable(itemValue)}
-            >
-                // AC brands
-                <Picker.Item label="Consul" value="Consul" />
-                <Picker.Item label="Springer" value="Springer" />
-                <Picker.Item label="Samsung" value="Samsung" />
-                <Picker.Item label="LG" value="LG" />
-                <Picker.Item label="Philco" value="Philco" />
-                <Picker.Item label="Electrolux" value="Electrolux" />
-                <Picker.Item label="Hitachi" value="Hitachi" />
-                <Picker.Item label="Sanyo" value="Sanyo" />
-                <Picker.Item label="Daikin" value="Daikin" />
-                <Picker.Item label="Panasonic" value="Panasonic" />
-            </Picker>
-
             <View style={{
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -74,6 +54,37 @@ export default function Control() {
                     fontWeight: 'bold',
                     letterSpacing: 5,
                 }}>AR-CONDICIONADO</Text>
+            </View>
+
+            <View style={{ borderRadius: 20, overflow: 'hidden' }}>
+                <Picker
+                    selectedValue={selectedBrand}
+                    style={{
+                        height: 50,
+                        width: 250,
+                        backgroundColor: colors.clr_5,
+                        color: colors.clr_1,
+                        fontWeight: 'bold',
+                    }}
+                    dropdownIconColor={colors.clr_1}
+                    dropdownIconRippleColor={colors.clr_1}
+                    prompt={'Selecionar Marca'}
+                    mode={"dialog"}
+                    onValueChange={(itemValue) => setSelectedBrand(itemValue)}
+                >
+                    <Picker.Item
+                        label="Consul"
+                        value="Consul"
+                    />
+                    <Picker.Item
+                        label="Springer"
+                        value="Springer"
+                    />
+                    <Picker.Item
+                        label="Samsung"
+                        value="Samsung"
+                    />
+                </Picker>
             </View>
 
             <TouchableOpacity style={{
@@ -127,7 +138,7 @@ export default function Control() {
                     />
                 </TouchableOpacity>
             </View>
-        </ImageBackground>
+        </ImageBackground >
     );
 }
 // ------------------------------------------------
