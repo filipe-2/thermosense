@@ -1,9 +1,13 @@
+// ------------------ Imports ---------------------
 import { auth } from '../../services/firebase';
+
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     updateProfile,
 } from 'firebase/auth';
+// ------------------------------------------------
+
 
 // ---------- Gets sign in error codes ------------
 function getSignInError(code) {
@@ -30,6 +34,43 @@ function getSignInError(code) {
         case 'auth/too-many-requests':
             title = 'Campo de senha vazio';
             message = 'Por favor digite a senha da sua conta para prosseguir.';
+            break;
+        default:
+            title = 'Erro';
+            message = 'Ocorreu um erro inesperado, por favor tente novamente.';
+            break;
+    }
+
+    return { title, message };
+};
+// ------------------------------------------------
+
+
+// ---------- Gets sign up error codes ------------
+function getSignUpError(error) {
+    let title = '';
+    let message = '';
+
+    switch (error) {
+        case 'auth/email-already-in-use':
+            title = 'Email em uso';
+            message = 'O email digitado já está em uso, tente novamente.';
+            break;
+        case 'auth/invalid-email':
+            title = 'Email inválido';
+            message = 'O email digitado é inválido, tente novamente.';
+            break;
+        case 'auth/weak-password':
+            title = 'Senha fraca';
+            message = 'A senha é muito fraca. Crie uma senha com pelo menos 6 dígitos.';
+            break;
+        case 'auth/missing-email':
+            title = 'Campo de email vazio';
+            message = 'Por favor digite o email para vincular à sua conta.';
+            break;
+        case 'auth/missing-password':
+            title = 'Campo de senha vazio';
+            message = 'Por favor crie uma senha com pelo menos 6 dígitos.';
             break;
         default:
             title = 'Erro';
@@ -77,43 +118,6 @@ async function handleSignIn(
     } finally {
         setLoading(false);
     }
-};
-// ------------------------------------------------
-
-
-// -------------- Handles sign up -----------------
-function getSignUpError(error) {
-    let title = '';
-    let message = '';
-
-    switch (error) {
-        case 'auth/email-already-in-use':
-            title = 'Email em uso';
-            message = 'O email digitado já está em uso, tente novamente.';
-            break;
-        case 'auth/invalid-email':
-            title = 'Email inválido';
-            message = 'O email digitado é inválido, tente novamente.';
-            break;
-        case 'auth/weak-password':
-            title = 'Senha fraca';
-            message = 'A senha é muito fraca. Crie uma senha com pelo menos 6 dígitos.';
-            break;
-        case 'auth/missing-email':
-            title = 'Campo de email vazio';
-            message = 'Por favor digite o email para vincular à sua conta.';
-            break;
-        case 'auth/missing-password':
-            title = 'Campo de senha vazio';
-            message = 'Por favor crie uma senha com pelo menos 6 dígitos.';
-            break;
-        default:
-            title = 'Erro';
-            message = 'Ocorreu um erro inesperado, por favor tente novamente.';
-            break;
-    }
-
-    return { title, message };
 };
 // ------------------------------------------------
 

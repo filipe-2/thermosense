@@ -1,18 +1,48 @@
+// ------------------ Imports ---------------------
 import { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Alert } from 'react-native';
-import { Portal, Dialog, Paragraph } from 'react-native-paper';
-import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
-import { auth, storage } from '../services/firebase';
-import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system';
+
+import {
+    View,
+    Text,
+    Image,
+    TouchableOpacity,
+    Alert,
+} from 'react-native';
+
+import {
+    Portal,
+    Dialog,
+    Paragraph,
+} from 'react-native-paper';
+
+import {
+    DrawerContentScrollView,
+    DrawerItem,
+    DrawerItemList,
+} from '@react-navigation/drawer';
+
+import {
+    auth,
+    storage,
+} from '../services/firebase';
+
+import {
+    launchImageLibraryAsync,
+    MediaTypeOptions,
+} from 'expo-image-picker';
+
+import { getInfoAsync } from 'expo-file-system';
 
 // Icons
 import { Feather } from '@expo/vector-icons';
 
 // Styles
-import { colors } from '../styles/global/customStyles';
+import { colors } from '../styles/global/custom';
 import { drawer } from '../styles/drawer';
+// ------------------------------------------------
 
+
+// ------- Custom drawer content component --------
 export default function CustomDrawerContent(props) {
     const [image, setImage] = useState(auth.currentUser.photoURL);
     const [uploading, setUploading] = useState(false);
@@ -20,8 +50,8 @@ export default function CustomDrawerContent(props) {
 
     // Function to change the profile photo
     async function pickImage() {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        let result = await launchImageLibraryAsync({
+            mediaTypes: MediaTypeOptions.Images,
             allowsEditing: true,
             aspect: [1, 1],
             quality: 1,
@@ -40,7 +70,7 @@ export default function CustomDrawerContent(props) {
         setUploading(true);
 
         try {
-            const { uri } = await FileSystem.getInfoAsync(image);
+            const { uri } = await getInfoAsync(image);
             const blob = await new Promise((resolve, reject) => {
                 const xhr = new XMLHttpRequest();
                 xhr.onload = () => resolve(xhr.response);
@@ -81,7 +111,7 @@ export default function CustomDrawerContent(props) {
                             style={drawer.userImg}
                             source={image ?
                                 { uri: image } :
-                                require('../../../assets/user.png')}
+                                require('../../../assets/imgs/user.png')}
                         />
                     </TouchableOpacity>
 
@@ -154,3 +184,4 @@ export default function CustomDrawerContent(props) {
         </View>
     );
 }
+// ------------------------------------------------

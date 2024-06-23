@@ -1,24 +1,21 @@
-import { createStackNavigator } from '@react-navigation/stack';
-
+// ------------------ Imports ---------------------
 // Screens
 import Inside from '../screens/home/Inside';
 import Outside from '../screens/home/Outside';
 
-// Create stack navigator
-const HomeStack = createStackNavigator();
+// Utils
+import {
+    stackNavigatorOptions,
+    HomeStack,
+} from './misc';
+// ------------------------------------------------
 
-// Screen navigator options
-const navigatorOptions = {
-    headerShown: false,
-    gestureEnabled: true,
-    cardOverlayEnabled: true,
-    presentation: 'transparentModal',
-};
 
+// ----------- Home routes component --------------
 export default function HomeStackRoutes() {
     return (
         <HomeStack.Navigator
-            screenOptions={navigatorOptions}
+            screenOptions={stackNavigatorOptions}
             initialRouteName='Inside'
         >
             <HomeStack.Screen
@@ -33,3 +30,4 @@ export default function HomeStackRoutes() {
         </HomeStack.Navigator>
     );
 }
+// ------------------------------------------------

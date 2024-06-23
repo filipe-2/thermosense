@@ -1,9 +1,20 @@
+// ------------------ Imports ---------------------
 import axios from 'axios';
+// ------------------------------------------------
+
+
+// -------------- Weather API Key -----------------
 const APIKey = 'ca7af507ddc44d81b52183431241905';
+// ------------------------------------------------
 
+
+// ------------ Weather API Endpoint --------------
 const weatherDataEndpoint = `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=Fortaleza&aqi=no`;
+// ------------------------------------------------
 
-const APICall = async endpoint => {
+
+// ------------ Calls a weather API ---------------
+const APICall = async (endpoint) => {
     const options = {
         method: 'GET',
         url: endpoint,
@@ -17,5 +28,19 @@ const APICall = async endpoint => {
         return null;
     }
 };
+// ------------------------------------------------
 
-export const fetchWeatherData = () => APICall(weatherDataEndpoint);
+
+// ------ Fetch weather data from endpoint --------
+const fetchWeatherData = () => APICall(weatherDataEndpoint);
+// ------------------------------------------------
+
+
+// ------------------ Exports ---------------------
+export {
+    // Variables
+
+    // Functions
+    fetchWeatherData,
+};
+// ------------------------------------------------

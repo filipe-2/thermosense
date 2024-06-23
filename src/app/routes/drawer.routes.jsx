@@ -1,50 +1,31 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
-
+// ------------------ Imports ---------------------
 // Components
 import CustomDrawerContent from '../components/CustomDrawerContent';
-import CustomDrawerHeader from '../components/CustomDrawerHeader';
 
 // Routes
+import HomeStackRoutes from './homeStack.routes';
 import SettingsStackRoutes from './settingsStack.routes';
 
 // Screens
-import Home from '../screens/home/Inside';
 import Control from '../screens/Control';
 import Profile from '../screens/Profile';
 
 // Styles
-import { colors } from '../styles/global/customStyles';
+import { colors } from '../styles/global/custom';
 
 // Icons
 import { Feather } from '@expo/vector-icons';
 import Notifications from '../screens/settings/Notifications';
-import HomeStackRoutes from './homeStack.routes';
+
+// Utils
+import {
+    drawerNavigatorOptions,
+    Drawer,
+} from './misc';
+// ------------------------------------------------
 
 
-// Create drawer navigator
-const Drawer = createDrawerNavigator();
-
-// Screen navigator options
-const navigatorOptions = {
-    header: () => <CustomDrawerHeader />,
-    title: '',
-    drawerStyle: {
-        backgroundColor: colors.clr_4,
-        width: '75%',
-        maxWidth: 400,
-        blurRadius: 5,
-        borderLeftWidth: 2,
-        borderColor: colors.clr_1,
-        borderTopLeftRadius: 25,
-        borderBottomLeftRadius: 25,
-    },
-    drawerLabelStyle: { marginLeft: -15 },
-    drawerPosition: 'right',
-    drawerActiveTintColor: colors.clr_1,
-    drawerInactiveTintColor: colors.clr_6,
-};
-
-
+// ---------- Drawer routes component -------------
 export default function DrawerRoutes() {
     return (
         <Drawer.Navigator
@@ -53,7 +34,7 @@ export default function DrawerRoutes() {
                     color: 'white',
                 },
             }}
-            screenOptions={navigatorOptions}
+            screenOptions={drawerNavigatorOptions}
             drawerContent={CustomDrawerContent}
         >
             <Drawer.Screen
@@ -129,3 +110,4 @@ export default function DrawerRoutes() {
         </Drawer.Navigator>
     );
 };
+// ------------------------------------------------

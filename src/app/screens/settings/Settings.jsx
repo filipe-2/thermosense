@@ -1,23 +1,34 @@
-import { Text, TouchableOpacity, View } from 'react-native';
+// ------------------ Imports ---------------------
+import {
+    Text,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 
 // Styles
 import { boilerplate } from '../../styles/global/boilerplate';
 import { settings } from '../../styles/settings/settings';
-import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
+
+import {
+    colors,
+    darkStyles,
+    lightStyles,
+} from '../../styles/global/custom';
 
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';
+// ------------------------------------------------
 
-export default function Settings(props) {
-    console.log(props);
 
+// ------------ Settings component ----------------
+export default function Settings({ navigation }) {
     const isDarkMode = true; // Change based on user preferences
     const theme = isDarkMode ? darkStyles : lightStyles;
 
     return (
         <View style={[theme.background, boilerplate.wrapper]}>
             <TouchableOpacity
-                onPress={() => props.navigation.navigate('General')}
+                onPress={() => navigation.navigate('General')}
                 style={settings.button}
             >
                 <Icon name='gear' size={30} color={colors.clr_1} />
@@ -28,7 +39,7 @@ export default function Settings(props) {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => props.navigation.navigate('Appearance')}
+                onPress={() => navigation.navigate('Appearance')}
                 style={settings.button}
             >
                 <Icon name='adjust' size={30} color={colors.clr_1} />
@@ -39,7 +50,7 @@ export default function Settings(props) {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => props.navigation.navigate('Notifications')}
+                onPress={() => navigation.navigate('Notifications')}
                 style={settings.button}
             >
                 <Icon name='bell' size={26} color={colors.clr_1} />
@@ -50,7 +61,7 @@ export default function Settings(props) {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => props.navigation.navigate('Help')}
+                onPress={() => navigation.navigate('Help')}
                 style={settings.button}
             >
                 <Icon name='question-circle' size={30} color={colors.clr_1} />
@@ -61,7 +72,7 @@ export default function Settings(props) {
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => props.navigation.navigate('About')}
+                onPress={() => navigation.navigate('About')}
                 style={[settings.button, settings.lastButton]}
             >
                 <Icon name='exclamation-circle' size={30} color={colors.clr_1} />
@@ -73,3 +84,4 @@ export default function Settings(props) {
         </View>
     );
 }
+// ------------------------------------------------

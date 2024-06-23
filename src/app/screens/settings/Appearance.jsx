@@ -1,10 +1,21 @@
-import { View, Text } from 'react-native';
+// ------------------ Imports ---------------------
+import {
+    View,
+    Text,
+} from 'react-native';
 
 // Styles
 import { boilerplate } from "../../styles/global/boilerplate";
-import { darkStyles, lightStyles } from '../../styles/global/customStyles';
 
-export default function General() {
+import {
+    darkStyles,
+    lightStyles,
+} from '../../styles/global/custom';
+// ------------------------------------------------
+
+
+// ------------ Appearance component --------------
+export default function Appearance() {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
 
@@ -14,3 +25,4 @@ export default function General() {
         </View>
     );
 };
+// ------------------------------------------------

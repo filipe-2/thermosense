@@ -1,5 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
-
+// ------------------ Imports ---------------------
 // Screens
 import Settings from '../screens/settings/Settings';
 import General from '../screens/settings/General';
@@ -8,21 +7,19 @@ import Notifications from '../screens/settings/Notifications';
 import Help from '../screens/settings/Help';
 import About from '../screens/settings/About';
 
-// Create stack navigator
-const SettingsStack = createStackNavigator();
+// Utils
+import {
+    stackNavigatorOptions,
+    SettingsStack,
+} from './misc';
+// ------------------------------------------------
 
-// Screen navigator options
-const navigatorOptions = {
-    headerShown: false,
-    gestureEnabled: true,
-    cardOverlayEnabled: true,
-    presentation: 'transparentModal',
-};
 
+// --------- Settings routes component ------------
 export default function SettingsStackRoutes() {
     return (
         <SettingsStack.Navigator
-            screenOptions={navigatorOptions}
+            screenOptions={stackNavigatorOptions}
             initialRouteName='Home'
         >
             <SettingsStack.Screen
@@ -57,3 +54,4 @@ export default function SettingsStackRoutes() {
         </SettingsStack.Navigator>
     );
 }
+// ------------------------------------------------

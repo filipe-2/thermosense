@@ -1,9 +1,18 @@
+// ------------------ Imports ---------------------
 import { View, Text } from 'react-native';
 
 // Styles
 import { boilerplate } from '../styles/global/boilerplate';
-import { colors, darkStyles, lightStyles } from '../styles/global/customStyles';
 
+import {
+    colors,
+    darkStyles,
+    lightStyles,
+} from '../styles/global/custom';
+// ------------------------------------------------
+
+
+// ------------ Profile component -----------------
 export default function Profile() {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
@@ -14,3 +23,4 @@ export default function Profile() {
         </View>
     );
 }
+// ------------------------------------------------

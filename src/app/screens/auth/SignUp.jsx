@@ -1,5 +1,8 @@
 // ------------------ Imports ---------------------
-import { useState } from 'react';
+import {
+    useState,
+    useRef,
+} from 'react';
 
 import {
     View,
@@ -18,17 +21,17 @@ import {
 
 // Styles
 import { boilerplate } from '../../styles/global/boilerplate';
+import { auth } from '../../styles/auth';
+import { dialog } from '../../styles/dialog.js';
+
 import {
     colors,
     darkStyles,
     lightStyles,
-} from '../../styles/global/customStyles';
+} from '../../styles/global/custom.js';
 
 // Utils
 import {
-    // Variables
-
-    // Functions
     handleSignUp,
     dismissDialog,
 } from './utils.js';
@@ -36,10 +39,11 @@ import {
 
 
 // ------------- Sign up component ----------------
-export default function SignUp(props) {
+export default function SignUp({ navigation }) {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
 
+    // States
     const [isPasswordSecure, setIsPasswordSecure] = useState(true);
     const [isPasswordConfirmationSecure, setIsPasswordConfirmationSecure] = useState(true);
     const [email, setEmail] = useState('');
@@ -51,28 +55,26 @@ export default function SignUp(props) {
     const [showPermissionDialog, setShowPermissionDialog] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    // Refs
+    const emailInputRef = useRef(null);
+    const usernameInputRef = useRef(null);
+    const passwordInputRef = useRef(null);
+    const passwordConfirmationInputRef = useRef(null);
+
     return (
         <ImageBackground
-            source={require('../../../../assets/auth-bg.jpg')}
+            source={require('../../../../assets/imgs/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
             <Image
-                style={{
-                    width: 200,
-                    height: 200,
-                    marginBottom: 15,
-                }}
-                source={require('../../../../assets/logo.png')}
+                style={auth.logo}
+                source={require('../../../../assets/imgs/logo.png')}
             />
-            <Text style={{
-                color: colors.clr_1,
-                fontWeight: 'bold',
-                fontSize: 28,
-                marginBottom: 15,
-                letterSpacing: 5,
-            }}>CADASTRO</Text>
+
+            <Text style={[theme.text.primary, auth.screenLabel]}>CADASTRO</Text>
 
             <TextInput
+                style={auth.credentialsInput}
                 textColor={colors.clr_2}
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
@@ -81,22 +83,14 @@ export default function SignUp(props) {
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setEmail(text)}
-                style={{
-                    backgroundColor: colors.clr_4,
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    borderWidth: 2,
-                    borderColor: colors.clr_1,
-                    width: '75%',
-                    paddingHorizontal: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
+                onSubmitEditing={() => usernameInputRef.current.focus()}
+                returnKeyType='next'
+                blurOnSubmit={false}
+                ref={emailInputRef}
             />
 
             <TextInput
+                style={auth.credentialsInput}
                 textColor={colors.clr_2}
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
@@ -105,22 +99,14 @@ export default function SignUp(props) {
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setUsername(text)}
-                style={{
-                    backgroundColor: colors.clr_4,
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    borderWidth: 2,
-                    borderColor: colors.clr_1,
-                    width: '75%',
-                    paddingHorizontal: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
+                onSubmitEditing={() => passwordInputRef.current.focus()}
+                returnKeyType='next'
+                blurOnSubmit={false}
+                ref={usernameInputRef}
             />
 
             <TextInput
+                style={auth.credentialsInput}
                 textColor={colors.clr_2}
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
@@ -130,19 +116,6 @@ export default function SignUp(props) {
                 autoCapitalize='none'
                 onChangeText={text => setPassword(text)}
                 secureTextEntry={isPasswordSecure}
-                style={{
-                    backgroundColor: colors.clr_4,
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    borderWidth: 2,
-                    borderColor: colors.clr_1,
-                    width: '75%',
-                    paddingHorizontal: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
                 right={
                     <TextInput.Icon
                         icon={isPasswordSecure ? 'eye-off' : 'eye'}
@@ -152,9 +125,14 @@ export default function SignUp(props) {
                             setIsPasswordSecure(true)}
                     />
                 }
+                onSubmitEditing={() => passwordConfirmationInputRef.current.focus()}
+                returnKeyType='next'
+                blurOnSubmit={false}
+                ref={passwordInputRef}
             />
 
             <TextInput
+                style={auth.credentialsInput}
                 textColor={colors.clr_2}
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
@@ -164,19 +142,6 @@ export default function SignUp(props) {
                 autoCapitalize='none'
                 onChangeText={text => setPasswordConfirmation(text)}
                 secureTextEntry={isPasswordConfirmationSecure}
-                style={{
-                    backgroundColor: colors.clr_4,
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    borderWidth: 2,
-                    borderColor: colors.clr_1,
-                    width: '75%',
-                    paddingHorizontal: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
                 right={
                     <TextInput.Icon
                         icon={isPasswordConfirmationSecure ? 'eye-off' : 'eye'}
@@ -186,19 +151,22 @@ export default function SignUp(props) {
                             setIsPasswordConfirmationSecure(true)}
                     />
                 }
+                onSubmitEditing={() => handleSignUp(
+                    email,
+                    username,
+                    password,
+                    passwordConfirmation,
+                    setDialogTitle,
+                    setDialogMessage,
+                    setShowPermissionDialog,
+                    setLoading
+                )}
+                returnKeyType='done'
+                ref={passwordConfirmationInputRef}
             />
 
             <TouchableOpacity
-                style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: colors.clr_1,
-                    borderRadius: 20,
-                    width: '75%',
-                    padding: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
+                style={auth.submitBtn}
                 onPress={() => handleSignUp(
                     email,
                     username,
@@ -210,64 +178,41 @@ export default function SignUp(props) {
                     setLoading
                 )}
             >
-                {loading ?
-                    (<ActivityIndicator color={colors.clr_2} />) :
-                    (<Text style={{
-                        fontSize: 15,
-                        fontWeight: 'bold',
-                    }}>Criar conta</Text>)
+                {loading
+                    ? <ActivityIndicator color={colors.clr_2} />
+                    : <Text style={auth.activityIndicator}>Criar conta</Text>
                 }
             </TouchableOpacity>
 
-            <View style={{ flexDirection: 'row' }}>
-                <Text style={{ color: 'white' }}>Já possui conta?</Text>
-                <TouchableOpacity onPress={() => props.navigation.navigate('SignIn')}>
-                    <Text style={{
-                        color: colors.clr_1,
-                        fontWeight: 'bold',
-                        borderBottomWidth: 1,
-                        borderBottomColor: colors.clr_1,
-                        marginLeft: 5,
-                    }}>Entrar</Text>
+            <View style={auth.footerOptions}>
+                <Text style={theme.text.secondary}>Já possui conta?</Text>
+
+                <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+                    <Text style={[theme.text.primary, auth.underlinedBtn]}>Entrar</Text>
                 </TouchableOpacity>
             </View>
 
             <Dialog
                 visible={showPermissionDialog}
                 onDismiss={() => dismissDialog(dialogTitle, setShowPermissionDialog)}
-                style={{
-                    backgroundColor: colors.clr_3,
-                    borderWidth: 2,
-                    borderColor: colors.clr_1,
-                }}
+                style={dialog.wrapper}
             >
-                <Dialog.Title style={{
-                    color: colors.clr_1,
-                    fontWeight: 'bold',
-                }}>
+                <Dialog.Title style={dialog.title}>
                     {dialogTitle}
                 </Dialog.Title>
 
                 <Dialog.Content>
                     <Paragraph>
-                        <Text style={{ color: colors.clr_2 }}>{dialogMessage}</Text>
+                        <Text style={dialog.paragraph}>{dialogMessage}</Text>
                     </Paragraph>
                 </Dialog.Content>
 
                 <Dialog.Actions>
                     <TouchableOpacity
                         onPress={() => dismissDialog(dialogTitle, setShowPermissionDialog)}
-                        style={{
-                            backgroundColor: colors.clr_1,
-                            paddingVertical: 5,
-                            paddingHorizontal: 10,
-                            borderRadius: 10,
-                        }}
+                        style={dialog.actionsBtn}
                     >
-                        <Text style={{
-                            color: colors.clr_3,
-                            fontWeight: 'bold',
-                        }}>OK</Text>
+                        <Text style={dialog.actionsBtnText}>OK</Text>
                     </TouchableOpacity>
                 </Dialog.Actions>
             </Dialog>

@@ -1,6 +1,10 @@
-import { StyleSheet } from "react-native";
-import { colors } from "./global/customStyles";
+// ------------------ Imports ---------------------
+import { StyleSheet } from 'react-native';
+import { colors } from './global/custom';
+// ------------------------------------------------
 
+
+// --------------- Drawer Styles ------------------
 export const drawer = StyleSheet.create({
     userImgWrapper: {
         alignItems: 'center',
@@ -35,3 +39,4 @@ export const drawer = StyleSheet.create({
         margin: 25,
     },
 });
+// ------------------------------------------------

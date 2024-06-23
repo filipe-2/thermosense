@@ -19,11 +19,10 @@ import {
 } from '../../services/firebase';
 
 import { LinearGradient } from 'expo-linear-gradient';
-
 import { fetchWeatherData } from '../../services/weatherAPI';
 
 // Styles
-import { colors, darkStyles, lightStyles } from '../../styles/global/customStyles';
+import { colors, darkStyles, lightStyles } from '../../styles/global/custom';
 import { boilerplate } from '../../styles/global/boilerplate';
 import { home, utils } from '../../styles/home/home';
 
@@ -34,9 +33,6 @@ import { Feather } from '@expo/vector-icons';
 
 // Utils
 import {
-    // Variables
-
-    // Functions
     handleWeatherConditionIcon,
     handleWeatherConditionMessage,
 } from './utils';
@@ -66,7 +62,7 @@ export default function Outside({ navigation }) {
 
     return (
         <ImageBackground
-            source={require('../../../../assets/bg.jpg')}
+            source={require('../../../../assets/imgs/bg.jpg')}
             style={{ flex: 1, justifyContent: 'space-evenly', alignItems: 'center' }}
         >
             <LinearGradient

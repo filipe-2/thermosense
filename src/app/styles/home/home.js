@@ -1,10 +1,15 @@
+// ------------------ Imports ---------------------
 import { StyleSheet } from "react-native";
-import { colors } from "../global/customStyles";
+import { colors } from "../global/custom";
+// ------------------------------------------------
 
-export const utils = {
-    labelTextSize: 25,
-};
 
+// ------------------- Utils ----------------------
+export const utils = { labelTextSize: 25 };
+// ------------------------------------------------
+
+
+// ---------------- Home Styles -------------------
 export const home = StyleSheet.create({
     wrapper: {
         backgroundColor: colors.clr_4,
@@ -43,3 +48,4 @@ export const home = StyleSheet.create({
         fontSize: utils.labelTextSize,
     },
 });
+// ------------------------------------------------

@@ -1,23 +1,20 @@
-import { createStackNavigator } from '@react-navigation/stack';
-
+// ------------------ Imports ---------------------
 // Screens
 import SignIn from '../screens/auth/SignIn';
 import SignUp from '../screens/auth/SignUp';
 
-// Create drawer navigator
-const AuthStack = createStackNavigator();
+// Utils
+import {
+    stackNavigatorOptions,
+    AuthStack,
+} from './misc';
+// ------------------------------------------------
 
-// Screen navigator options
-const navigatorOptions = {
-    headerShown: false,
-    gestureEnabled: true,
-    cardOverlayEnabled: true,
-    presentation: 'transparentModal',
-};
 
+// ----------- Auth routes component --------------
 export default function AuthStackRoutes() {
     return (
-        <AuthStack.Navigator screenOptions={navigatorOptions}>
+        <AuthStack.Navigator screenOptions={stackNavigatorOptions}>
             <AuthStack.Screen
                 name='SignIn'
                 component={SignIn}
@@ -30,3 +27,4 @@ export default function AuthStackRoutes() {
         </AuthStack.Navigator>
     );
 }
+// ------------------------------------------------

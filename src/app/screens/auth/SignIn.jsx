@@ -1,5 +1,8 @@
 // ------------------ Imports ---------------------
-import { useState } from 'react';
+import {
+    useState,
+    useRef,
+} from 'react';
 
 import {
     View,
@@ -18,27 +21,25 @@ import {
 
 // Styles
 import { boilerplate } from "../../styles/global/boilerplate";
+import { auth } from '../../styles/auth';
+import { dialog } from '../../styles/dialog.js';
 import {
     colors,
     darkStyles,
     lightStyles,
-} from '../../styles/global/customStyles';
+} from '../../styles/global/custom.js';
 
 // Utils
-import {
-    // Variables
-
-    // Functions
-    handleSignIn,
-} from './utils.js';
+import { handleSignIn } from './utils.js';
 // ------------------------------------------------
 
 
 // ------------- Sign in component ----------------
-export default function SignIn(props) {
+export default function SignIn({ navigation }) {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
 
+    // States
     const [isPasswordSecure, setIsPasswordSecure] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -47,28 +48,24 @@ export default function SignIn(props) {
     const [showPermissionDialog, setShowPermissionDialog] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    // Refs
+    const emailInputRef = useRef(null);
+    const passwordInputRef = useRef(null);
+
     return (
         <ImageBackground
-            source={require('../../../../assets/auth-bg.jpg')}
+            source={require('../../../../assets/imgs/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
             <Image
-                style={{
-                    width: 200,
-                    height: 200,
-                    marginBottom: 15
-                }}
-                source={require('../../../../assets/logo.png')}
+                style={auth.logo}
+                source={require('../../../../assets/imgs/logo.png')}
             />
-            <Text style={{
-                color: colors.clr_1,
-                fontWeight: 'bold',
-                fontSize: 28,
-                marginBottom: 15,
-                letterSpacing: 10,
-            }}>LOGIN</Text>
+
+            <Text style={[theme.text.primary, auth.screenLabel]}>LOGIN</Text>
 
             <TextInput
+                style={auth.credentialsInput}
                 textColor={colors.clr_2}
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
@@ -77,22 +74,14 @@ export default function SignIn(props) {
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setEmail(text)}
-                style={{
-                    backgroundColor: colors.clr_4,
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    borderWidth: 2,
-                    borderColor: colors.clr_1,
-                    width: '75%',
-                    paddingHorizontal: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
+                onSubmitEditing={() => passwordInputRef.current.focus()}
+                returnKeyType='next'
+                blurOnSubmit={false}
+                ref={emailInputRef}
             />
 
             <TextInput
+                style={auth.credentialsInput}
                 textColor={colors.clr_2}
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
@@ -102,40 +91,28 @@ export default function SignIn(props) {
                 autoCapitalize='none'
                 onChangeText={text => setPassword(text)}
                 secureTextEntry={isPasswordSecure}
-                style={{
-                    backgroundColor: colors.clr_4,
-                    borderTopLeftRadius: 20,
-                    borderTopRightRadius: 20,
-                    borderBottomLeftRadius: 20,
-                    borderBottomRightRadius: 20,
-                    borderWidth: 2,
-                    borderColor: colors.clr_1,
-                    width: '75%',
-                    paddingHorizontal: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
                 right={
                     <TextInput.Icon
                         icon={isPasswordSecure ? 'eye-off' : 'eye'} color={colors.clr_1}
-                        onPress={() => isPasswordSecure ?
-                            setIsPasswordSecure(false) :
-                            setIsPasswordSecure(true)}
+                        onPress={() => isPasswordSecure
+                            ? setIsPasswordSecure(false)
+                            : setIsPasswordSecure(true)}
                     />
                 }
+                onSubmitEditing={() => handleSignIn(
+                    email,
+                    password,
+                    setDialogTitle,
+                    setDialogMessage,
+                    setShowPermissionDialog,
+                    setLoading
+                )}
+                returnKeyType='done'
+                ref={passwordInputRef}
             />
 
             <TouchableOpacity
-                style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: colors.clr_1,
-                    borderRadius: 20,
-                    width: '75%',
-                    padding: 10,
-                    margin: 10,
-                    maxWidth: 500,
-                }}
+                style={auth.submitBtn}
                 onPress={() => handleSignIn(
                     email,
                     password,
@@ -145,37 +122,39 @@ export default function SignIn(props) {
                     setLoading
                 )}
             >
-                {loading ? <ActivityIndicator color={colors.clr_2} /> : <Text style={{ fontSize: 15, fontWeight: 'bold' }}>Entrar</Text>}
+                {loading
+                    ? <ActivityIndicator color={colors.clr_2} />
+                    : <Text style={auth.activityIndicator}>Entrar</Text>
+                }
             </TouchableOpacity>
 
-            <View style={{ flexDirection: 'row' }}>
-                <Text style={{ color: 'white' }}>Não possui conta?</Text>
-                <TouchableOpacity onPress={() => props.navigation.navigate('SignUp')}>
-                    <Text style={{ color: colors.clr_1, fontWeight: 'bold', borderBottomWidth: 1, borderBottomColor: colors.clr_1, marginLeft: 5 }}>Cadastre-se</Text>
+            <View style={auth.footerOptions}>
+                <Text style={theme.text.secondary}>Não possui conta?</Text>
+
+                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                    <Text style={[theme.text.primary, auth.underlinedBtn]}>Cadastre-se</Text>
                 </TouchableOpacity>
             </View>
 
             <Dialog
                 visible={showPermissionDialog}
                 onDismiss={() => setShowPermissionDialog(false)}
-                style={{ backgroundColor: colors.clr_3, borderWidth: 2, borderColor: colors.clr_1 }}
+                style={dialog.wrapper}
             >
-                <Dialog.Title style={{ color: colors.clr_1, fontWeight: 'bold' }}>
+                <Dialog.Title style={dialog.title}>
                     {dialogTitle}
                 </Dialog.Title>
 
                 <Dialog.Content>
-                    <Paragraph style={{ color: colors.clr_2 }}>
-                        {dialogMessage}
-                    </Paragraph>
+                    <Paragraph style={dialog.paragraph}>{dialogMessage}</Paragraph>
                 </Dialog.Content>
 
                 <Dialog.Actions>
                     <TouchableOpacity
-                        style={{ backgroundColor: colors.clr_1, paddingVertical: 5, paddingHorizontal: 10, borderRadius: 10 }}
+                        style={dialog.actionsBtn}
                         onPress={() => setShowPermissionDialog(false)}
                     >
-                        <Text style={{ color: colors.clr_3, fontWeight: 'bold' }}>OK</Text>
+                        <Text style={dialog.actionsBtnText}>OK</Text>
                     </TouchableOpacity>
                 </Dialog.Actions>
             </Dialog>

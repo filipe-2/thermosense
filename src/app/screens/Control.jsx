@@ -17,14 +17,14 @@ import {
     colors,
     darkStyles,
     lightStyles,
-} from '../styles/global/customStyles';
+} from '../styles/global/custom';
 
 // Icons
 import { Feather } from '@expo/vector-icons';
 // ------------------------------------------------
 
 
-// ------------ Control component -----------------
+// ---------- Remote control component ------------
 export default function Control() {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
@@ -34,7 +34,7 @@ export default function Control() {
 
     return (
         <ImageBackground
-            source={require('../../../assets/auth-bg.jpg')}
+            source={require('../../../assets/imgs/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper, { gap: 25 }]}
         >
             <View style={{

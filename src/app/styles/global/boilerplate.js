@@ -1,9 +1,24 @@
-import { StyleSheet } from "react-native";
+// ------------------ Imports ---------------------
+import { StyleSheet } from 'react-native';
+// ------------------------------------------------
 
-export const boilerplate = StyleSheet.create({
+
+// ------------- Boilerplate Styles ---------------
+const boilerplate = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
 });
+// ------------------------------------------------
+
+
+// ------------------ Exports ---------------------
+export {
+    // Variables
+    boilerplate,
+
+    // Functions
+};
+// ------------------------------------------------

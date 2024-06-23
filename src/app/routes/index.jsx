@@ -1,5 +1,7 @@
+// ------------------ Imports ---------------------
 import { useEffect, useState } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from 'react-native-paper';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../services/firebase';
 
@@ -8,9 +10,11 @@ import DrawerRoutes from './drawer.routes';
 import AuthStackRoutes from './authStack.routes';
 
 // Screens
-import LoadingScreen from '../screens/misc/LoadingScreen';
-import { Provider } from 'react-native-paper';
+import Loading from '../screens/misc/Loading';
+// ------------------------------------------------
 
+
+// ----------- Routes index component -------------
 export default function Routes() {
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState(null);
@@ -26,13 +30,14 @@ export default function Routes() {
         return unsubscribe;
     }, [initializing]);
 
-    if (initializing) return <LoadingScreen />;
+    if (initializing) return <Loading />;
 
     return (
-
         <NavigationContainer>
-            <Provider>{user ? (<DrawerRoutes />) : (<AuthStackRoutes />)}</Provider>
+            <Provider>
+                {user ? <DrawerRoutes /> : <AuthStackRoutes />}
+            </Provider>
         </NavigationContainer>
-
     );
 }
+// ------------------------------------------------

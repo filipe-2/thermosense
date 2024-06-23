@@ -36,13 +36,13 @@ function calculateHeatIndex(temperature, humidity) {
 // --------- Renders temperature icon -------------
 function handleTempConditionIcon(temperature) {
     if (temperature < 0) {
-        return require('../../../../assets/thermometer-0-less.png');
+        return require('../../../../assets/imgs/thermometer-0-less.png');
     } else if (temperature >= 0 && temperature < 20) {
-        return require('../../../../assets/thermometer-0-20.png');
+        return require('../../../../assets/imgs/thermometer-0-20.png');
     } else if (temperature >= 20 && temperature < 30) {
-        return require('../../../../assets/thermometer-20-29.png');
+        return require('../../../../assets/imgs/thermometer-20-29.png');
     } else if (temperature >= 30) {
-        return require('../../../../assets/thermometer-30-more.png');
+        return require('../../../../assets/imgs/thermometer-30-more.png');
     } else {
         return null;
     }
@@ -54,27 +54,27 @@ function handleTempConditionIcon(temperature) {
 function handleWeatherConditionIcon(isDay, condition) {
     if (isDay) {
         if (condition === 'Sunny') {
-            return require('../../../../assets/sunny.png');
+            return require('../../../../assets/imgs/sunny.png');
         } else if (condition === 'Partly cloudy' || condition === 'Partly Cloudy') {
-            return require('../../../../assets/partly-cloudy.png');
+            return require('../../../../assets/imgs/partly-cloudy.png');
         } else if (condition === 'Mist') {
-            return require('../../../../assets/cloudy.png');
+            return require('../../../../assets/imgs/cloudy.png');
         } else if (condition === 'Cloudy') {
-            return require('../../../../assets/cloudy.png');
+            return require('../../../../assets/imgs/cloudy.png');
         } else if (condition === 'Light rain' || condition === 'Light Rain') {
-            return require('../../../../assets/partly-rainy.png');
+            return require('../../../../assets/imgs/partly-rainy.png');
         } else if (condition === 'Patchy rain nearby') {
-            return require('../../../../assets/patchy-rain-nearby.png');
+            return require('../../../../assets/imgs/patchy-rain-nearby.png');
         } else {
             return null;
         }
     } else {
         if (condition === 'Partly cloudy' || condition === 'Partly Cloudy') {
-            return require('../../../../assets/partly-cloudy-night.png');
+            return require('../../../../assets/imgs/partly-cloudy-night.png');
         } else if (condition === 'Light rain' || condition === 'Light Rain') {
-            return require('../../../../assets/light-rain-night.png');
+            return require('../../../../assets/imgs/light-rain-night.png');
         } else if (condition === 'Clear') {
-            return require('../../../../assets/clear-night.png');
+            return require('../../../../assets/imgs/clear-night.png');
         } else {
             return null;
         }

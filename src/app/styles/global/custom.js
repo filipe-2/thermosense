@@ -1,7 +1,10 @@
-import { StyleSheet } from "react-native";
+// ------------------ Imports ---------------------
+import { StyleSheet } from 'react-native';
+// ------------------------------------------------
 
-// Colors
-export const colors = {
+
+// ------------------- Colors ---------------------
+const colors = {
     clr_1: 'hsl(200, 100%, 49%)',
     clr_2: 'hsl(0, 0%, 100%)',
     clr_3: 'hsl(0, 0%, 10%)',
@@ -15,9 +18,11 @@ export const colors = {
     clr_11: 'hsla(200, 100%, 49%, 0.25)',
     clr_12: 'hsla(200, 100%, 49%, 0.1)',
 };
+// ------------------------------------------------
 
-// Dark theme
-export const darkStyles = StyleSheet.create({
+
+// ----------------- Dark Theme -------------------
+const darkStyles = StyleSheet.create({
     text: {
         primary: { color: colors.clr_1, },
         secondary: { color: colors.clr_2, },
@@ -28,9 +33,11 @@ export const darkStyles = StyleSheet.create({
         backgroundColor: colors.clr_3,
     },
 });
+// ------------------------------------------------
 
-// Light theme
-export const lightStyles = StyleSheet.create({
+
+// ----------------- Light Theme ------------------
+const lightStyles = StyleSheet.create({
     text: {
         primary: { color: colors.clr_1, },
         secondary: { color: colors.clr_3, },
@@ -40,3 +47,16 @@ export const lightStyles = StyleSheet.create({
         backgroundColor: colors.clr_2,
     },
 });
+// ------------------------------------------------
+
+
+// ------------------ Exports ---------------------
+export {
+    // Variables
+    colors,
+    darkStyles,
+    lightStyles,
+
+    // Functions
+};
+// ------------------------------------------------

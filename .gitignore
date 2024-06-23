@@ -33,5 +33,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-# Firebase (remove the next line before building the app)

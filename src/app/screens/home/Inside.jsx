@@ -25,7 +25,7 @@ import {
     colors,
     darkStyles,
     lightStyles,
-} from '../../styles/global/customStyles';
+} from '../../styles/global/custom';
 
 import {
     home,
@@ -67,7 +67,7 @@ export default function Inside({ navigation }) {
 
     return (
         <ImageBackground
-            source={require('../../../../assets/bg.jpg')}
+            source={require('../../../../assets/imgs/bg.jpg')}
             style={{
                 flex: 1,
                 justifyContent: 'space-evenly',

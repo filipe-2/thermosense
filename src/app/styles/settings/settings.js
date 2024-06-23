@@ -1,6 +1,10 @@
+// ------------------ Imports ---------------------
 import { StyleSheet } from "react-native";
-import { colors } from "../global/customStyles";
+import { colors } from "../global/custom";
+// ------------------------------------------------
 
+
+// -------------- Settings Styles -----------------
 export const settings = StyleSheet.create({
     button: {
         flexDirection: 'row',
@@ -29,3 +33,4 @@ export const settings = StyleSheet.create({
         color: colors.clr_6,
     }
 });
+// ------------------------------------------------
