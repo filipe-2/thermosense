@@ -193,6 +193,18 @@ function dismissDialog(dialogTitle, setShowPermissionDialog) {
 // ------------------------------------------------
 
 
+// ------ Checks for empty fields (sign in) -------
+const areSignInFieldsEmpty = (email, password) => !email || !password;
+// ------------------------------------------------
+
+
+// ------ Checks for empty fields (sign up) -------
+function areSignUpFieldsEmpty(email, username, password, passwordConfirmation) {
+    return !email || !username || !password || !passwordConfirmation;
+};
+// ------------------------------------------------
+
+
 // ------------------- Exports --------------------
 export {
     // Variáveis
@@ -201,5 +213,7 @@ export {
     handleSignIn,
     handleSignUp,
     dismissDialog,
+    areSignInFieldsEmpty,
+    areSignUpFieldsEmpty,
 };
 // ------------------------------------------------

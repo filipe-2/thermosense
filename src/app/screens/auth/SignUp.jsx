@@ -1,6 +1,7 @@
 // ------------------ Imports ---------------------
 import {
     useState,
+    useEffect,
     useRef,
 } from 'react';
 
@@ -8,10 +9,13 @@ import {
     View,
     Text,
     TouchableOpacity,
+    TouchableWithoutFeedback,
     ImageBackground,
     Image,
     ActivityIndicator,
 } from 'react-native';
+
+import NativeTouchable from '../../components/NativeTouchable.jsx';
 
 import {
     TextInput,
@@ -34,6 +38,7 @@ import {
 import {
     handleSignUp,
     dismissDialog,
+    areSignUpFieldsEmpty,
 } from './utils.js';
 // ------------------------------------------------
 
@@ -43,33 +48,54 @@ export default function SignUp({ navigation }) {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
 
-    // States
+    // ------------------ States ----------------------
     const [isPasswordSecure, setIsPasswordSecure] = useState(true);
     const [isPasswordConfirmationSecure, setIsPasswordConfirmationSecure] = useState(true);
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
+    const [emptyFields, setEmptyFields] = useState(areSignUpFieldsEmpty(
+        email,
+        username,
+        password,
+        passwordConfirmation
+    ));
     const [dialogTitle, setDialogTitle] = useState('');
     const [dialogMessage, setDialogMessage] = useState('');
     const [showPermissionDialog, setShowPermissionDialog] = useState(false);
     const [loading, setLoading] = useState(false);
+    // ------------------------------------------------
 
-    // Refs
+    // ------------------- Refs -----------------------
     const emailInputRef = useRef(null);
     const usernameInputRef = useRef(null);
     const passwordInputRef = useRef(null);
     const passwordConfirmationInputRef = useRef(null);
+    // ------------------------------------------------
+
+    // --------------- Use effects --------------------
+    useEffect(() => {
+        setEmptyFields(areSignUpFieldsEmpty(
+            email,
+            username,
+            password,
+            passwordConfirmation
+        ));
+    }, [email, username, password, passwordConfirmation]);
+    // ------------------------------------------------
 
     return (
         <ImageBackground
             source={require('../../../../assets/imgs/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
-            <Image
-                style={auth.logo}
-                source={require('../../../../assets/imgs/logo.png')}
-            />
+            <View style={auth.logoWrapper}>
+                <Image
+                    style={auth.logo}
+                    source={require('../../../../assets/imgs/icon.png')}
+                />
+            </View>
 
             <Text style={[theme.text.primary, auth.screenLabel]}>CADASTRO</Text>
 
@@ -79,7 +105,7 @@ export default function SignUp({ navigation }) {
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
                 value={email}
-                placeholder='Digite seu email'
+                placeholder='E-mail'
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setEmail(text)}
@@ -95,7 +121,7 @@ export default function SignUp({ navigation }) {
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
                 value={username}
-                placeholder='Crie um nome de usuário'
+                placeholder='Usuário'
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setUsername(text)}
@@ -111,7 +137,7 @@ export default function SignUp({ navigation }) {
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
                 value={password}
-                placeholder='Senha (6 ou mais dígitos)'
+                placeholder='Senha'
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setPassword(text)}
@@ -137,7 +163,7 @@ export default function SignUp({ navigation }) {
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
                 value={passwordConfirmation}
-                placeholder='Confirme sua senha'
+                placeholder='Confirmar senha'
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setPasswordConfirmation(text)}
@@ -165,24 +191,39 @@ export default function SignUp({ navigation }) {
                 ref={passwordConfirmationInputRef}
             />
 
-            <TouchableOpacity
-                style={auth.submitBtn}
-                onPress={() => handleSignUp(
-                    email,
-                    username,
-                    password,
-                    passwordConfirmation,
-                    setDialogTitle,
-                    setDialogMessage,
-                    setShowPermissionDialog,
-                    setLoading
-                )}
-            >
-                {loading
-                    ? <ActivityIndicator color={colors.clr_2} />
-                    : <Text style={auth.activityIndicator}>Criar conta</Text>
-                }
-            </TouchableOpacity>
+            {emptyFields
+                ? (
+                    <TouchableWithoutFeedback>
+                        <View style={[auth.submitBtn.default, auth.submitBtn.inactive]}>
+                            {loading
+                                ? <ActivityIndicator color={colors.clr_2} />
+                                : <Text style={auth.activityIndicator}>Criar conta</Text>
+                            }
+                        </View>
+                    </TouchableWithoutFeedback>
+                )
+                : (
+                    <NativeTouchable
+                        onPress={() => handleSignUp(
+                            email,
+                            username,
+                            password,
+                            passwordConfirmation,
+                            setDialogTitle,
+                            setDialogMessage,
+                            setShowPermissionDialog,
+                            setLoading
+                        )}
+                    >
+                        <View style={[auth.submitBtn.default, auth.submitBtn.active]}>
+                            {loading
+                                ? <ActivityIndicator color={colors.clr_2} />
+                                : <Text style={auth.activityIndicator}>Criar conta</Text>
+                            }
+                        </View>
+                    </NativeTouchable>
+                )
+            }
 
             <View style={auth.footerOptions}>
                 <Text style={theme.text.secondary}>Já possui conta?</Text>

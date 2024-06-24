@@ -1,6 +1,7 @@
 // ------------------ Imports ---------------------
 import {
     useState,
+    useEffect,
     useRef,
 } from 'react';
 
@@ -8,10 +9,13 @@ import {
     View,
     Text,
     TouchableOpacity,
+    TouchableWithoutFeedback,
     ImageBackground,
     Image,
     ActivityIndicator,
 } from "react-native";
+
+import NativeTouchable from '../../components/NativeTouchable.jsx';
 
 import {
     TextInput,
@@ -30,7 +34,10 @@ import {
 } from '../../styles/global/custom.js';
 
 // Utils
-import { handleSignIn } from './utils.js';
+import {
+    handleSignIn,
+    areSignInFieldsEmpty,
+} from './utils.js';
 // ------------------------------------------------
 
 
@@ -39,28 +46,39 @@ export default function SignIn({ navigation }) {
     const isDarkMode = true; // Change based on user's configurations
     const theme = isDarkMode ? darkStyles : lightStyles;
 
-    // States
+    // ------------------ States ----------------------
     const [isPasswordSecure, setIsPasswordSecure] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [emptyFields, setEmptyFields] = useState(areSignInFieldsEmpty(email, password));
     const [dialogTitle, setDialogTitle] = useState('');
     const [dialogMessage, setDialogMessage] = useState('');
     const [showPermissionDialog, setShowPermissionDialog] = useState(false);
     const [loading, setLoading] = useState(false);
+    // ------------------------------------------------
 
-    // Refs
+    // ------------------- Refs -----------------------
     const emailInputRef = useRef(null);
     const passwordInputRef = useRef(null);
+    // ------------------------------------------------
+
+    // --------------- Use effects --------------------
+    useEffect(() => {
+        setEmptyFields(areSignInFieldsEmpty(email, password));
+    }, [email, password]);
+    // ------------------------------------------------
 
     return (
         <ImageBackground
             source={require('../../../../assets/imgs/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
-            <Image
-                style={auth.logo}
-                source={require('../../../../assets/imgs/logo.png')}
-            />
+            <View style={auth.logoWrapper}>
+                <Image
+                    style={auth.logo}
+                    source={require('../../../../assets/imgs/icon.png')}
+                />
+            </View>
 
             <Text style={[theme.text.primary, auth.screenLabel]}>LOGIN</Text>
 
@@ -70,7 +88,7 @@ export default function SignIn({ navigation }) {
                 cursorColor={colors.clr_1}
                 activeUnderlineColor='transparent'
                 value={email}
-                placeholder='Email'
+                placeholder='E-mail'
                 placeholderTextColor={colors.clr_6}
                 autoCapitalize='none'
                 onChangeText={text => setEmail(text)}
@@ -111,22 +129,37 @@ export default function SignIn({ navigation }) {
                 ref={passwordInputRef}
             />
 
-            <TouchableOpacity
-                style={auth.submitBtn}
-                onPress={() => handleSignIn(
-                    email,
-                    password,
-                    setDialogTitle,
-                    setDialogMessage,
-                    setShowPermissionDialog,
-                    setLoading
-                )}
-            >
-                {loading
-                    ? <ActivityIndicator color={colors.clr_2} />
-                    : <Text style={auth.activityIndicator}>Entrar</Text>
-                }
-            </TouchableOpacity>
+            {emptyFields
+                ? (
+                    <TouchableWithoutFeedback>
+                        <View style={[auth.submitBtn.default, auth.submitBtn.inactive]}>
+                            {loading
+                                ? <ActivityIndicator color={colors.clr_2} />
+                                : <Text style={auth.activityIndicator}>Entrar</Text>
+                            }
+                        </View>
+                    </TouchableWithoutFeedback>
+                )
+                : (
+                    <NativeTouchable
+                        onPress={() => handleSignIn(
+                            email,
+                            password,
+                            setDialogTitle,
+                            setDialogMessage,
+                            setShowPermissionDialog,
+                            setLoading
+                        )}
+                    >
+                        <View style={[auth.submitBtn.default, auth.submitBtn.active]}>
+                            {loading
+                                ? <ActivityIndicator color={colors.clr_2} />
+                                : <Text style={auth.activityIndicator}>Entrar</Text>
+                            }
+                        </View>
+                    </NativeTouchable>
+                )
+            }
 
             <View style={auth.footerOptions}>
                 <Text style={theme.text.secondary}>Não possui conta?</Text>
