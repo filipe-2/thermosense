@@ -30,7 +30,7 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 - [Emissor Infravermelho TSAL6200](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856)
 - Transistor NPN 2N2222
 
-<img src="./assets/components-preview.png" width="100%">
+<img src="./assets/imgs/components-preview.png" width="100%">
 
 **Softwares utilizados:**
 
