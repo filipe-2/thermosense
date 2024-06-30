@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./assets/banner.png" width="100%">
+    <img src="./assets/imgs/banner.png" width="100%">
     <h1 align="center">ThermoSense</h1>
 </div>
 
@@ -17,7 +17,7 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 ## Preview
 
 <div align="center">
-    <img src="./assets/preview.jpg" alt="preview" width="250"/>
+    <img src="./assets/imgs/preview.jpg" alt="preview" width="250"/>
 </div>
 
 ## Descrição
@@ -30,7 +30,7 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 - [Emissor Infravermelho TSAL6200](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856)
 - Transistor NPN 2N2222
 
-<img src="./assets/components-preview.png" width="100%">
+<img src="./assets/imgs/components-preview.png" width="100%">
 
 **Softwares utilizados:**
 
@@ -39,13 +39,13 @@ Bem-vindo! Este é o repositório do projeto ThermoSense, aqui você encontrará
 - **C++**: linguagem de programação de alto nível, utilizada para criar o código do circuito
 - **Firebase**: serviços de backend em nuvem da Google, inclui banco de dados em tempo real, autenticação e armazenamento
 - **Git**: software de controle e versionamento de código
-- **Arduino IDE**: IDE voltado para o código do circuito, utilizamos para programar o módulo ESP32
+- **VSCode**: editor de código, utilizamos para programar o módulo ESP32 com o IDE integrado PlatformIO.
 - **React Native**: framework baseado no React que permite programar aplicativos utilizando a linguagem JavaScript
 - **Expo**: conjunto de serviços, ferramentas e bibliotecas que facilitam a codificação e criação de apps em React Native
 
 <br>
 
-<img src="https://skillicons.dev/icons?i=js,c,cpp,firebase,git,arduino,react&theme=dark" />
+<img src="https://skillicons.dev/icons?i=js,c,cpp,firebase,git,vscode,react&theme=dark" />
 
 ## Como acessar o app?
 

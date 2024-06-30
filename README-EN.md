@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./assets/banner.png" width="100%">
+    <img src="./assets/imgs/banner.png" width="100%">
     <h1 align="center" color="">ThermoSense</h1>
 </p>
 
@@ -17,14 +17,14 @@ Welcome! This is the repository for the ThermoSense project, here you will find 
 ## Preview
 
 <div align="center">
-    <img src="./assets/preview.jpg" alt="preview" width="250"/>
+    <img src="./assets/imgs/preview.jpg" alt="preview" width="250"/>
 </div>
 
 ## Description
 
 **Hardwares used**: [ESP32 WiFi module](https://www.espressif.com/en/products/socs/esp32), [DHT11 Sensor](https://components101.com/sensors/dht11-temperature-sensor), [Breadboard](https://en.m.wikipedia.org/wiki/Breadboard), and [TSAL6200 IR Emitter](https://in.element14.com/vishay/tsal6200/infrared-emitter-940nm-t-1-3-4/dp/3152856).
 
-<img src="./assets/components-preview.png" width="100%">
+<img src="./assets/imgs/components-preview.png" width="100%">
 
 **Softwares used**: JavaScript, C, C++, Firebase, Git, Arduino IDE, React Native, and Expo.
 
