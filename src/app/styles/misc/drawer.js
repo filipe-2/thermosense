@@ -1,6 +1,6 @@
 // ------------------ Imports ---------------------
 import { StyleSheet } from 'react-native';
-import { colors } from './global/custom';
+import { colors } from '../global/custom';
 // ------------------------------------------------
 
 

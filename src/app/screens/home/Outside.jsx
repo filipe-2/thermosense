@@ -28,12 +28,8 @@ import {
     lightStyles,
 } from '../../styles/global/custom';
 
-import { boilerplate } from '../../styles/global/boilerplate';
-
-import {
-    home,
-    utils,
-} from '../../styles/home/home';
+import { home } from '../../styles/home/home';
+import { outside } from '../../styles/home/outside';
 
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -74,217 +70,111 @@ export default function Outside({ navigation }) {
     return (
         <ImageBackground
             source={require('../../../../assets/imgs/bg.jpg')}
-            style={{ flex: 1, justifyContent: 'space-evenly', alignItems: 'center' }}
+            style={home.wrapper}
         >
             <LinearGradient
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
-                colors={[colors.clr_11, 'transparent']}
-                style={{
-                    width: '90%',
-                    alignItems: 'center',
-                    borderRadius: 25,
-                    borderLeftWidth: 5,
-                    borderColor: colors.clr_1,
-                    marginTop: 100,
-                }}
+                colors={[colors.clr_11, colors.clr_14]}
+                style={home.gradient}
             >
-                <View style={{
-                    paddingHorizontal: 10,
-                    borderBottomWidth: 2,
-                    borderColor: colors.clr_1
-                }}>
-                    <Text style={{
-                        fontSize: 20,
-                        color: colors.clr_2,
-                        letterSpacing: 8,
-                        marginTop: 10,
-                        fontWeight: 'bold',
-                    }}>{weatherData?.location.name.toUpperCase()}</Text>
+                <View style={home.titleWrapper}>
+                    <Text style={home.title}>{weatherData?.location.name.toUpperCase()}</Text>
                 </View>
 
-                <View style={{
-                    justifyContent: 'space-evenly',
-                    width: '100%',
-                    marginVertical: 30,
-                    gap: 10,
-                }}>
-                    <View style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
-                    }}>
-                        <Text style={{
-                            fontSize: 100,
-                            color: colors.clr_2,
-                            fontWeight: '100',
-                            textAlign: 'center',
-                        }}>
-                            {isNaN(weatherData?.current.temp_c) ?
-                                '...' :
-                                Math.round(weatherData?.current.temp_c)}°
+                <View style={outside.contentWrapper}>
+                    <View style={outside.mainContentWrapper}>
+                        <Text style={home.temperatureText}>
+                            {isNaN(weatherData?.current.temp_c)
+                                ? '...'
+                                : Math.round(weatherData?.current.temp_c)
+                            }°
                         </Text>
 
-                        <View style={{
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
+                        <View style={outside.weatherConditionInfoWrapper}>
                             <Image
-                                style={{
-                                    width: 75,
-                                    height: 75,
-                                }}
+                                style={outside.weatherConditionImage}
                                 source={handleWeatherConditionIcon(weatherData?.current.is_day, weatherData?.current.condition.text)}
                             />
+
                             <Text style={{ color: colors.clr_2 }}>
                                 {handleWeatherConditionMessage(weatherData?.current.condition.text)}
                             </Text>
                         </View>
                     </View>
 
-                    <View style={{
-                        flexDirection: 'row',
-                        justifyContent: 'center',
-                        alignItems: 'flex-start',
-                        gap: 20,
-                        marginBottom: 15,
-                    }}>
-                        <View style={{
-                            flexDirection: 'row',
-                            gap: 5,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
+                    <View style={outside.additionalInfoWrapper}>
+                        <View style={outside.tempFahrenheit}>
                             <Icon
-                                style={home.labelIcon}
                                 name='thermometer'
-                                size={utils.labelTextSize}
+                                size={home.labelTextSize}
                                 color={colors.clr_1}
                             />
-                            <Text style={{
-                                fontSize: 20,
-                                color: colors.clr_2,
-                                fontWeight: '300',
-                                textAlign: 'center',
-                            }}>
-                                {isNaN(weatherData?.current.temp_c) ?
-                                    '...' :
-                                    Math.round(celsiusToFahrenheit(weatherData?.current.temp_c))}°F
+                            <Text style={home.additionalInfoText}>
+                                {isNaN(weatherData?.current.temp_c)
+                                    ? '...'
+                                    : Math.round(celsiusToFahrenheit(weatherData?.current.temp_c))
+                                }°F
                             </Text>
                         </View>
 
-                        <View style={{
-                            flexDirection: 'row',
-                            gap: 5,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
+                        <View style={home.additionalInfoWrapper}>
                             <FontAwesome5
-                                style={home.labelIcon}
                                 name='tint'
-                                size={utils.labelTextSize}
+                                size={home.labelTextSize}
                                 color={colors.clr_1}
                             />
-                            <Text style={{
-                                fontSize: 20,
-                                color: colors.clr_2,
-                                fontWeight: '300',
-                                textAlign: 'center',
-                            }}>{weatherData?.current.humidity}%</Text>
+
+                            <Text style={home.additionalInfoText}>{weatherData?.current.humidity}%</Text>
                         </View>
 
-                        <View style={{
-                            flexDirection: 'row',
-                            gap: 5,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
+                        <View style={home.additionalInfoWrapper}>
                             <Feather
-                                style={home.labelIcon}
                                 name='wind'
-                                size={utils.labelTextSize}
+                                size={home.labelTextSize}
                                 color={colors.clr_1}
                             />
-                            <Text style={{
-                                fontSize: 20,
-                                color: colors.clr_2,
-                                fontWeight: '300',
-                                textAlign: 'center',
-                            }}>
-                                {isNaN(weatherData?.current.wind_kph) ?
-                                    '...' :
-                                    weatherData?.current.wind_kph} km/h
+
+                            <Text style={home.additionalInfoText}>
+                                {isNaN(weatherData?.current.wind_kph)
+                                    ? '...'
+                                    : weatherData?.current.wind_kph
+                                } km/h
                             </Text>
                         </View>
                     </View>
                 </View>
 
-                <View style={{
-                    marginBottom: 15,
-                    paddingHorizontal: 10,
-                    borderTopWidth: 2,
-                    borderColor: colors.clr_1,
-                }}>
-                    <Text style={{
-                        fontSize: 18,
-                        color: colors.clr_2,
-                    }}>
+                <View style={home.heatIndexWrapper}>
+                    <Text style={home.heatIndexText}>
                         Sensação: {Math.round(weatherData?.current.feelslike_c)}°C
                         ({Math.round(celsiusToFahrenheit(weatherData?.current.feelslike_c))}°F)
                     </Text>
                 </View>
             </LinearGradient>
 
-            <View style={{
-                width: '75%',
-                minHeight: 75,
-                backgroundColor: colors.clr_10,
-                borderRadius: 25,
-                borderWidth: 2,
-                borderColor: colors.clr_1,
-                flexDirection: 'row',
-            }}>
+            <View style={home.navBtns}>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('Inside')}
-                    style={{
-                        width: '50%',
-                        borderRightWidth: 2,
-                        borderRightColor: colors.clr_1,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: 5,
-                    }}
+                    style={[home.navBtn, home.navBtnOff, home.navBtnLeft]}
                 >
                     <FontAwesome5
                         name='home'
                         size={25}
                         color={colors.clr_1}
                     />
-                    <Text style={{
-                        fontSize: 15,
-                        textAlign: 'center',
-                        color: colors.clr_2,
-                    }}>Casa</Text>
+
+                    <Text style={home.navBtnText}>Casa</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    style={{
-                        backgroundColor: colors.clr_11,
-                        width: '50%',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: 5,
-                    }}>
+                <TouchableOpacity style={[home.navBtn, home.navBtnOn, home.navBtnRight]}>
                     <FontAwesome5
                         name='city'
                         size={25}
                         color={colors.clr_1}
                     />
-                    <Text style={{
-                        fontSize: 15,
-                        textAlign: 'center',
-                        color: colors.clr_2,
-                    }}>Cidade</Text>
+
+                    <Text style={home.navBtnText}>Cidade</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground >

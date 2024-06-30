@@ -27,8 +27,8 @@ import {
 
 // Styles
 import { boilerplate } from "../../styles/global/boilerplate";
-import { auth } from '../../styles/auth';
-import { dialog } from '../../styles/dialog.js';
+import { auth } from '../../styles/misc/auth.js';
+import { dialog } from '../../styles/misc/dialog.js';
 import {
     colors,
     darkStyles,

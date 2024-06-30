@@ -38,7 +38,7 @@ import { Feather } from '@expo/vector-icons';
 
 // Styles
 import { colors } from '../styles/global/custom';
-import { drawer } from '../styles/drawer';
+import { drawer } from '../styles/misc/drawer';
 // ------------------------------------------------
 
 

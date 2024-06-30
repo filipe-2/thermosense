@@ -5,7 +5,6 @@ import General from '../screens/settings/General';
 import Appearance from '../screens/settings/Appearance';
 import Notifications from '../screens/settings/Notifications';
 import Help from '../screens/misc/Help';
-import About from '../screens/misc/About';
 
 // Utils
 import {
@@ -45,11 +44,6 @@ export default function SettingsStackRoutes() {
             <SettingsStack.Screen
                 name='Help'
                 component={Help}
-            />
-
-            <SettingsStack.Screen
-                name='About'
-                component={About}
             />
         </SettingsStack.Navigator>
     );
