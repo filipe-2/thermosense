@@ -8,31 +8,18 @@ const APIKey = 'ca7af507ddc44d81b52183431241905';
 // ------------------------------------------------
 
 
-// ------------ Weather API Endpoint --------------
-const weatherDataEndpoint = (location) => `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${location}&aqi=no`;
-// ------------------------------------------------
-
-
-// ------------ Calls a weather API ---------------
-const APICall = async (endpoint) => {
-    const options = {
-        method: 'GET',
-        url: endpoint,
-    };
+// ------ Fetch weather data from endpoint --------
+const fetchWeatherData = async (location) => {
+    const endpoint = `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${location}&aqi=no`;
 
     try {
-        const response = await axios.request(options);
+        const response = await axios.get(endpoint);
         return response.data;
     } catch (error) {
-        console.log('Erro: ', error);
+        console.error('Error fetching weather data:', error);
         return null;
     }
 };
-// ------------------------------------------------
-
-
-// ------ Fetch weather data from endpoint --------
-const fetchWeatherData = (location) => APICall(weatherDataEndpoint(location));
 // ------------------------------------------------
 
 
