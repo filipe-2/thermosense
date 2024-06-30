@@ -6,6 +6,13 @@ import { colors } from './global/custom';
 
 // ---------------- Auth Styles -------------------
 export const auth = StyleSheet.create({
+    background: {
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        zIndex: -1,
+    },
+
     credentialsInput: {
         backgroundColor: colors.clr_4,
         borderBottomWidth: 2,

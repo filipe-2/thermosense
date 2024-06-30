@@ -9,13 +9,15 @@ import SettingsStackRoutes from './settingsStack.routes';
 // Screens
 import Control from '../screens/Control';
 import Profile from '../screens/Profile';
+import About from '../screens/misc/About';
+import Help from '../screens/misc/Help';
+import Notifications from '../screens/settings/Notifications';
 
 // Styles
 import { colors } from '../styles/global/custom';
 
 // Icons
 import { Feather } from '@expo/vector-icons';
-import Notifications from '../screens/settings/Notifications';
 
 // Utils
 import {
@@ -67,20 +69,6 @@ export default function DrawerRoutes() {
             />
 
             <Drawer.Screen
-                name='Controle'
-                component={Control}
-                options={{
-                    drawerIcon: ({ size }) =>
-                        <Feather
-                            name='activity'
-                            color={colors.clr_1}
-                            size={size}
-                        />,
-                    drawerLabel: 'Controle',
-                }}
-            />
-
-            <Drawer.Screen
                 name='Notificações'
                 component={Notifications}
                 options={{
@@ -91,6 +79,48 @@ export default function DrawerRoutes() {
                             size={size}
                         />,
                     drawerLabel: 'Notificações',
+                }}
+            />
+
+            <Drawer.Screen
+                name='Controle'
+                component={Control}
+                options={{
+                    drawerIcon: ({ size }) =>
+                        <Feather
+                            name='activity'
+                            color={colors.clr_1}
+                            size={size}
+                        />,
+                    drawerLabel: 'Controle remoto',
+                }}
+            />
+
+            <Drawer.Screen
+                name='Sobre'
+                component={About}
+                options={{
+                    drawerIcon: ({ size }) =>
+                        <Feather
+                            name='alert-circle'
+                            color={colors.clr_1}
+                            size={size}
+                        />,
+                    drawerLabel: 'Sobre',
+                }}
+            />
+
+            <Drawer.Screen
+                name='Ajuda'
+                component={Help}
+                options={{
+                    drawerIcon: ({ size }) =>
+                        <Feather
+                            name='help-circle'
+                            color={colors.clr_1}
+                            size={size}
+                        />,
+                    drawerLabel: 'Ajuda',
                 }}
             />
 

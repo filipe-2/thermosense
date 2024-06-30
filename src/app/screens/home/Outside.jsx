@@ -22,9 +22,18 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { fetchWeatherData } from '../../services/weatherAPI';
 
 // Styles
-import { colors, darkStyles, lightStyles } from '../../styles/global/custom';
+import {
+    colors,
+    darkStyles,
+    lightStyles,
+} from '../../styles/global/custom';
+
 import { boilerplate } from '../../styles/global/boilerplate';
-import { home, utils } from '../../styles/home/home';
+
+import {
+    home,
+    utils,
+} from '../../styles/home/home';
 
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -35,6 +44,7 @@ import { Feather } from '@expo/vector-icons';
 import {
     handleWeatherConditionIcon,
     handleWeatherConditionMessage,
+    celsiusToFahrenheit,
 } from './utils';
 // ------------------------------------------------
 
@@ -49,11 +59,12 @@ export default function Outside({ navigation }) {
     const [humidity, setHumidity] = useState(56);
     const [windSpeed, setWindSpeed] = useState(25);
     const [feelsLike, setFeelsLike] = useState(31);
-    const [weatherData, setWeatherData] = useState(null);
+    const [weatherData, setWeatherData] = useState();
+    const [location, setLocation] = useState('Fortaleza');
 
     useEffect(() => {
         const fetchData = async () => {
-            const weatherData = await fetchWeatherData();
+            const weatherData = await fetchWeatherData(location);
             setWeatherData(weatherData);
         };
 
@@ -158,7 +169,7 @@ export default function Outside({ navigation }) {
                             }}>
                                 {isNaN(weatherData?.current.temp_c) ?
                                     '...' :
-                                    Math.round(weatherData?.current.temp_c * 1.8 + 32)}°F
+                                    Math.round(celsiusToFahrenheit(weatherData?.current.temp_c))}°F
                             </Text>
                         </View>
 
@@ -219,7 +230,7 @@ export default function Outside({ navigation }) {
                         color: colors.clr_2,
                     }}>
                         Sensação: {Math.round(weatherData?.current.feelslike_c)}°C
-                        ({Math.round(weatherData?.current.feelslike_c * 1.8 + 32)}°F)
+                        ({Math.round(celsiusToFahrenheit(weatherData?.current.feelslike_c))}°F)
                     </Text>
                 </View>
             </LinearGradient>

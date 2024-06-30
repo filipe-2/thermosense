@@ -48,39 +48,6 @@ export default function Settings({ navigation }) {
                     <Text style={[settings.buttonDescription]}>Tema | Plano de fundo</Text>
                 </View>
             </TouchableOpacity>
-
-            <TouchableOpacity
-                onPress={() => navigation.navigate('Notifications')}
-                style={settings.button}
-            >
-                <Icon name='bell' size={26} color={colors.clr_1} />
-                <View style={settings.buttonTextWrapper}>
-                    <Text style={[theme.text.primary, settings.buttonTitle]}>Notificações</Text>
-                    <Text style={[settings.buttonDescription]}>Idioma | Conta | Segurança</Text>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                onPress={() => navigation.navigate('Help')}
-                style={settings.button}
-            >
-                <Icon name='question-circle' size={30} color={colors.clr_1} />
-                <View style={settings.buttonTextWrapper}>
-                    <Text style={[theme.text.primary, settings.buttonTitle]}>Ajuda</Text>
-                    <Text style={[settings.buttonDescription]}>Dúvidas | FAQ | Guia ThermoSense</Text>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                onPress={() => navigation.navigate('About')}
-                style={[settings.button, settings.lastButton]}
-            >
-                <Icon name='exclamation-circle' size={30} color={colors.clr_1} />
-                <View style={settings.buttonTextWrapper}>
-                    <Text style={[theme.text.primary, settings.buttonTitle]}>Sobre</Text>
-                    <Text style={[settings.buttonDescription]}>Versão | Desenvolvedores | Informações</Text>
-                </View>
-            </TouchableOpacity>
         </View>
     );
 }

@@ -7,12 +7,14 @@ import {
 
 import {
     View,
+    KeyboardAvoidingView,
     Text,
     TouchableOpacity,
     TouchableWithoutFeedback,
     ImageBackground,
     Image,
     ActivityIndicator,
+    Platform,
 } from "react-native";
 
 import NativeTouchable from '../../components/NativeTouchable.jsx';
@@ -69,10 +71,16 @@ export default function SignIn({ navigation }) {
     // ------------------------------------------------
 
     return (
-        <ImageBackground
-            source={require('../../../../assets/imgs/auth-bg.jpg')}
-            style={[theme.background, boilerplate.wrapper]}
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            enabled={false}
+            style={boilerplate.wrapper}
         >
+            <ImageBackground
+                source={require('../../../../assets/imgs/auth-bg.jpg')}
+                style={[theme.background, auth.background]}
+            />
+
             <View style={auth.logoWrapper}>
                 <Image
                     style={auth.logo}
@@ -191,7 +199,7 @@ export default function SignIn({ navigation }) {
                     </TouchableOpacity>
                 </Dialog.Actions>
             </Dialog>
-        </ImageBackground >
+        </KeyboardAvoidingView>
     );
 };
 // ------------------------------------------------

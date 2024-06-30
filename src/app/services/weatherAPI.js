@@ -9,7 +9,7 @@ const APIKey = 'ca7af507ddc44d81b52183431241905';
 
 
 // ------------ Weather API Endpoint --------------
-const weatherDataEndpoint = `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=Fortaleza&aqi=no`;
+const weatherDataEndpoint = (location) => `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${location}&aqi=no`;
 // ------------------------------------------------
 
 
@@ -32,7 +32,7 @@ const APICall = async (endpoint) => {
 
 
 // ------ Fetch weather data from endpoint --------
-const fetchWeatherData = () => APICall(weatherDataEndpoint);
+const fetchWeatherData = (location) => APICall(weatherDataEndpoint(location));
 // ------------------------------------------------
 
 

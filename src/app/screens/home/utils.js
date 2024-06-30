@@ -33,6 +33,11 @@ function calculateHeatIndex(temperature, humidity) {
 // ------------------------------------------------
 
 
+// -------- Converts Celsius to Fahrenheit --------
+const celsiusToFahrenheit = (temperature) => temperature * 1.8 + 32;
+// ------------------------------------------------
+
+
 // --------- Renders temperature icon -------------
 function handleTempConditionIcon(temperature) {
     if (temperature < 0) {
@@ -112,6 +117,7 @@ export {
 
     // Functions
     calculateHeatIndex,
+    celsiusToFahrenheit,
     handleTempConditionIcon,
     handleWeatherConditionIcon,
     handleWeatherConditionMessage,

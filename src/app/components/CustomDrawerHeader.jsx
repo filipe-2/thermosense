@@ -14,6 +14,7 @@ import { auth } from '../services/firebase';
 
 // Icons
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Feather } from '@expo/vector-icons';
 
 // Styles
 import { colors } from '../styles/global/custom';
@@ -42,12 +43,21 @@ export default function CustomDrawerHeader() {
                 borderColor: colors.clr_1,
                 borderRadius: 25,
             }}>
+
+            <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+                <Icon name='bars' color={colors.clr_1} size={25} />
+            </TouchableOpacity>
+
             <View style={{
                 flexDirection: 'row',
                 gap: 15,
                 justifyContent: 'center',
                 alignItems: 'center'
             }}>
+                <TouchableOpacity onPress={() => navigation.navigate('Notificações')}>
+                    <Feather name='bell' color={colors.clr_1} size={25} />
+                </TouchableOpacity>
+
                 <TouchableOpacity
                     onPress={() => navigation.navigate('Perfil')}
                     style={{
@@ -72,10 +82,6 @@ export default function CustomDrawerHeader() {
                         }}
                     />
                 </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => navigation.navigate('Notificações')}>
-                    <Icon name='bell' color={colors.clr_1} size={25} />
-                </TouchableOpacity>
             </View>
 
             <View pointerEvents="none" style={{
@@ -96,10 +102,6 @@ export default function CustomDrawerHeader() {
                     }}
                 />
             </View>
-
-            <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
-                <Icon name='bars' color={colors.clr_1} size={25} />
-            </TouchableOpacity>
         </View>
     );
 }

@@ -4,8 +4,8 @@ import Settings from '../screens/settings/Settings';
 import General from '../screens/settings/General';
 import Appearance from '../screens/settings/Appearance';
 import Notifications from '../screens/settings/Notifications';
-import Help from '../screens/settings/Help';
-import About from '../screens/settings/About';
+import Help from '../screens/misc/Help';
+import About from '../screens/misc/About';
 
 // Utils
 import {
