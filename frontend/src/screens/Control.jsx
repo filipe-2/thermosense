@@ -34,7 +34,7 @@ export default function Control() {
 
     return (
         <ImageBackground
-            source={require('../../../assets/imgs/auth-bg.jpg')}
+            source={require('../../assets/imgs/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper, { gap: 25 }]}
         >
             <View style={{

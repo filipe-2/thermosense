@@ -111,7 +111,7 @@ export default function CustomDrawerContent(props) {
                             style={drawer.userImg}
                             source={image ?
                                 { uri: image } :
-                                require('../../../assets/imgs/user.png')}
+                                require('../../assets/imgs/user.png')}
                         />
                     </TouchableOpacity>
 

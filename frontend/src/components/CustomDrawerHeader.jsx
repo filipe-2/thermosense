@@ -73,7 +73,7 @@ export default function CustomDrawerHeader() {
                         source={
                             auth.currentUser.photURL ?
                                 { uri: auth.currentUser.photoURL } :
-                                require('../../../assets/imgs/user.png')
+                                require('../../assets/imgs/user.png')
                         }
                         style={{
                             width: 25,
@@ -95,7 +95,7 @@ export default function CustomDrawerHeader() {
                 flexDirection: 'row',
             }}>
                 <Image
-                    source={require('../../../assets/imgs/logo.png')}
+                    source={require('../../assets/imgs/logo.png')}
                     style={{
                         width: 50,
                         height: 50,

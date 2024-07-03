@@ -77,14 +77,14 @@ export default function SignIn({ navigation }) {
             style={boilerplate.wrapper}
         >
             <ImageBackground
-                source={require('../../../../assets/imgs/auth-bg.jpg')}
+                source={require('../../../assets/imgs/auth-bg.jpg')}
                 style={[theme.background, auth.background]}
             />
 
             <View style={auth.logoWrapper}>
                 <Image
                     style={auth.logo}
-                    source={require('../../../../assets/imgs/icon.png')}
+                    source={require('../../../assets/imgs/icon.png')}
                 />
             </View>
 

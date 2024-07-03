@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import 'react-native-gesture-handler';
 
-import { Splash } from './src/app/screens/misc/Splash';
+import { Splash } from './src/screens/misc/Splash';
 import { preventAutoHideAsync } from 'expo-splash-screen';
 
-import Routes from './src/app/routes';
+import Routes from './src/routes';
 
 preventAutoHideAsync();
 

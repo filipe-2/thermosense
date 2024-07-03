@@ -23,7 +23,7 @@ export default function Loading() {
 
     return (
         <ImageBackground
-            source={require('../../../../assets/imgs/auth-bg.jpg')}
+            source={require('../../../assets/imgs/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
             <ActivityIndicator color={colors.clr_1} size={50} />

@@ -66,7 +66,7 @@ export default function Inside({ navigation }) {
 
     return (
         <ImageBackground
-            source={require('../../../../assets/imgs/bg.jpg')}
+            source={require('../../../assets/imgs/bg.jpg')}
             style={home.wrapper}
         >
             <LinearGradient

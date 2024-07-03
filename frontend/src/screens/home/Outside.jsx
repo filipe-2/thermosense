@@ -69,7 +69,7 @@ export default function Outside({ navigation }) {
 
     return (
         <ImageBackground
-            source={require('../../../../assets/imgs/bg.jpg')}
+            source={require('../../../assets/imgs/bg.jpg')}
             style={home.wrapper}
         >
             <LinearGradient

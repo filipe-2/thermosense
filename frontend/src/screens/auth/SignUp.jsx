@@ -87,13 +87,13 @@ export default function SignUp({ navigation }) {
 
     return (
         <ImageBackground
-            source={require('../../../../assets/imgs/auth-bg.jpg')}
+            source={require('../../../assets/imgs/auth-bg.jpg')}
             style={[theme.background, boilerplate.wrapper]}
         >
             <View style={auth.logoWrapper}>
                 <Image
                     style={auth.logo}
-                    source={require('../../../../assets/imgs/icon.png')}
+                    source={require('../../../assets/imgs/icon.png')}
                 />
             </View>
 
