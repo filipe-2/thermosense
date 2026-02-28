@@ -8,11 +8,11 @@
 #include <DHT.h>                   // Biblioteca para o sensor DHT11
 #include <Adafruit_Sensor.h>       // Biblioteca de sensores
 
-#define WIFI_SSID "Elisa"         // SSID do WiFi
-#define WIFI_PASSWORD "12Elisa25" // Senha do WiFi
+#define WIFI_SSID "WIFI_SSID"         // SSID do WiFi
+#define WIFI_PASSWORD "WIFI_PASSWORD" // Senha do WiFi
 
-#define API_KEY "AIzaSyD7xCZzwKbC1bMrJthpTeoOOkObwoJXG8A"                       // Chave da API Firebase
-#define DATABASE_URL "https://thermo--sense-d05e4-default-rtdb.firebaseio.com/" // URL do host do Firebase
+#define API_KEY "API_KEY"                       // Chave da API Firebase
+#define DATABASE_URL "DATABASE_URL" // URL do host do Firebase
 
 #define DHTPIN 23     // Usamos o pino 23 para conectar o sensor
 #define DHTTYPE DHT11 // Tipo do sensor é DHT11
